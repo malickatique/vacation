@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Repeater</title>
+    <title>jquery.repeater</title>
+    <style>
+    html, body {
+        font-family: Helvetica, Arial, sans-serif;
+        color: rgb(80, 80, 80);
+    }
+    </style>
+</head>
+<body>
+    <h2>Repeater</h2>
+    <form action="echo.php" class="repeater" enctype="multipart/form-data">
+      <div data-repeater-list="group-a">
+        <div data-repeater-item>
+          <input name="untyped-input" value="A"/>
+    
+    
+          <input type="date" name="date-input"/>
+          <input type="date" name="date-input"/>
+    
+    
+    
+          <input data-repeater-delete type="button" value="Delete"/>
+        </div>
+        
+      </div>
+      <input data-repeater-create type="button" value="Add"/>
+    </form>
+    
+    
+    
+    <script src="jquery-1.11.1.js"></script>
+    <script src="jquery.repeater.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        'use strict';
+
+        $('.repeater').repeater({
+            defaultValues: {
+                'textarea-input': 'foo',
+                'text-input': 'bar',
+                'select-input': 'B',
+                'checkbox-input': ['A', 'B'],
+                'radio-input': 'B'
+            },
+            show: function () {
+                $(this).slideDown();
+            },
+            hide: function (deleteElement) {
+                if(confirm('Are you sure you want to delete this element?')) {
+                    $(this).slideUp(deleteElement);
+                }
+            },
+            ready: function (setIndexes) {
+
+            }
+        });
+
+        
+    });
+    </script>
+</body>
+</html>

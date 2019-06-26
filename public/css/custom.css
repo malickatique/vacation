@@ -1,0 +1,93 @@
+i.fa{
+  font-family: fontawesome !important;
+}
+.body{
+  font-family: "Helvetica Neue", Helvetica; 
+  /* border: 0.3px solid red; */
+}
+.panel-logo{
+  width: 35px;
+  margin: 0px 0px 0px 10px;
+}
+.chat-body{
+  height: 500px;
+  overflow-y: auto;
+}
+.small-thumb{
+  width: 50px;
+  height: 50px;
+}
+.med-pic{
+  width: 100%;
+  height: 100%;
+}
+.xs-img{
+  width: 50px;
+  height: 50px;
+}
+/* Profile CSS */
+
+.profile-header-cover{  
+  background: url('/img/t1.jpg') center center;
+  height: 250px;
+  background-position: center center;
+  background-size: cover;
+}
+.widget-user .widget-user-image > img {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #ffffff;
+}
+.widget-user .widget-user-image {
+  position: absolute;
+  top: 75px;
+  left: 42%;
+  margin-left: -45px;
+}
+
+#chatBackground{
+   /* background: url('/images/chat-bg.png')no-repeat center center ;  */
+  background-color: #fafafa;
+  /* fixed removed */
+  background-size:cover;
+}
+.uploaded-pic-box img{
+  width: 500px;
+  height: 300px;
+}
+
+
+/* //Custom chat CSS */
+.massenger-name{
+  margin: 0px;
+  padding: 0px;
+}
+.msg-text{
+  margin: 0px;
+  padding: 0px;
+}
+.msg-time{
+  margin: 0px;
+  padding: 0px;
+}
+.msg-bubble{
+  margin: 10px 10px;
+  padding: 3px 10px;
+}
+.msg-body{
+  margin: 0px 0px;
+  padding: 3px 10px;
+}
+.msg-sender{
+  /* // border: 1px solid	#000000; */
+  background-color: #05728F;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.msg-receiver{
+  /* // border: 1px solid	#000000; */
+  color: #000000;
+  background-color: #EBEBEB;
+  border-radius: 5px;
+  
+}
