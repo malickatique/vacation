@@ -99,7 +99,7 @@
                 this.form.post("/getRelevantProperties").then(({ data }) => (this.properties = data.data));
             },
             getThumb(index){
-                let pic = (this.properties[index].thumbnail.length > 200) ? this.properties[index].thumbnail : this.baseURL+"images/property/"+ this.properties[index].thumbnail ;
+                let pic = (this.properties[index].thumbnail.length > 200) ? this.properties[index].thumbnail : this.baseURL+"/images/property/"+ this.properties[index].thumbnail ;
                 return pic;
             },
         },

@@ -99079,7 +99079,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         getThumb: function getThumb(index) {
-            var pic = this.properties[index].thumbnail.length > 200 ? this.properties[index].thumbnail : this.baseURL + "images/property/" + this.properties[index].thumbnail;
+            var pic = this.properties[index].thumbnail.length > 200 ? this.properties[index].thumbnail : this.baseURL + "/images/property/" + this.properties[index].thumbnail;
             return pic;
         }
     },
