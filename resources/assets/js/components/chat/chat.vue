@@ -344,8 +344,17 @@
         },
         mounted() {
             console.log('mounted');
+
         },
         created(){
+
+            //Will fetch matches after every x000 (x seconds)
+            // setInterval(() => {
+            //     this.getAllMessages();
+            // }, 3000);
+            //Fetching end
+            
+
             console.log('created');
             this.fetchMe();
             this.getAllMessages();

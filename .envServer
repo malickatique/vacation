@@ -2,7 +2,7 @@ APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=base64:Kna5Cbl17w8qnyBY7gFj84vmepmHI2BLTQyLy3hRh0A=
 APP_DEBUG=true
-APP_LOG_LEVEL=debug
+APP_LOG_LEVEL=info
 APP_URL=http://www.demoaspire.com/2019/ovrvue/
 
 DB_CONNECTION=mysql

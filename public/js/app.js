@@ -45996,6 +45996,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gravitano_vue_date_range_picker__ = __webpack_require__(516);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gravitano_vue_date_range_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__gravitano_vue_date_range_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_axios__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_axios__);
 __webpack_require__(318);
 
 //Vue Js
@@ -46089,10 +46091,8 @@ Vue.prototype.$baseURL = '';
 
 // Vue.prototype.$getCountries = {
 //     'AF': 'Afghanistan',
-//     'AX': 'Åland Islands',
-//     'AL': 'Albania',
-//     'DZ': 'Algeria',
-//     'AS': 'American Samoa'
+//     'PK': 'Pakistan',
+//     'IND': 'India',
 //   };
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -46144,6 +46144,7 @@ Vue.filter('timeAgo', function (date) {
 
 //Date range picker
 
+
 Vue.config.productionTip = false;
 // use the plugin
 Vue.use(__WEBPACK_IMPORTED_MODULE_6__gravitano_vue_date_range_picker___default.a);
@@ -46192,7 +46193,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content; //Uncomment it if needed
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
@@ -95456,6 +95457,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('mounted');
     },
     created: function created() {
+
+        //Will fetch matches after every x000 (x seconds)
+        // setInterval(() => {
+        //     this.getAllMessages();
+        // }, 3000);
+        //Fetching end
+
+
         console.log('created');
         this.fetchMe();
         this.getAllMessages();

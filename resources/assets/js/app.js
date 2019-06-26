@@ -99,10 +99,8 @@ Vue.prototype.$baseURL = '';
 
 // Vue.prototype.$getCountries = {
 //     'AF': 'Afghanistan',
-//     'AX': 'Åland Islands',
-//     'AL': 'Albania',
-//     'DZ': 'Algeria',
-//     'AS': 'American Samoa'
+//     'PK': 'Pakistan',
+//     'IND': 'India',
 //   };
 
 const router = new VueRouter({
@@ -155,6 +153,7 @@ Vue.filter('timeAgo', function(date){
 
   //Date range picker
 import DateRangePicker from "@gravitano/vue-date-range-picker";
+import Axios from 'axios';
 Vue.config.productionTip = false;
 // use the plugin
 Vue.use(DateRangePicker);
