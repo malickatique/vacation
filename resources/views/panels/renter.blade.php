@@ -101,7 +101,7 @@
     <a href="/2019/ovrvue" class="brand-link">
       <img src="images/logo-pic.png" alt="Logo" class="panel-logo"
            style="">
-      <span class="brand-text font-weight-light"> PANAGEA </span>
+      <span class="brand-text font-weight-light"> OVR </span>
     </a>
 
     <!-- Sidebar -->
@@ -167,7 +167,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/users/logout" class="nav-link">
+            <a href="/2019/ovrvue/users/logout" class="nav-link">
               <i class="nav-icon fa fa-power-off"></i>
               <p>Log Out</p>
             </a>
