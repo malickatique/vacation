@@ -18,14 +18,14 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 
 Broadcast::channel('chat.{receiverid}', function ($user, $receiverid) {
 
-    return ( auth()->check());
+    return ( Auth::check() );
 
-    // return ( auth()->check() && in_array($receiverid, $user->friends) );
+    // return ( Auth::check() ) && in_array($receiverid, $user->friends) );
     // in_array($receiverid, $user->friends) will returns ids of this user's friends
 });
 
 Broadcast::channel('onlineStatus', function ($user) {
-    if( auth()->check() )
+    if( Auth::check()  )
     {
         return $user;
     }

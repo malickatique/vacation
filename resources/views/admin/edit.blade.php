@@ -23,8 +23,7 @@
             <h3 class="box-title">Edit Admin</h3>
         </div>
         <!-- /.box-header -->
-        <!-- form start -->
-        
+        <!-- form start -->    
         <form role="form" method="POST" action="{{ route('admin.update',$result->id) }}">
             <div class="box-body">
             <input name="_method" type="hidden" value="PUT">
