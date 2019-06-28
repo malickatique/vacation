@@ -87,28 +87,31 @@ class AdminController extends Controller
 
 
     public function changeProfilePicture(Request $request){
-
         $this->validate($request, [
 	    	'image' => 'mimes:jpeg,bmp,png', //only allow this type extension file.
         ]);
         
 
-
-        $file = $request->file('image');
-        $guessExtension = $request->file('image')->guessExtension();
-        $randomStr = $this->randomNum();
-        $file->move('images/users', $randomStr.'.'.$guessExtension);
-        $imageName = $randomStr.'.'.$guessExtension;
-        
-        // Get admin id
-        $id = Auth::user()->id;
-
-        $admin = new Admin;
-        $admin = $admin->find($id);
-        $admin->imageurl = $imageName;
-        $admin->save();
-        $request->session()->put('imageurl', $imageName);
-        return redirect('/admin/profile')->with('status', 'Profile image has been updated.');
+            if($request->file('image') !='')
+            {
+                $file = $request->file('image');
+                $guessExtension = $request->file('image')->guessExtension();
+                $randomStr = $this->randomNum();
+                $file->move('images/users', $randomStr.'.'.$guessExtension);
+                $imageName = $randomStr.'.'.$guessExtension;
+                
+                // Get admin id
+                $id = Auth::user()->id;
+                $admin = new Admin;
+                $admin = $admin->find($id);
+                $admin->imageurl = $imageName;
+                $admin->save();
+                $request->session()->put('imageurl', $imageName);
+                return redirect('/admin/profile')->with('status', 'Profile image has been updated.');
+            }
+            else{
+                return redirect('/admin/profile')->with('status', 'Profile image has been updated.');
+            }
 
     }
     
@@ -426,7 +429,6 @@ class AdminController extends Controller
         $metadata->area = $request['area'];
         $metadata->size = $request['size'];
         $metadata->save();
-
 
         return redirect('/admin/allproperties')->with('status', "Property updated successfully ");
 
