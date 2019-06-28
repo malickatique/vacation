@@ -20,14 +20,6 @@ class CreateStatesTable extends Migration
             $table->integer('country_id');
             $table->timestamps();
         });
-
-        $states = [
-            ['id' => 1, 'name' => 'Punjab', 'country_id' => 1],
-            ['id' => 2, 'name' => 'Sindh', 'country_id' => 1],
-            ['id' => 3, 'name' => 'KPK', 'country_id' => 1],
-        ];
-
-        DB::table('states')->insert($states);
     }
 
     /**

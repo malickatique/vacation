@@ -22,6 +22,15 @@ class CreateSubscriptionsTable extends Migration
             $table->integer('status');
             $table->timestamps();
         });
+
+        $subscription = [
+            ['id' => 1, 'name' => 'Sub. name', 'detail' => 'details',
+             'price' => 786, 'status' => 1],
+             ['id' => 2, 'name' => 'Sub. name2', 'detail' => 'details2',
+              'price' => 786, 'status' => 1],
+        ];
+
+        DB::table('subscription')->insert($subscription);
     }
 
     /**

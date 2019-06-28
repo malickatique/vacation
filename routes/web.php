@@ -102,10 +102,10 @@ Route::resource('/admin/emailtemplate', 'EmailTemplateController');
 Route::resource('/admin/subscription', 'subscriptionController');
 
 //extend resource routes
-Route::get('/gallary', 'propertiesController@create_image_gallary');
-Route::post('/gallary/upload/store', 'propertiesController@store_gallary');
-Route::post('/gallary/delete','propertiesController@destroy_gallary');
-Route::get('/gallary/finish','propertiesController@finish_gallary')->name('gallary.final');
+Route::get('/gallary', 'AdminController@create_image_gallary');
+Route::post('/gallary/upload/store', 'AdminController@store_gallary');
+Route::post('/gallary/delete','AdminController@destroy_gallary');
+Route::get('/gallary/finish','AdminController@finish_gallary')->name('gallary.final');
 // pages extend
 Route::get('/page/form/{id}','pagesController@create_form_two')->name('page.form-two');
 Route::post('/page/formtwostore','pagesController@store_form_two')->name('page.store-two');

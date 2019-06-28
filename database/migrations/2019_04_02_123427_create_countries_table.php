@@ -21,16 +21,6 @@ class CreateCountriesTable extends Migration
             $table->integer('phonecode');
             $table->timestamps();
         });
-
-        $countries = [
-            ['id' => 1, 'sortname' => 'Pak', 'name' => 'Pakistan',
-             'phonecode' => 92],
-             ['id' => 2, 'sortname' => 'Ind', 'name' => 'India',
-              'phonecode' => 91],
-        ];
-
-        DB::table('countries')->insert($countries);
-        
     }
 
     /**

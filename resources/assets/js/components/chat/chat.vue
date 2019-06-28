@@ -6,8 +6,13 @@
 
         <div class="row">
 
+            <div v-show="myAllMessages == '' " class="text-center">
+                <h2> No messages received. </h2>
+            </div>
+
 <!-- chat part -->
-<div class="col-md-8 col-md-offset-2 my-5" >
+<div class="col-md-8 col-md-offset-2 my-5">
+
     <div v-if="friendId!=''">
         <div class="card">
 
@@ -343,15 +348,14 @@
             }
         },
         mounted() {
-            console.log('mounted');
-
+            this.scrollToEnd();
         },
         created(){
 
             //Will fetch matches after every x000 (x seconds)
-            // setInterval(() => {
-            //     this.getAllMessages();
-            // }, 3000);
+            setInterval(() => {
+                this.getAllMessages();
+            }, 3000);
             //Fetching end
             
 

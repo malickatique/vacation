@@ -206,7 +206,7 @@
 			</a>
 
 			<a href="{{ action('PublicRequestsController@by_city', ['city' => 'Los Angeles']) }}" class="col-md-7 mx-3 by-city">
-					<img src="{{ asset('site/img/los angeles.jpg') }}" alt=""
+					<img src="{{ asset('site/img/Los Angeles.jpg') }}" alt=""
 					class="img-fluid">
 					<h4 class="centered"> Los Angeles </h4>
 					<p class="centered mt-4"> {{ $by_city['Los Angeles'] }}  Properties </p>

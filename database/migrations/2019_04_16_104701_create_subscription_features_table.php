@@ -20,6 +20,15 @@ class CreateSubscriptionFeaturesTable extends Migration
             $table->string('feature_name');
             $table->timestamps();
         });
+
+        $subscription_feature = [
+            ['id' => 1, 'subscription_id' => 1, 'feature_name' => 'Feature name'],
+            ['id' => 2, 'subscription_id' => 1, 'feature_name' => 'Feature name2'],
+            ['id' => 3, 'subscription_id' => 2, 'feature_name' => 'Feature name'],
+            ['id' => 4, 'subscription_id' => 2, 'feature_name' => 'Feature name2'],
+        ];
+
+        DB::table('subscription_feature')->insert($subscription_feature);
     }
 
     /**

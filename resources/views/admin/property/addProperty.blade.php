@@ -38,15 +38,15 @@
                   <div class="col-md-6">
                      <div class="form-group">
                         <label>Property Title</label>
-                        <input class="form-control" required type="text" id="title" name="title">
+                        <input class="form-control" required type="text" id="title" name="name">
                      </div>
                   </div>
-                  <div class="col-md-6">
+                  <!-- <div class="col-md-6">
                      <div class="form-group">
                         <label>Per Night Rent*</label>
                         <input class="form-control" required type="number" placeholder="$" id="per_night_rent" name="per_night_rent">
                      </div>
-                  </div>
+                  </div> -->
                </div>
             </div>
             <div class="form-group col-md-12">
@@ -56,24 +56,13 @@
             <!-- /row -->
             <div class="col-md-12">
                <div class="row">
-                  {{-- <div class="col-md-6">
-                     <div class="form-group">
-                        <label>Availability From</label>
-                        <input class="form-control" required type="date" id="availability_from" name="availability_from">
-                     </div>
-                  </div>
-                  <div class="col-md-6">
-                     <div class="form-group">
-                        <label>Availability To</label>
-                        <input class="form-control" required type="date" id="availability_to" name="availability_to">
-                     </div>
-                  </div> --}}
+                  
 
-                  <div class="col-md-6">
+                  <!-- <div class="col-md-6">
                      <label>Ocassion Availability:</label>
                      <input type="text" placeholder="Occasion Availability"
                      name="daterange" id="daterange" onclick="setIndex(index)">
-                 </div>
+                 </div> -->
 
                   <div class="col-md-12">
                      <div class="form-group">
@@ -130,25 +119,25 @@
                   <div class="col-md-4">
                      <div class="form-group">
                         <label>Bedrooms</label>
-                        <input class="form-control" type="number" id="bedroom" name="bedroom">
+                        <input class="form-control" type="number" id="bedroom" name="bedrooms">
                      </div>
                   </div>
                   <div class="col-md-4">
                      <div class="form-group">
                         <label>Bathrooms</label>
-                        <input class="form-control" type="number" id="bathroom" name="bathroom">
+                        <input class="form-control" type="number" id="bathroom" name="bathrooms">
                      </div>
                   </div>
                   <div class="col-md-4">
                      <div class="form-group">
                         <label>Floors</label>
-                        <input class="form-control" type="number" id="floor" name="floor">
+                        <input class="form-control" type="number" id="floor" name="floors">
                      </div>
                   </div>
                   <div class="col-md-4">
                      <div class="form-group">
                         <label>Garages</label>
-                        <input class="form-control" type="number" id="garage" name="garage">
+                        <input class="form-control" type="number" id="garage" name="garages">
                      </div>
                   </div>
                   <div class="col-md-4">
@@ -174,7 +163,7 @@
                   @foreach ($features as $feature)
                   <div class="col-md-3">
                      <div class="checkboxes float-left">
-                        <input type="checkbox" name="feature[]" value="{{$feature->id}}" >
+                        <input type="checkbox" name="features[]" value="{{$feature->id}}" >
                         <span class="container_check">{{$feature->name}}
                         <span class="checkmark"></span>
                         </span>
@@ -188,31 +177,33 @@
             <h3 class="col-md-12">Property Occasions</h3>
             <hr>
             <div class="container">
-               <div data-repeater-list="group-a">
+               <div data-repeater-list="multipleOccasions">
                   <div data-repeater-item="">
                      <div class="row">
                         <div class="col-md-3">
                            <div class="form-group">
                               <label>Occasion</label>
-                              <input class="form-control" placeholder="Occasion name" type="text" id="occasion_name" name="group-a[0][occasion_name]">
+                              <input class="form-control" placeholder="Occasion name" type="text" id="occasion_name" name="multipleOccasions[0][occasion_name]">
                            </div>
                         </div>
+                        
                         <div class="col-md-2">
                            <div class="form-group">
                               <label>Availability From</label>
-                              <input class="form-control" required="" type="date" id="occasion_availability_from" name="group-a[0][occasion_availability_from]">
+                              <input class="form-control" required="" type="date" id="occasion_availability_from" name="multipleOccasions[0][occasion_availability_from]">
                            </div>
                         </div>
                         <div class="col-md-2">
                            <div class="form-group">
                               <label>Availability To</label>
-                              <input class="form-control" required="" type="date" id="occasion_availability_to" name="group-a[0][occasion_availability_to]">
+                              <input class="form-control" required="" type="date" id="occasion_availability_to" name="multipleOccasions[0][occasion_availability_to]">
                            </div>
                         </div>
+
                         <div class="col-md-2">
                            <div class="form-group">
                               <label>Per Night Rent*</label>
-                              <input class="form-control" required="" type="number" placeholder="$" id="occasion_per_night_rent" name="group-a[0][occasion_per_night_rent]">
+                              <input class="form-control" required="" type="number" placeholder="$" id="per_night_rent" name="multipleOccasions[0][occasion_per_night_rent]">
                            </div>
                         </div>
                         <div class="col-md-2">

@@ -92,11 +92,11 @@ class propertiesController extends Controller
         return $features;
     }
 
-    public function create_image_gallary()
-    {
-        // 
-        return view('properties.create-two');
-    }
+    // public function create_image_gallary()
+    // {
+    //     // 
+    //     return view('properties.create-two');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -218,37 +218,37 @@ class propertiesController extends Controller
        
     }
  
-    public function store_gallary(Request $request)
-    {
-        $image = $request->file('file');
-        $imageName = $image->getClientOriginalName();
-        $image->move(public_path('images/property/gallary'),$imageName);
-        $imageUpload = new PropertyGallary;
-        $imageUpload->property_id = $request['property_id'];
-        $imageUpload->media = $imageName;
-        $imageUpload->type = 7;
-        $imageUpload->save(); 
-        return response()->json(['success'=>$imageName]);
-    }
+    // public function store_gallary(Request $request)
+    // {
+    //     $image = $request->file('file');
+    //     $imageName = $image->getClientOriginalName();
+    //     $image->move(public_path('images/property/'),$imageName);
+    //     $imageUpload = new PropertyGallary;
+    //     $imageUpload->property_id = $request['property_id'];
+    //     $imageUpload->media = $imageName;
+    //     $imageUpload->type = 7;
+    //     $imageUpload->save(); 
+    //     return response()->json(['success'=>$imageName]);
+    // }
 
-    public function destroy_gallary(Request $request)
-    {   
+    // public function destroy_gallary(Request $request)
+    // {   
 
-        $filename =  $request->get('filename');
-        PropertyGallary::where('media',$filename)->delete();
-        $path=public_path().'/images/property/gallary/'.$filename;
-        if (file_exists($path)) {
-            unlink($path);
-        }
-        return $filename;  
+    //     $filename =  $request->get('filename');
+    //     PropertyGallary::where('media',$filename)->delete();
+    //     $path=public_path().'/images/property/'.$filename;
+    //     if (file_exists($path)) {
+    //         unlink($path);
+    //     }
+    //     return $filename;  
 
-    }
+    // }
 
-    public function finish_gallary(){
+    // public function finish_gallary(){
 
-        return redirect()->route('home')->with('status', 'Property has been created successfully');
+    //     return redirect()->route('home')->with('status', 'Property has been created successfully');
 
-    }
+    // }
 
     
     /**

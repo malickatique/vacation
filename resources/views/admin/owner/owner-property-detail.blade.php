@@ -185,7 +185,7 @@
                <div class="box-body">
                   @foreach ($gallaries as $gallary)
 
-                  <img src="{{ URL::to('/images/property/gallary/' . $gallary->media) }}" width="200px" height="200px" class="img-thumbnail" >
+                  <img src="{{ URL::to('/images/property/' . $gallary->media) }}" width="200px" height="200px" class="img-thumbnail" >
                         
                   @endforeach
                </div>

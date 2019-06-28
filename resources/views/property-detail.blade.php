@@ -11,7 +11,7 @@
             <span class="magnific-gallery">
 
                 @foreach ($gallaries as $gallary)
-                    <a href="{{ URL::to('/2019/ovrvue/images/property/' . $gallary->media) }}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
+                    <a href="{{ URL::to('/images/property/' . $gallary->media) }}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
                 @endforeach
 
                 

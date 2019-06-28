@@ -20,21 +20,6 @@ class CreateCitiesTable extends Migration
             $table->integer('state_id');
             $table->timestamps();
         });
-        $cities = [
-            ['id' => 1, 'name' => 'Rawalpindi', 'state_id' => 1],
-            ['id' => 2, 'name' => 'Islamabad', 'state_id' => 1],
-            ['id' => 3, 'name' => 'Lahore', 'state_id' => 1],
-
-            ['id' => 4, 'name' => 'Karachi', 'state_id' => 2],
-            ['id' => 5, 'name' => 'Nawab Shah', 'state_id' => 2],
-            ['id' => 6, 'name' => 'Gawadar', 'state_id' => 2],
-            
-            ['id' => 7, 'name' => 'Peshawar', 'state_id' => 3],
-            ['id' => 8, 'name' => 'Mardan', 'state_id' => 3],
-            ['id' => 9, 'name' => 'Kurram Agency', 'state_id' => 3],
-            
-        ];
-        DB::table('cities')->insert($cities);
     }
 
     /**

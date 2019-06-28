@@ -185,37 +185,61 @@ class AdminController extends Controller
 
     }
 
-    public function storeProperty(Request $request){
-
+    public function storeProperty(Request $request)
+    {
+        // return $request->all();
         $this->validate($request, [
-            'title' => 'required',
-            'per_night_rent' => 'required',
+            'name' => 'required',
             'description' => 'required',
-            'availability_from' => 'required',
-            'availability_to' => 'required',
+            'address' => 'required',
             'type' => 'required',
-            'status' => 'required',
-            'thumbnail' => 'image|required|max:1999'
+            'location' => 'required',
+            'status' => 'required'
+            // 'thumbnail' => 'image|required|max:1999'
         ]);
 
         // image uploading
         $image = $request->file('thumbnail');
         $imagename = time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images/property');
-    
-        $owner_id = $request['user_id'];
+        $destinationPath = public_path('/images/property/');
+        
+        //Image Upload
+        //Request from profile Vue component
+
+        // $currentPic = $property->thumbnail;
+        // $name = '';
+        // if( $request->thumbnail)
+        // {
+        //     //We need a unique name of pic concatenamte time+extention
+        //     //For picking file extension loop until find first semicolon
+        //     //then record string backwards/reverse until / encountered
+        //     //this will pick file extension
+        //     $name = time().'.' .explode('/', explode(':', substr($request->thumbnail, 0, strpos($request->thumbnail, ';')))[1])[1];
+        //     //Image Intervention class from a package named "ImageIntervention"
+        //     //We use \ with Image so that we don't have to import its package here
+        //     \Image::make($request->thumbnail)->save(public_path('/images/property/').$name);
+        //     $request->merge( ['thumbnail' => $name] ); //Override,replace
+            
+        //     //If file exists then delete the older file
+        //     // $prevPic = public_path('/images/property/').$currentPic;
+        //     // if(file_exists($prevPic)){
+        //     //     @unlink($prevPic);
+        //     // }
+        // }
+
+        $owner_id = Auth()->user()->id;
         $property = new Property;
         $property->user_id = $owner_id;
         $property->template_id = 1;
-        $property->name = $request['title'];
+        $property->name = $request['name'];
         $property->description = $request['description'];
-        $property->availability_from = $request['availability_from']; 
-        $property->availability_to = $request['availability_to'];  
-        $property->per_night_rent = $request['per_night_rent'];
+        // $property->availability_from = $request['availability_from']; 
+        // $property->availability_to = $request['availability_to'];  
+        // $property->per_night_rent = $request['per_night_rent'];
         $property->address = $request['address'];
         $property->thumbnail = $imagename;
-        // 2 mean pending
-        $property->status = 2;
+        // $property->thumbnail = $name;
+        $property->status = $request->status;
         $property->save();
         
         // uploading file
@@ -228,16 +252,16 @@ class AdminController extends Controller
         $metadata->type = $request['type'];
         $metadata->status = $request['status'];
         $metadata->location = $request['location'];
-        $metadata->bedrooms = $request['bedroom'];
-        $metadata->bathrooms = $request['bathroom'];
-        $metadata->floors = $request['floor'];
-        $metadata->garages = $request['garage'];
+        $metadata->bedrooms = $request['bedrooms'];
+        $metadata->bathrooms = $request['bathrooms'];
+        $metadata->floors = $request['floors'];
+        $metadata->garages = $request['garages'];
         $metadata->area = $request['area'];
         $metadata->size = $request['size'];
         $metadata->save();
 
         // multiple features 
-        foreach ($request['feature'] as $key => $value) {
+        foreach ($request['features'] as $key => $value) {
             # code...
             $feature = new PropertyFeature;
             $feature->property_id = $lastInsertedPropertyId;
@@ -245,9 +269,7 @@ class AdminController extends Controller
             $feature->save();
 
         }
-
-        foreach ($request['group-a'] as $key => $value) {
-
+        foreach ($request->multipleOccasions as $value) {
             $occasion = new PropertyOccasion;
             $occasion->property_id = $lastInsertedPropertyId;
             $occasion->occasion_name =  $value['occasion_name'];
@@ -255,11 +277,47 @@ class AdminController extends Controller
             $occasion->availability_to =  $value['occasion_availability_to'];
             $occasion->per_night_rent =  $value['occasion_per_night_rent'];
             $occasion->save();
-
         }
 
-        //return redirect()->route('/admin/allproperties')->with('status', 'Property Created successfully');
-        return redirect('/admin/allproperties')->with('status', "Property Created successfully ");
+        // return redirect()->route('home')->with('status', 'Property Created successfully');
+        
+        return view('properties.create-two')->with('property_id', $lastInsertedPropertyId);
+        // return $occasion->property_id;
+    //    return $lastInsertedPropertyId;
+    }
+    public function finish_gallary(){
+
+        return redirect()->route('admin.allproperties')->with('status', 'Property has been created successfully');
+
+    }
+    public function create_image_gallary()
+    {
+        // 
+        return view('properties.create-two');
+    }
+    public function destroy_gallary(Request $request)
+    {   
+
+        $filename =  $request->get('filename');
+        PropertyGallary::where('media',$filename)->delete();
+        $path=public_path().'/images/property/'.$filename;
+        if (file_exists($path)) {
+            unlink($path);
+        }
+        return $filename;  
+
+    }
+    public function store_gallary(Request $request)
+    {
+        $image = $request->file('file');
+        $imageName = $image->getClientOriginalName();
+        $image->move(public_path('images/property/'),$imageName);
+        $imageUpload = new PropertyGallary;
+        $imageUpload->property_id = $request['property_id'];
+        $imageUpload->media = $imageName;
+        $imageUpload->type = 7;
+        $imageUpload->save(); 
+        return response()->json(['success'=>$imageName]);
     }
 
     public function add_property_section_two_gallary(){
@@ -333,7 +391,6 @@ class AdminController extends Controller
 
     public function updateProperty(Request $request, $id){
 
-
         $property = Property::find($id);
         if(isset($request['thumbnail'])){
            
@@ -352,9 +409,6 @@ class AdminController extends Controller
        
         $property->name = $request['name'];
         $property->description = $request['description'];
-        $property->availability_from = $request['availability_from'];
-        $property->availability_to = $request['availability_to'];
-        $property->per_night_rent = $request['per_night_rent'];
         $property->address = $request['address'];
         if(isset($request['thumbnail'])){ $property->thumbnail = $imagename; }
         $property->save();
