@@ -70,7 +70,7 @@
             v-for="(messages, index) in myAllMessages" v-bind:key="index"
         >
         
-        <li class="list-group-item d-flex justify-content-between align-items-center  d-flex"> 
+        <li class="list-group-item d-flex justify-content-between align-items-center row d-flex"> 
 
             <a href="#" class=""
             @click.prevent="chatWith(index)"
@@ -83,10 +83,10 @@
 
 
                 <div class="mt-4 float-left">
-                    <h3>
+                    <p>
                         {{ messages[0]['friend_name'] }}
                         <span class="badge badge-danger badge-pill"> {{ messages[0]['total_msg'] }} </span>
-                    </h3>
+                    </p>
                 </div>
 
             </a>
@@ -161,6 +161,7 @@
                 this.friendId = this.myAllMessages[index][0]['friend_id'];
                 this.fetchMessages();
                 this.initListeners();
+                this.updateStatuses();
             },
             chatWithPropOwner(){
                 this.fetchMessages();

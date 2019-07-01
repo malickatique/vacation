@@ -46180,7 +46180,7 @@ try {
  */
 
 window.axios = __webpack_require__(48);
-//Uncomment it for live server
+// Uncomment it for live server
 // window.axios.defaults.baseURL = '/2019/ovrvue';
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -46211,6 +46211,13 @@ window.Pusher = __webpack_require__(341);
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
   //Uncomment it for live server
   // authEndpoint: 'http://www.demoaspire.com/2019/ovrvue/broadcasting/auth',
+
+
+  // //Uncomment it for live server
+  // authHost: 'http://www.demoaspire.com/2019/ovrvue',
+  // authEndpoint: '/broadcasting/auth',
+  // //Uncomment
+
   broadcaster: 'pusher',
   key: '677e7bb033c327eb56ca',
   cluster: 'ap2',
@@ -95288,6 +95295,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.friendId = this.myAllMessages[index][0]['friend_id'];
             this.fetchMessages();
             this.initListeners();
+            this.updateStatuses();
         },
         chatWithPropOwner: function chatWithPropOwner() {
             this.fetchMessages();
@@ -95663,7 +95671,7 @@ var render = function() {
                   "li",
                   {
                     staticClass:
-                      "list-group-item d-flex justify-content-between align-items-center  d-flex"
+                      "list-group-item d-flex justify-content-between align-items-center row d-flex"
                   },
                   [
                     _c(
@@ -95691,7 +95699,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "mt-4 float-left" }, [
-                          _c("h3", [
+                          _c("p", [
                             _vm._v(
                               "\n                        " +
                                 _vm._s(messages[0]["friend_name"]) +
