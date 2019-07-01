@@ -239,6 +239,7 @@
 <script>
     export default {
         data(){
+            
             return{
                 options: {
                     autoApply: true,
