@@ -46209,6 +46209,8 @@ if (token) {
 window.Pusher = __webpack_require__(341);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
+  //Uncomment it for live server
+  // authEndpoint: 'http://www.demoaspire.com/2019/ovrvue/broadcasting/auth',
   broadcaster: 'pusher',
   key: '677e7bb033c327eb56ca',
   cluster: 'ap2',
@@ -95261,6 +95263,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         typingUser: function typingUser(val) {
             this.scrollToEnd();
+            this.updateStatuses();
         },
         chat: function chat(val) {
             this.scrollToEnd();
@@ -95459,15 +95462,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        this.scrollToEnd();
+        this.updateStatuses();
     },
     created: function created() {
-        var _this7 = this;
 
         //Will fetch matches after every x000 (x seconds)
-        setInterval(function () {
-            _this7.getAllMessages();
-        }, 3000);
+        // setInterval(() => {
+        //     this.getAllMessages();
+        // }, 3000);
         //Fetching end
 
 
@@ -96460,6 +96462,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var _ref;
 
         return _ref = {
+            options: {
+                autoApply: true
+            },
             baseURL: Vue.prototype.$baseURL,
             //Form features
             property_id: '',
@@ -97290,6 +97295,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("date-range-picker", {
                         staticClass: "form-control",
+                        attrs: { options: _vm.options },
                         model: {
                           value: occasion.availability,
                           callback: function($$v) {

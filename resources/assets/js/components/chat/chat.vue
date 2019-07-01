@@ -137,6 +137,7 @@
             },
             typingUser: function(val){
                 this.scrollToEnd();
+                this.updateStatuses();
             },
             chat: function(val){
                 this.scrollToEnd();
@@ -348,14 +349,14 @@
             }
         },
         mounted() {
-            this.scrollToEnd();
+            this.updateStatuses();
         },
         created(){
 
             //Will fetch matches after every x000 (x seconds)
-            setInterval(() => {
-                this.getAllMessages();
-            }, 3000);
+            // setInterval(() => {
+            //     this.getAllMessages();
+            // }, 3000);
             //Fetching end
             
 

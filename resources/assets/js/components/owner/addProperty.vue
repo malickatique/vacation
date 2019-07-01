@@ -159,7 +159,7 @@
 
                         <div class="form-group col-3">
                             <label>Ocassion Availability:</label>                            
-                            <date-range-picker v-model="occasion.availability" class="form-control" />
+                            <date-range-picker v-model="occasion.availability" :options="options" class="form-control" />
                         </div>
                         
                         <div class="form-group col-2">
@@ -240,6 +240,9 @@
     export default {
         data(){
             return{
+                options: {
+                    autoApply: true,
+                },
                 baseURL: Vue.prototype.$baseURL,
                 //Form features
                 property_id: '',
