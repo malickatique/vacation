@@ -136,19 +136,19 @@
 				</div>
 				
 				<div class="row text-center my-5">
-					<div class="col-4">
+					<div class="col-md-4 col-xs-12 col-sm-6">
 						<img src="{{ asset('site/img/1.png') }}" alt="">
 						<h6 class="my-3">Search For Real Estates</h6>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ullamcorper accumsan. </p>
 					</div>
 
-					<div class="col-4">
+					<div class="col-md-4 col-xs-12 col-sm-6">
 						<img src="{{ asset('site/img/2.png') }}" alt="">
 						<h6 class="my-3">Select Your Favorite</h6>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ullamcorper accumsan. </p>
 					</div>
 
-					<div class="col-4">
+					<div class="col-md-4 col-xs-12 col-sm-6">
 						<img src="{{ asset('site/img/3.png') }}" alt="">
 						<h6 class="my-3">Take Your Key</h6>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ullamcorper accumsan. </p>
