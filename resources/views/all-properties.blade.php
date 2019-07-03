@@ -64,7 +64,7 @@
 					<div class="box_grid">
 						<figure>
 							<a href="#0" class="wish_bt"></a>
-							<a href="{{route('single-property', $property->id)}}">
+							<a href="{{route('single-property', [str_slug($property->name), $property->id] )}}">
 
                                 @if (empty($property->thumbnail))
                                 <img src="{{ URL::to('/images/property/') .'/noImagefound.jpg' }}" class="img-fluid" alt="" width="800" height="533">
@@ -81,7 +81,7 @@
 						</figure>
 						<div class="wrapper">
 							<div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-						<h3><a href="{{route('single-property', $property->id)}}">{{$property->name}}</a></h3>
+						<h3><a href="{{route('single-property', [str_slug($property->name), $property->id] )}}">{{$property->name}}</a></h3>
 							<p>
 								
 									{{str_limit($property->description, $limit = 20, $end = '...')}}</p>

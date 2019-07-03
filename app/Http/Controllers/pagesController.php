@@ -65,6 +65,17 @@ class pagesController extends Controller {
         ->orWhere('address', 'LIKE', '%Angeles%')
         ->get();
         $byCity['Los Angeles'] = $result->count();
+        
+        $result = Property::where('address', 'LIKE', '%San Francisco%')
+        ->orWhere('address', 'LIKE', '%San Francisco%')
+        ->get();
+        $byCity['San Francisco'] = $result->count();
+        
+        $result = Property::where('address', 'LIKE', '%Austin%')
+        ->orWhere('address', 'LIKE', '%Austin%')
+        ->get();
+        $byCity['Austin'] = $result->count();
+        
 
         $data = array(
             'by_city' => $byCity,    
@@ -201,7 +212,7 @@ class pagesController extends Controller {
     }
 
     //single property detail on site
-    public function show_property_detail($id) {
+    public function show_property_detail($name, $id) {
         //
         $property = Property::find($id);
         $features = Property::find($id)->features;

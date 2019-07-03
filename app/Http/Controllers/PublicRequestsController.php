@@ -20,6 +20,12 @@ class PublicRequestsController extends Controller
     {
         return Property::latest()->paginate(5);
     }
+    public function privacy_policy(){
+        return View('privacy-policy');
+    }
+    public function terms_and_conditions(){
+        return View('terms-and-conditions');
+    }
     public function propertyView($id)
     {
         //s

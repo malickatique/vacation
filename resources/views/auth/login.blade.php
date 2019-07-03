@@ -41,7 +41,7 @@
 	<div id="login">
 		<aside>
 			<figure>
-            <a href="/"><img src="{{asset('site/img/logo_sticky.png')}}" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
+            <a href="/"><img src="{{asset('site/img/black.png')}}" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
 			</figure>
 			  <form method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}

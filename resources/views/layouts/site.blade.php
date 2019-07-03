@@ -141,7 +141,7 @@
                      <h5>Useful links</h5>
                      <ul class="links">
                         <li><a href="{{ URL::to('/login') }}">Login</a></li>
-                        <li><a href="{{ URL::to('/register') }}">Register</a></li>
+                        <li><a href="{{ URL::to('/select') }}">Register</a></li>
                         @isset($navs)
                         @foreach ($navs as $nav)
                         <li><a href="{{ URL::to('/page', $nav->slug) }}">{{$nav->name}}</a></li>
@@ -170,8 +170,9 @@
                <!--/row-->
                <hr>
                <div class="row">
+               
                   <div class="col-lg-6">
-                     <ul id="footer-selector">
+                     <!-- <ul id="footer-selector">
                         <li>
                            <div class="styled-select" id="lang-selector">
                               <select>
@@ -191,12 +192,13 @@
                            </div>
                         </li>
                         <li><img src="{{ asset('site/img/cards_all.svg')}}" alt=""></li>
-                     </ul>
+                     </ul> -->
                   </div>
+
                   <div class="col-lg-6">
                      <ul id="additional_links">
-                        <li><a href="#0">Terms and conditions</a></li>
-                        <li><a href="#0">Privacy</a></li>
+                        <li><a href="{{ route('terms-and-conditions') }}">Terms and conditions</a></li>
+                        <li><a href="{{ route('privacy-policy') }}">Privacy</a></li>
                         <li><span>@isset($footer_trademark){{$footer_trademark->value}}@endisset
                            </span>
                         </li>

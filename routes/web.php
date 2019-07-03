@@ -51,6 +51,8 @@ Route::post('/propertyPictures', 'propertiesController@propertyPictures');
 
 Route::get('/', 'pagesController@main_page');
 
+Route::get('/privacy-policy','PublicRequestsController@privacy_policy')->name('privacy-policy');
+Route::get('/terms-and-conditions','PublicRequestsController@terms_and_conditions')->name('terms-and-conditions');
 
 //Property requests from public
 Route::get('/getAllProperties', 'PublicRequestsController@getAllProperties');
@@ -141,7 +143,8 @@ Route::get('/admin/ownerpropertydetail/{id}', 'AdminController@owner_property_de
 Route::post('/admin/ownerstatus', 'AdminController@owner_status')->name('owner.ownerstatus');
 Route::post('/admin/propertystatus', 'ownersController@property_status')->name('property.propertystatus');
 Route::get('/page/{slug}', 'pagesController@dynamic_pages')->name('page.site.dynamic');
-Route::get('/propertydetail/{id}', 'pagesController@show_property_detail')->name('single-property');
+
+Route::get('/view/{title}/{id}', 'pagesController@show_property_detail')->name('single-property');
 
 // user client side routes
 Auth::routes();

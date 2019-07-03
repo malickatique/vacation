@@ -11,22 +11,6 @@
   color: white;
   font-weight: bold;
 }
-.by-city{
-	/* border: 1px solid black; */
-  overflow: hidden;  
-  border-radius: 7px;
-}
-.by-city img{
-	/* opacity: 0.2; */
-	height: 400px;
-	filter: brightness(60%);
-	transition: all 1.4s;
-}
-.by-city img:hover{
-	transform: scale(1.3);
-	filter: brightness(100%);
-  	transform-origin: 50% 50%;
-}
 #fixed{
     background: url('{{ asset('site/img/tour_5.jpg') }}')no-repeat center center fixed;
     height: 340px;
@@ -93,7 +77,9 @@
 				<div class="box_grid">
 					<figure>
 						<a href="#0" class="wish_bt"></a>
-						<a href="{{route('single-property', $property->id)}}">
+						<a href="{{ route('single-property', [ str_slug($property->name) ,$property->id] ) }}">
+						<!-- <a href="/view/{$property->name}/{$property->id}"> -->
+						
 						
 
 								@if (empty($property->thumbnail))
@@ -110,7 +96,7 @@
 					</figure>
 
 					<div class="wrapper">
-						<h3><a href="{{route('single-property', $property->id)}}">{{$property->name}}</a></h3>
+						<h3><a href="{{route('single-property', [str_slug($property->name), $property->id] )}}">{{$property->name}}</a></h3>
 						<p>{{str_limit($property->description, $limit = 20, $end = '...')}}</p>
 						<span class="price">From <strong>${{$property->occasions[0]->per_night_rent}}</strong> /per night</span>
 					
@@ -118,10 +104,10 @@
 								
 						<span class="price">Posted by: <strong class="text-capitalize"><a href="#">{{$property->user->name}}</a></strong></span>
 					</div>
-					{{-- <ul>
+					<!-- <ul>
 						<li><i class="icon_clock_alt"></i> 1h 30min</li>
 						<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
-					</ul> --}}
+					</ul>  -->
 				</div>
 			</div>
 			@endforeach
@@ -174,53 +160,96 @@
 	<!-- /three simple steps -->
 
 	<div class="container-fluid" style="background-color: #F2F7FE;">
-		<div class="row">
-			<div class="col-md-12 text-center my-5">
-				<h3> Property By City </h3>
-				<p>Duis aute irure dolor in reprehed in volupted velit esse dolore</p>
-			</div>
-		</div>
 
-		<div class="row m-5">
-			<a href="{{ action('PublicRequestsController@by_city', ['city' => 'New York']) }}" class="col-md-7 mx-3 by-city">
-					<img src="{{ asset('site/img/newyork.jpg') }}" alt=""
-					class="img-fluid">
-					<h4 class="centered"> New York </h4>
-					<p class="centered mt-4">  {{ $by_city['New York'] }}  Properties </p>
-			</a>
-
-			<a href="{{ action('PublicRequestsController@by_city', ['city' => 'Chicago']) }}" class="col-md-4 mx-3 by-city">
-					<img src="{{ asset('site/img/chicago.jpg') }}" alt=""
-					class="img-fluid">
-					<h4 class="centered"> Chicago </h4>
-					<p class="centered mt-4"> {{ $by_city['Chicago'] }}  Properties </p>
-			</a>
-		</div>
-
-		<div class="row m-5">
-			<a href="{{ action('PublicRequestsController@by_city', ['city' => 'Manhatten']) }}" class="col-md-4 mx-3 by-city">
-					<img src="{{ asset('site/img/manhatten.jpg') }}" alt=""
-					class="img-fluid">
-					<h4 class="centered"> Manhatten </h4>
-					<p class="centered mt-4"> {{ $by_city['Manhatten'] }}  Properties </p>
-			</a>
-
-			<a href="{{ action('PublicRequestsController@by_city', ['city' => 'Los Angeles']) }}" class="col-md-7 mx-3 by-city">
-					<img src="{{ asset('site/img/Los Angeles.jpg') }}" alt=""
-					class="img-fluid">
-					<h4 class="centered"> Los Angeles </h4>
-					<p class="centered mt-4"> {{ $by_city['Los Angeles'] }}  Properties </p>
-			</a>
-		</div>
+	<section class="gallery-block cards-gallery">
+	    <div class="container">
+	        <div class="heading text-center py-5">
+	          <h2>Property By City</h2>
+	        </div>
+	        <div class="row">
+	            <div class="col-md-6 col-lg-4 py-4">
+	                <div class="card border-0 transform-on-hover shadow-lg">
+	                	<a class="lightbox" href="{{ action('PublicRequestsController@by_city', ['city' => 'New York']) }}">
+	                		<img src="{{ asset('site/img/newyork.jpg') }}" alt="Card Image" class="card-img-top" style="height:250px">
+	                	</a>
+	                    <div class="card-body">
+	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'New York']) }}"> New York </a></h6>
+							<p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['New York'] }}+ </h3> 
+							Properties registeren in New York </p>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-6 col-lg-4 py-4">
+	                <div class="card border-0 transform-on-hover shadow-lg">
+						<a class="lightbox" href="{{ action('PublicRequestsController@by_city', ['city' => 'Chicago']) }}">
+		                	<img src="{{ asset('site/img/chicago.jpg') }}" alt="Card Image" class="card-img-top" style="height:250px">
+		                </a>
+	                    <div class="card-body">
+	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'Chicago']) }}"> Chicago </a></h6>
+	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['Chicago'] }}+ </h3> 
+							Properties registeren in Chicago </p>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-6 col-lg-4 py-4">
+	                <div class="card border-0 transform-on-hover shadow-lg">
+	                	<a class="lightbox" href="{{ action('PublicRequestsController@by_city', ['city' => 'Manhattan']) }}">
+	                		<img src="{{ asset('site/img/manhatten.jpg') }}" alt="Card Image" class="card-img-top" style="height:250px">
+	                	</a>
+	                    <div class="card-body">
+	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'Manhattan']) }}"> Manhattan </a></h6>
+	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['Manhatten'] }}+ </h3> 
+							Properties registeren in Manhatten </p>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-6 col-lg-4 py-4">
+	                <div class="card border-0 transform-on-hover shadow-lg">
+	                	<a class="lightbox" href="{{ action('PublicRequestsController@by_city', ['city' => 'Los Angeles']) }}">
+	                		<img src="{{ asset('site/img/Los Angeles.jpg') }}" alt="Card Image" class="card-img-top" style="height:250px">
+	                	</a>
+	                    <div class="card-body">
+	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'Los Angeles']) }}"> Los Angeles </a></h6>
+	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['Los Angeles'] }}+ </h3> 
+							Properties registeren in Los Angeles </p>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-6 col-lg-4 py-4">
+	                <div class="card border-0 transform-on-hover shadow-lg">
+	                	<a class="lightbox" href="{{ action('PublicRequestsController@by_city', ['city' => 'San Francisco']) }}">
+	                		<img src="{{ asset('site/img/San Francisco.jpg') }}" alt="Card Image" class="card-img-top" style="height:250px">
+	                	</a>
+	                    <div class="card-body">
+	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'San Francisco']) }}">San Francisco</a></h6>
+	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['San Francisco'] }}+ </h3> 
+							Properties registeren in San Francisco </p>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-6 col-lg-4 py-4">
+	                <div class="card border-0 transform-on-hover shadow-lg">
+	                	<a class="lightbox" href="{{ action('PublicRequestsController@by_city', ['city' => 'Austin']) }}">
+	                		<img src="{{ asset('site/img/austin.jpg') }}" alt="Card Image" class="card-img-top" style="height:250px">
+	                	</a>
+	                    <div class="card-body">
+	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'Austin']) }}">Austin</a></h6>
+	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['Austin'] }}+ </h3> 
+							Properties registeren in Austin </p>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+    </section>
 		
 	</div>
-
 	<!-- fixed bg image -->
 <figure class="my my-5">
     <div id="fixed" class="shadow-lg">
-        <h1 class="font-weight-bolder text-center text-white" style="padding: 145px 0px 0px 0px;">
+        <h1 class="font-weight-bolder text-center text-white" style="padding: 145px 0px 0px 0px; font-size: 1.5em;">
 			Join our professional team & agents to start selling your house 
-			<br> <br> <button class="btn btn-success btn-lg"> Join Us </button>
+			<br> <br> <button class="btn btn-success btn"> Join Us </button>
         </h1>
     </div>
 </figure>
@@ -236,7 +265,7 @@
 					@if(count($properties) > 0)
 					@foreach ($properties as $property)
 				<div class="col-xl-3 col-lg-6 col-md-6">
-					<a href="{{route('single-property', $property->id)}}" class="grid_item">
+					<a href="{{route('single-property', [str_slug($property->name), $property->id] )}}" class="grid_item">
 						<figure>
 							{{-- <div class="score"><strong>8.9</strong></div> --}}
 							@if (empty($property->thumbnail))

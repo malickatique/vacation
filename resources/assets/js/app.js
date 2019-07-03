@@ -93,8 +93,8 @@ Vue.prototype.$myId = 'null';
 Vue.prototype.$friendId = 'null';
 
 //Uncomment it for live server
-Vue.prototype.$baseURL = '';
-// Vue.prototype.$baseURL = '/2019/ovrvue';
+// Vue.prototype.$baseURL = '';
+Vue.prototype.$baseURL = '/2019/ovrvue';
 
 
 // Vue.prototype.$getCountries = {

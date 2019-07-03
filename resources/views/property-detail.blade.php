@@ -1,7 +1,30 @@
 @extends('layouts.site')
 
 @section('site-content')
-
+<style>
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #F2F7FE;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+</style>
 <main>
     <section class="hero_in restaurants_detail" >
         <div class="wrapper" >
@@ -23,15 +46,28 @@
     
 
     <div style="background-color: #F2F7FE;">
-        <nav class="secondary_nav sticky_horizontal">
+
+        <div class="container mt-2">
+            <ul class="breadcrumb">
+                <li><a href="{{ action('PublicRequestsController@by_city', ['city' => 'United Nations']) }}" class="">United Nations</a></li>
+                <li><a href="{{ action('PublicRequestsController@by_city', ['city' => 'New York']) }}" class=""> State </a></li>
+                <li><a href="{{ action('PublicRequestsController@by_city', ['city' => $property->address ]) }}" class="active">{{$property->address}}</a></li>
+            </ul>
+        </div>
+        <!-- <nav class="nav">
             <div class="container">
                 <ul class="clearfix">
-                    <li><a href="#description" class="active">Description</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
+                    
+                    <li><a href="{{ action('PublicRequestsController@by_city', ['city' => 'United Nations']) }}" class="">United Nations</a></li>
+                    /
+                    <li><a href="{{ action('PublicRequestsController@by_city', ['city' => 'New York']) }}" class=""> State </a></li>
+                    /
+                    <li><a href="{{ action('PublicRequestsController@by_city', ['city' => $property->address ]) }}" class="active">{{$property->address}}</a></li>
+
                     <li><a href="#sidebar">Booking</a></li>
                 </ul>
             </div>
-        </nav>
+        </nav> -->
         <div class="container margin_60_35">
             <div class="row">
                 <div class="col-lg-8">
@@ -186,7 +222,7 @@
                             <!-- <i class="icon_calendar"></i> -->
                         </div>
                         
-                        <a href="/renterDash" class=" add_top_30 btn_1 full-width purchase">Book now</a>
+                        <a href="/2019/ovrvue/renterDash" class=" add_top_30 btn_1 full-width purchase">Book now</a>
                         <div class="text-center"><small>No money charged in this step</small></div>
                     </div>
                     <ul class="share-buttons">
