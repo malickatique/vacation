@@ -150,10 +150,10 @@ Vue.filter('timeAgo', function(date){
     return moment(date).fromNow();
   });
 
-
   //Date range picker
 import DateRangePicker from "@gravitano/vue-date-range-picker";
 import Axios from 'axios';
+import { forInStatement } from 'babel-types';
 Vue.config.productionTip = false;
 // use the plugin
 Vue.use(DateRangePicker);

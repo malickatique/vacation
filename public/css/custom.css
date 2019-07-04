@@ -5,6 +5,9 @@ i.fa{
   font-family: "Helvetica Neue", Helvetica; 
   /* border: 0.3px solid red; */
 }
+.panel-text-logo{
+  font-size: 0.8em;
+}
 .panel-logo{
   width: 35px;
   margin: 0px 0px 0px 10px;
