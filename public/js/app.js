@@ -49261,6 +49261,7 @@ var renterprofile = Vue.component('renterprofile', __webpack_require__(449));
 
 //Owner
 var ownerprofile = Vue.component('ownerprofile', __webpack_require__(452));
+var viewProp = Vue.component('propertyView', __webpack_require__(722));
 
 //Vue js pagination package
 var pagination = Vue.component('pagination', __webpack_require__(455));
@@ -49291,7 +49292,7 @@ var routes = [
 { path: '/showproperties', component: showproperties, name: 'showproperties', props: true }, { path: '/allproperties', component: allproperties, name: 'allproperties', props: true }, { path: '/propertypublicview/:id', component: propertyview, props: true },
 
 //Owner
-{ path: '/owner_profile', component: ownerprofile, name: 'ownerprofile' },
+{ path: '/owner_profile', component: ownerprofile, name: 'ownerprofile' }, { path: '/view/:id', component: viewProp },
 
 //Renter
 { path: '/renter_profile', component: renterprofile, name: 'renterprofile' },
@@ -99131,7 +99132,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //Modal for Edit User
         previewProperty: function previewProperty(id) {
             console.log(id);
-            this.$router.push({ path: '/propertyView/' + id });
+            this.$router.push({ path: '/view/' + id });
         },
         editProperty: function editProperty(property) {
             this.editMode = true;
@@ -101099,6 +101100,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var _ref;
 
         return _ref = {
+            baseURL: Vue.prototype.$baseURL,
             //Form features
             property_id: '',
             features: {},
@@ -101441,11 +101443,11 @@ var render = function() {
                         {
                           attrs: { value: feature.id },
                           model: {
-                            value: _vm.form.features,
+                            value: _vm.form.feature,
                             callback: function($$v) {
-                              _vm.$set(_vm.form, "features", $$v)
+                              _vm.$set(_vm.form, "feature", $$v)
                             },
-                            expression: "form.features"
+                            expression: "form.feature"
                           }
                         },
                         [
@@ -129092,6 +129094,447 @@ function buildChildren(node) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 709 */,
+/* 710 */,
+/* 711 */,
+/* 712 */,
+/* 713 */,
+/* 714 */,
+/* 715 */,
+/* 716 */,
+/* 717 */,
+/* 718 */,
+/* 719 */,
+/* 720 */,
+/* 721 */,
+/* 722 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(14)
+/* script */
+var __vue_script__ = __webpack_require__(723)
+/* template */
+var __vue_template__ = __webpack_require__(724)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/owner/viewProperty.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8da3ae66", Component.options)
+  } else {
+    hotAPI.reload("data-v-8da3ae66", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 723 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            baseURL: Vue.prototype.$baseURL,
+            property: {},
+            form: new Form({})
+        };
+    },
+
+    methods: {
+        bookNow: function bookNow() {
+            // console.log('me: '+ +', my Friend: '+ this.property.user_id);
+            // this.$get.myId = 0;
+            // this.$get.friendId = this.property.user_id;
+            // console.log(this.$get.myId+' to '+ this.$get.friendId);
+            // this.$router.push({ path: '/chat/'+this.me.id+'/'+this.property.user_id });
+            // this.$router.push({ name: 'chat', params: {myId: '0', friendId: this.property.user_id }});
+            // this.$router.push({ path: '/renterDash'});
+            window.location.href = this.baseURL + '/renterDash';
+        },
+        getPicture: function getPicture(index) {
+            var pic = this.property.pictures[index].media.length > 200 ? this.property.pictures[index].media : this.baseURL + "/images/property/" + this.property.pictures[index].media;
+            return pic;
+        }
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        // console.log('Test Component mounted.'+ this.$get.myId);
+        // console.log(m);
+        //Load data
+        var id = this.$route.params.id;
+        axios.get('/propertyView/' + id).then(function (_ref) {
+            var data = _ref.data;
+            return _this.property = data;
+        });
+        this.friendId = this.property.user_id;
+    }
+});
+
+/***/ }),
+/* 724 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container-fluid card" },
+    [
+      _c("div", { staticClass: "p-4" }, [
+        _c("h2", [_vm._v(" " + _vm._s(_vm.property.title) + " ")]),
+        _vm._v(" "),
+        _c("h4", { staticClass: "text-primary my-4" }, [
+          _c("i", { staticClass: "fa fa-map-marker" }),
+          _vm._v(" " + _vm._s(_vm.property.address) + " ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "b-carousel",
+        {
+          staticStyle: { "text-shadow": "1px 1px 2px #333" },
+          attrs: {
+            id: "carousel-1",
+            interval: 3000,
+            controls: "",
+            indicators: "",
+            background: "#ababab",
+            "img-width": "1024",
+            "img-height": "480"
+          }
+        },
+        _vm._l(_vm.property.pictures, function(image, index) {
+          return _c(
+            "span",
+            { key: index },
+            [
+              _c("b-carousel-slide", {
+                attrs: { "img-src": _vm.getPicture(index) }
+              })
+            ],
+            1
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body py-5" }, [
+        _c("hr"),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("p", [_vm._v(" " + _vm._s(_vm.property.description) + " ")]),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("table", { staticClass: "table table-hover mb-5" }, [
+          _c(
+            "tbody",
+            [
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._l(_vm.property.multipleOccasions, function(occasion) {
+                return _c("tr", { key: occasion.id }, [
+                  _c("td", [_vm._v(_vm._s(occasion.occasion_name))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(occasion.availability[0]) +
+                        " - " +
+                        _vm._s(occasion.availability[1])
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(occasion.per_night_rent))])
+                ])
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(3),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.property.features, function(feature, index) {
+            return _c("div", { key: index, staticClass: "col-sm-4" }, [
+              _c("h5", [
+                _c("i", { staticClass: "fa fa-check my-2" }),
+                _vm._v(" " + _vm._s(feature["feature"].name) + " ")
+              ])
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _vm._m(4),
+        _vm._v(" "),
+        _c("div", { staticClass: "row mt-3" }, [
+          _c("div", { staticClass: "col-6" }, [
+            _c("table", { staticClass: "table table-reflow" }, [
+              _c("tbody", [
+                _c("tr", [
+                  _c("th", [_vm._v("Type: ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.property.type))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Bathrooms")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.property.bathrooms))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Bedrooms")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.property.bedrooms))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Available for")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.property.status))])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-6" }, [
+            _c("table", { staticClass: "table table-reflow" }, [
+              _c("tbody", [
+                _c("tr", [
+                  _c("th", [_vm._v("Area ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.property.area))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Garages")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.property.garages))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Floors")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.property.floors))])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-3" }, [
+      _c("b", [_vm._v(" About this property: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title my-5" }, [
+      _c("b", [_vm._v(" Rates On Multiple Occasions: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Occasion Name: ")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Occasion Availability: ")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Per night rent: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-5" }, [
+      _c("b", [_vm._v(" Property Features: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-5" }, [
+      _c("b", [_vm._v(" Property Details: ")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8da3ae66", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

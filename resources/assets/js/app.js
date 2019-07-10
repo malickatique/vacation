@@ -41,6 +41,7 @@ const renterprofile = Vue.component('renterprofile', require('./components/rente
 
 //Owner
 const ownerprofile = Vue.component('ownerprofile', require('./components/owner/Profile.vue'));
+const viewProp = Vue.component('propertyView', require('./components/owner/viewProperty.vue'));
 
 //Vue js pagination package
 const pagination = Vue.component('pagination', require('laravel-vue-pagination'));
@@ -77,6 +78,7 @@ const routes = [
 
     //Owner
     { path: '/owner_profile', component: ownerprofile, name: 'ownerprofile' },
+    { path: '/view/:id', component: viewProp },
 
     //Renter
     { path: '/renter_profile', component: renterprofile, name: 'renterprofile' },

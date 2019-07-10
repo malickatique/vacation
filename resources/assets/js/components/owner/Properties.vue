@@ -92,7 +92,7 @@
             //Modal for Edit User
             previewProperty(id){
                 console.log(id);
-                this.$router.push({ path: '/propertyView/'+id});
+                this.$router.push({ path: '/view/'+id});
             },
             editProperty(property){
                 this.editMode = true;

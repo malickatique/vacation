@@ -40,7 +40,7 @@
                <label>Property Description</label>
                <textarea class="form-control" rows="6" disabled >{{$property->description}}</textarea>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                <label>Availability From</label>
                <input type="text" class="form-control " value="{{$property->availability_from}}" disabled>
             </div>
@@ -51,7 +51,7 @@
             <div class="form-group">
                <label>Per Night Rent</label>
                <input type="text" class="form-control " value="${{$property->per_night_rent}}" disabled>
-            </div>
+            </div> -->
          </div>
       </div>
       <div class="box">

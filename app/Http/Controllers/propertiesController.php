@@ -305,7 +305,7 @@ class propertiesController extends Controller
 
         $name = '';
         $currentPic = $property->thumbnail;
-        if( $request->thumbnail != $currentPic )
+        if( $request->thumbnail != "")
         {
             //We need a unique name of pic concatenamte time+extention
             //For picking file extension loop until find first semicolon
@@ -323,6 +323,10 @@ class propertiesController extends Controller
                 @unlink($prevPic);
             }
         }
+        else
+        {
+            $name = $property->thumbnail;
+        }
 
         $owner_id = Auth()->user()->id;
         $property->user_id = $owner_id;
@@ -330,9 +334,7 @@ class propertiesController extends Controller
         $property->name = $request['name'];
         $property->description = $request['description'];
         $property->address = $request['address'];
-        // $property->thumbnail = $imagename;
         $property->thumbnail = $name;
-        // $property->thumbnail = $request['thumbnail'];
         $property->status = $request->status;
         $property->save();
         
@@ -357,14 +359,14 @@ class propertiesController extends Controller
 
 
         //Delete existing records
-        // PropertyFeature::where('property_id', '=', $lastInsertedPropertyId)->delete();
-        // foreach ($request['feature'] as $key => $value) {
-        //     # code...
-        //     $feature = new PropertyFeature;
-        //     $feature->property_id = $lastInsertedPropertyId;
-        //     $feature->feature_id =  $value;
-        //     $feature->save();
-        // }
+        PropertyFeature::where('property_id', '=', $lastInsertedPropertyId)->delete();
+        foreach ($request['feature'] as $key => $value) {
+            # code...
+            $feature = new PropertyFeature;
+            $feature->property_id = $lastInsertedPropertyId;
+            $feature->feature_id =  $value;
+            $feature->save();
+        }
         
         //Delete existing records
         PropertyOccasion::where('property_id', '=', $lastInsertedPropertyId)->delete();
@@ -444,7 +446,8 @@ class propertiesController extends Controller
         $data['name'] = $property->name;
         $data['description'] = $property->description;
         $data['address'] = $property->address;
-        $data['thumbnail'] = $property->thumbnail;
+        $data['thumbnail'] = "";
+        // $data['thumbnail'] = $property->thumbnail;
         $data['status'] = $property->status;
 
         $multipleOccasions = PropertyOccasion::where('property_id', $id)->get();
@@ -459,8 +462,13 @@ class propertiesController extends Controller
         }
         $data['multipleOccasions'] = $Occasions;
 
-        // $propertyFeature = PropertyFeature::where('property_id', $id)->first();
-        // $data['feature_id'] = $propertyFeature->feature_id;
+        $propertyFeature = PropertyFeature::select('feature_id')->where('property_id', $id)->get();
+        $at=0;
+        foreach($propertyFeature as $feature)
+        {
+            $data['feature'][$at++] = $feature->feature_id;
+        }
+
 
         $metadata = PropertyMetadata::where('property_id', $id)->first();
         $data['meta_id'] = $metadata->id;

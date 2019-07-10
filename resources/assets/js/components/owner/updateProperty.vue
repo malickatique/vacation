@@ -48,7 +48,7 @@
                     <div class="row">
                         <div v-for="feature in features" v-bind:key="feature.id" class="col-sm-3 py-2">
                             <b-form-checkbox
-                            v-model="form.features"
+                            v-model="form.feature"
                             :value="feature.id"
                             >
                             {{feature.name}}
@@ -241,6 +241,7 @@
     export default {    
         data(){
             return{
+                baseURL: Vue.prototype.$baseURL,
                 //Form features
                 property_id: '',
                 features: {},
