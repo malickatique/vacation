@@ -93,8 +93,8 @@ Vue.prototype.$myId = 'null';
 Vue.prototype.$friendId = 'null';
 
 //Uncomment it for live server
-// Vue.prototype.$baseURL = '';
-Vue.prototype.$baseURL = '/2019/ovrvue';
+Vue.prototype.$baseURL = '';
+// Vue.prototype.$baseURL = '/2019/ovrvue';
 
 
 // Vue.prototype.$getCountries = {
@@ -108,7 +108,7 @@ const router = new VueRouter({
     mode: 'history', //Show simple url not complete path
     routes, // short for `routes: routes` 
     linkActiveClass: 'active'
-})
+});
 const app = new Vue({
     el: '#app',
     router,

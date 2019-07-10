@@ -129,10 +129,9 @@ class registerUsersController extends Controller
         $renter->number =  $request['number'];
         $renter->driving_license =  $dl_imagename;
         $renter->save();
-
+        
         return redirect('/renterDash')->with('status', 'Account created but inactive');
         
-
     }
     // public function ownerRegisterView(){
         

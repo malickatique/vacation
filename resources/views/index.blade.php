@@ -175,7 +175,7 @@
 	                    <div class="card-body">
 	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'New York']) }}"> New York </a></h6>
 							<p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['New York'] }}+ </h3> 
-							Properties registeren in New York </p>
+							Properties registered in New York </p>
 	                    </div>
 	                </div>
 	            </div>
@@ -187,7 +187,7 @@
 	                    <div class="card-body">
 	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'Chicago']) }}"> Chicago </a></h6>
 	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['Chicago'] }}+ </h3> 
-							Properties registeren in Chicago </p>
+							Properties registered in Chicago </p>
 	                    </div>
 	                </div>
 	            </div>
@@ -199,7 +199,7 @@
 	                    <div class="card-body">
 	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'Manhattan']) }}"> Manhattan </a></h6>
 	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['Manhatten'] }}+ </h3> 
-							Properties registeren in Manhatten </p>
+							Properties registered in Manhatten </p>
 	                    </div>
 	                </div>
 	            </div>
@@ -211,7 +211,7 @@
 	                    <div class="card-body">
 	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'Los Angeles']) }}"> Los Angeles </a></h6>
 	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['Los Angeles'] }}+ </h3> 
-							Properties registeren in Los Angeles </p>
+							Properties registered in Los Angeles </p>
 	                    </div>
 	                </div>
 	            </div>
@@ -223,7 +223,7 @@
 	                    <div class="card-body">
 	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'San Francisco']) }}">San Francisco</a></h6>
 	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['San Francisco'] }}+ </h3> 
-							Properties registeren in San Francisco </p>
+							Properties registered in San Francisco </p>
 	                    </div>
 	                </div>
 	            </div>
@@ -235,7 +235,7 @@
 	                    <div class="card-body">
 	                        <h6><a href="{{ action('PublicRequestsController@by_city', ['city' => 'Austin']) }}">Austin</a></h6>
 	                        <p class="text-muted card-text"> <h3 class="text-success"> {{ $by_city['Austin'] }}+ </h3> 
-							Properties registeren in Austin </p>
+							Properties registered in Austin </p>
 	                    </div>
 	                </div>
 	            </div>

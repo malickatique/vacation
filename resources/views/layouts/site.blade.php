@@ -264,7 +264,7 @@
       <!-- /Sign In Popup -->
       <div id="toTop"></div>
       <!-- Back to top button -->
-      <!-- COMMON SCRIPTS -->`
+      <!-- COMMON SCRIPTS -->
       <script src="{{ asset('plugins/repeater/jquery-1.11.1.js') }}"></script>`
       <script src="{{asset('plugins/repeater/jquery.repeater.min.js')}}"></script>
       <script src="{{asset('plugins/parsley/parsley.min.js')}}"></script>

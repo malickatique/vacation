@@ -49305,8 +49305,9 @@ Vue.prototype.$myId = 'null';
 Vue.prototype.$friendId = 'null';
 
 //Uncomment it for live server
-// Vue.prototype.$baseURL = '';
-Vue.prototype.$baseURL = '/2019/ovrvue';
+Vue.prototype.$baseURL = '';
+// Vue.prototype.$baseURL = '/2019/ovrvue';
+
 
 // Vue.prototype.$getCountries = {
 //     'AF': 'Afghanistan',
@@ -49401,7 +49402,7 @@ try {
 
 window.axios = __webpack_require__(74);
 // Uncomment it for live server
-window.axios.defaults.baseURL = '/2019/ovrvue';
+// window.axios.defaults.baseURL = '/2019/ovrvue';
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
@@ -49430,7 +49431,8 @@ window.Pusher = __webpack_require__(406);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
   //Uncomment it for live server
-  authEndpoint: 'http://www.demoaspire.com/2019/ovrvue/broadcasting/auth',
+  // authEndpoint: 'http://www.demoaspire.com/2019/ovrvue/broadcasting/auth',
+
 
   // //Uncomment it for live server
   // authHost: 'http://www.demoaspire.com/2019/ovrvue',
