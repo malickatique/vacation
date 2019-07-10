@@ -41,7 +41,8 @@
                     <label for="pageName">Description</label>
                     <textarea name="description" rows="5" id="description"  class="form-control">{{$property->description}}</textarea>
                 </div>
-                <div class="form-group">
+
+                <!-- <div class="form-group">
                     <label for="availability_from">Availability From</label>
                     <input type="date" class="form-control" name="availability_from" value="{{$property->availability_from}}" id="availability_from" placeholder="Enter Availability">
                 </div>
@@ -52,7 +53,8 @@
                 <div class="form-group">
                     <label for="per_night_rent">Rent per night ($)</label>
                     <input type="text" class="form-control" name="per_night_rent" value="{{$property->per_night_rent}}" id="per_night_rent" placeholder="Enter Per night rent">
-                </div>
+                </div> -->
+
                 <div class="form-group">
                     <label for="address">Address</label>
                     <textarea name="address" rows="4" id="description"  class="form-control">{{$property->address}}</textarea>

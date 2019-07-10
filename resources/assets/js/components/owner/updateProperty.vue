@@ -32,7 +32,11 @@
                     <div class="form-group row my-4">
                         <div class="col-4 sm10">
                             <label for="thumbnail">Thumbnail</label>
-                            <b-form-file multiple @change="convertPic" accept=".jpg, .png, .gif"></b-form-file>
+                            <b-form-file multiple @change="convertPic" accept=".jpg, .png, .gif"
+                                :class="{ 'is-invalid': form.errors.has('thumbnail') }"
+                            >
+                                
+                            </b-form-file>
                                 <!-- <input type="file" @change="convertPic" name="thumbnail"
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('thumbnail') }">
                             <has-error :form="form" field="thumbnail"></has-error> -->
@@ -215,7 +219,7 @@
                 
                             <!-- Show uploaded pic -->
                         <div class="uploaded-pic-box col-6 ml-3">
-                            <img v-if="form2.pictures[index].name!=''" :src="getPictures(index)" class="image-thumbnail">
+                            <img v-if="form2.pictures[index].media!=''" :src="getPictures(index)" class="img-thumbnail">
                         </div>
 
                         <hr>
@@ -277,7 +281,7 @@
         },
         methods:{
             getPictures(index){
-                let pic = (this.form2.pictures[index].name.length > 200) ? this.form2.pictures[index].name : this.baseURL+"/images/property/"+ this.form2.pictures[index].name ;
+                let pic = (this.form2.pictures[index].media.length > 200) ? this.form2.pictures[index].media : this.baseURL+"/images/property/"+ this.form2.pictures[index].media ;
                 return pic;
             },
             getUploadedPic(){
@@ -305,7 +309,7 @@
             },
             addPic(){
                 this.form2.pictures.push({
-                    name: '',
+                    media: '',
                     type: '',
                 }); 
             },
@@ -336,6 +340,8 @@
                 return pic;
             },
             getPic(element, index){
+                
+                this.form2.pictures[index]['type'] = 0;
                 // console.log('Pic: '+ element.target.files[0]+ 'index: '+ index);
                 //element containing profile pic
                 let file = element.target.files[0];    //let file == var file
@@ -346,7 +352,7 @@
                 if( file['size'] < 2097152  ){
                     //Change file to base65
                     reader.onloadend = (file) => {
-                        this.form2.pictures[index].name = reader.result;
+                        this.form2.pictures[index].media = reader.result;
                     }
                     reader.readAsDataURL(file);
                 }
@@ -413,6 +419,7 @@
             axios.get('/getProperty/'+id)
                 .then( (data) =>{
                     this.form.fill(data.data);
+                    this.form2.pictures = data.data["pictures"];
                 });
             //Get current property details
            axios.get('/property/create')

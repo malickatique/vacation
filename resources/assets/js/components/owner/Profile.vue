@@ -76,11 +76,11 @@
                         <h4 class="text-center"> Enter your Notification Preferences </h4>
 
                             <div class="form-group">
-                                <label for="StartingPoint">  point: </label>
+                                <label for="StartingPoint">  point1: </label>
                             </div>
 
                             <div class="form-group">
-                                <label for="EndingPoint">  point: </label>
+                                <label for="EndingPoint">  point2: </label>
 
                             </div>
 
@@ -96,16 +96,16 @@
                         
                         <form  enctype="multipart/form-data">
 
-                        <h4 class="text-center"> Timing  </h4>
+                        <h4 class="text-center"> Preferences  </h4>
                         
                             <div class="form-group">
-                                <label for="departure_time"> Departure Time: </label>
+                                <label for="departure_time"> pref1: </label>
                                 <input v-model="form" type="time" name="departure_time" 
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('departure_time') }">
                             </div>
 
                             <div class="form-group">
-                                <label for="arrival_time"> Arrival Time: </label>
+                                <label for="arrival_time"> pref2: </label>
                                 <input v-model="form" type="time" name="arrival_time" 
                                 class="form-control" :class="{ 'is-invalid': form.errors.has('arrival_time') }">
                             </div>

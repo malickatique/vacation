@@ -302,10 +302,9 @@ class propertiesController extends Controller
             'garages' => 'required',
             // 'thumbnail' => 'image|required|max:1999'
         ]);
-
         $name = '';
         $currentPic = $property->thumbnail;
-        if( $request->thumbnail != "")
+        if( $request->thumbnail != "" && $request->thumbnail != $currentPic)
         {
             //We need a unique name of pic concatenamte time+extention
             //For picking file extension loop until find first semicolon
@@ -447,7 +446,7 @@ class propertiesController extends Controller
         $data['description'] = $property->description;
         $data['address'] = $property->address;
         $data['thumbnail'] = "";
-        // $data['thumbnail'] = $property->thumbnail;
+        $data['thumbnail'] = $property->thumbnail;
         $data['status'] = $property->status;
 
         $multipleOccasions = PropertyOccasion::where('property_id', $id)->get();
@@ -469,6 +468,8 @@ class propertiesController extends Controller
             $data['feature'][$at++] = $feature->feature_id;
         }
 
+        $pictures = PropertyGallary::where('property_id', $id)->get();
+        $data['pictures'] = $pictures;
 
         $metadata = PropertyMetadata::where('property_id', $id)->first();
         $data['meta_id'] = $metadata->id;
@@ -544,19 +545,33 @@ class propertiesController extends Controller
     }
     public function propertyPictures(Request $request)
     {
+        PropertyGallary::where('property_id',$request->property_id)->delete();
+        $count = 0;
+
         foreach ($request->pictures as $picture) 
         {
-            $imageUpload = new PropertyGallary;
-            $name = '';
-            $name = time().'.' .explode('/', explode(':', substr($picture['name'], 0, strpos($picture['name'], ';')))[1])[1];
-                //Image Intervention class from a package named "ImageIntervention"
-                //We use \ with Image so that we don't have to import its package here
-                \Image::make($picture['name'])->save(public_path('/images/property/').$name);
-            
-            $imageUpload->property_id = $request['property_id'];
-            $imageUpload->media = $name;
-            $imageUpload->type = 1;
-            $imageUpload->save(); 
+            if($picture['type'] == '1')
+            {
+                $imageUpload = new PropertyGallary;
+                $imageUpload->property_id = $request['property_id'];
+                $imageUpload->media = $picture['media'];
+                $imageUpload->type = 1;
+                $imageUpload->save(); 
+            }
+            else
+            {
+                $imageUpload = new PropertyGallary;
+                $name = '';
+                $name = $count++.time().'.' .explode('/', explode(':', substr($picture['media'], 0, strpos($picture['media'], ';')))[1])[1];
+                    //Image Intervention class from a package named "ImageIntervention"
+                    //We use \ with Image so that we don't have to import its package here
+                    \Image::make($picture['media'])->save(public_path('/images/property/').$name);
+                
+                $imageUpload->property_id = $request['property_id'];
+                $imageUpload->media = $name;
+                $imageUpload->type = 1;
+                $imageUpload->save(); 
+            }
         }
         return "Success!";
     }
