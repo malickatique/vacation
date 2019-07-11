@@ -127,6 +127,9 @@ Route::get('/setting','settingController@view_setting')->name('setting.view');
 Route::get('/setting/{name}','settingController@edit_setting')->name('setting.edit');
 Route::put('/setting/{id}','settingController@update_setting')->name('setting.update');
 
+// messaging on admin panel
+Route::get('/messaging','AdminController@view_threads')->name('chat.view');
+Route::post('/thread','AdminController@view_single_chat')->name('thread.view');
 
 //page gallary
 Route::post('/pagegallary/upload/store', 'pagesController@store_gallary');

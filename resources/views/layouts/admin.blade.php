@@ -12,7 +12,8 @@
       <link rel="stylesheet" href="{{ asset('admin/dist/css/AdminLTE.min.css') }}">
       <link rel="stylesheet" href="{{ asset('admin/dist/css/skins/skin-black.min.css') }}">
       <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
-      
+              <!-- Bootstrap 4 -->
+
     </head>
    <body class="hold-transition skin-black sidebar-mini">
       <div class="wrapper">

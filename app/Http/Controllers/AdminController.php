@@ -15,6 +15,7 @@ use App\Mail\OwnerActivationMail;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Stripe\Error\Card;
 use File;
+use App\Message;
 use Hash;
 use Session;
 use Validator;
@@ -84,6 +85,120 @@ class AdminController extends Controller
         return view('admin/adminProfile');
 
     }
+
+    public function view_single_chat(Request $request)
+    {
+        // return $request->conversation_id;
+        $messages = Message::where('conversation_id', '=', $request->conversation_id)->get();
+        $data=[];
+
+        $user1 = User::where('id', '=', $messages[0]->user_id)->first();
+        if($user1->user_type == 'owner')
+        {
+            $data['user1_id'] = $user1->id;
+            $data['user1_name'] = $user1->name;
+            $data['user1_role'] = $user1->user_type;
+            $data['user1_image'] = $user1->user_image;
+        }
+        else
+        {
+            $data['user2_id'] = $user1->id;
+            $data['user2_name'] = $user1->name;
+            $data['user2_role'] = $user1->user_type;
+            $data['user2_image'] = $user1->user_image;
+        }
+        $user2 = User::where('id', '=', $messages[0]->receiver_id)->first();
+        if($user2->user_type == 'owner')
+        {
+            $data['user1_id'] = $user2->id;
+            $data['user1_name'] = $user2->name;
+            $data['user1_role'] = $user2->user_type;
+            $data['user1_image'] = $user2->user_image;
+        }
+        else
+        {
+            $data['user2_id'] = $user2->id;
+            $data['user2_name'] = $user2->name;
+            $data['user2_role'] = $user2->user_type;
+            $data['user2_image'] = $user2->user_image;
+        }
+        return view('chat.thread')->with('messages', $messages)
+        ->with('data', $data);
+    }
+
+    public function view_threads()
+    {
+        
+        $data = [];
+
+        $allMessages = Message::all();
+
+        $index = -1;
+        $currentConversationId = 0;
+        $count= 0;
+        $lock = 0;
+        foreach($allMessages as $message)
+        {
+            if($currentConversationId != $message->conversation_id)
+            {
+                $currentConversationId = $message->conversation_id;
+                $index++;
+                $count = 0;
+
+                //Getting My Data and other user data
+                if($lock == 0)
+                {
+                    
+                        $meta['total_msg'] = Message::where('conversation_id', $message->conversation_id)->count();
+                        $meta['conversation_id'] = $message->conversation_id;
+
+                        $user1 = User::where('id', '=', $message->user_id)->first();
+                        if($user1->user_type == 'owner')
+                        {
+                            $meta['user1_id'] = $message->user_id;
+                            $meta['user1_name'] = $user1->name;
+                            $meta['user1_role'] = $user1->user_type;
+                            $meta['user1_image'] = $user1->user_image;
+                        }
+                        else
+                        {
+                            $meta['user2_id'] = $message->user_id;
+                            $meta['user2_name'] = $user1->name;
+                            $meta['user2_role'] = $user1->user_type;
+                            $meta['user2_image'] = $user1->user_image;
+                        }
+
+
+                        $user2 = User::where('id', '=', $message->receiver_id)->first();
+                        if($user2->user_type == 'owner')
+                        {
+                            $meta['user1_id'] = $message->receiver_id;
+                            $meta['user1_name'] = $user2->name;
+                            $meta['user1_role'] = $user2->user_type;
+                            $meta['user1_image'] = $user2->user_image;
+                        }
+                        else
+                        {
+                            $meta['user2_id'] = $message->user_id;
+                            $meta['user2_name'] = $user2->name;
+                            $meta['user2_role'] = $user2->user_type;
+                            $meta['user2_image'] = $user2->user_image;
+                        }
+
+                        $data[$index][$count] = $meta;
+                    
+                    $lock++;
+                }
+            }
+            $currentConversationId = $message->conversation_id;
+            
+            $count++;
+            $lock=0;
+            // $data[$index][$count] = $message;
+        }
+        return view('chat.chat')->with( 'data', $data );
+    }
+
 
 
     public function changeProfilePicture(Request $request){

@@ -34,6 +34,7 @@
           
           <li><a href="{{route('page.index')}}"><i class="fa fa-file"></i> <span>Pages</span></a></li>
           <li><a href="{{route('setting.view')}}"><i class="fa fa-cogs"></i> <span>Setting</span></a></li>
+          <li><a href="{{route('chat.view')}}"><i class="fa fa-comments-o"></i> <span>Threads</span></a></li>
           
           {{-- <li class="treeview">
              <a href="#"><i class="fa fa-users"></i> <span>Users</span>

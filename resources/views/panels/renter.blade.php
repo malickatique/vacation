@@ -98,7 +98,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
     <!-- Brand Logo -->
-    <a href="/2019/ovrvue" class="brand-link">
+    <a href="/2019/ovrvue/renterDash" class="brand-link">
       <img src="images/logo-pic.png" alt="Logo" class="panel-logo"
            style="">
       <span class="brand-text font-weight-light panel-text-logo"> Owner Vacation Rentals </span>
