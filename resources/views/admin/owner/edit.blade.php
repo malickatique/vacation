@@ -22,38 +22,38 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" method="POST" action="{{ route('owner.update',$result->owner->id) }}">
+        <form role="form" method="POST" action="{{ route('owner.update',$result->owner['id']) }}">
             <div class="box-body">
             <input name="_method" type="hidden" value="PUT">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
             <div class="form-group">
                 <label for="pageName">Name</label>
-                <input type="text" class="form-control" name="name" id="name" value="{{$result->owner->name}}" placeholder="Enter Name">
+                <input type="text" class="form-control" name="name" id="name" value="{{$result->owner['name']}}" placeholder="Enter Name">
             </div>
             <div class="form-group">
                 <label for="pageName">Surname</label>
-                <input type="text" class="form-control" name="surname" value="{{$result->owner->surname}}" id="surname" placeholder="Enter surname">
+                <input type="text" class="form-control" name="surname" value="{{$result->owner['surname']}}" id="surname" placeholder="Enter surname">
             </div>
             <div class="form-group">
                 <label for="pageName">City</label>
-                <input type="text" class="form-control" name="city" value="{{$result->owner->city}}"  id="city" placeholder="Enter city">
+                <input type="text" class="form-control" name="city" value="{{$result->owner['city']}}"  id="city" placeholder="Enter city">
             </div>
             <div class="form-group">
                 <label for="pageName">State</label>
-                <input type="text" class="form-control" name="state" value="{{$result->owner->state}}"  id="state" placeholder="Enter state">
+                <input type="text" class="form-control" name="state" value="{{$result->owner['state']}}"  id="state" placeholder="Enter state">
             </div>
             <div class="form-group">
                 <label for="pageName">Zip</label>
-                <input type="text" class="form-control" name="zip" value="{{$result->owner->zip}}"  id="zip" placeholder="Enter zip">
+                <input type="text" class="form-control" name="zip" value="{{$result->owner['zip']}}"  id="zip" placeholder="Enter zip">
             </div>
             <div class="form-group">
                 <label for="pageTitle">Address</label>
-                <input type="text" class="form-control" name="address" value="{{$result->owner->address}}"  id="address" placeholder="Enter address">
+                <input type="text" class="form-control" name="address" value="{{$result->owner['address']}}"  id="address" placeholder="Enter address">
             </div>
             <div class="form-group">
                 <label for="pageTitle">Number</label>
-            <input type="text" class="form-control" name="number" value="{{$result->owner->number}}" id="number" placeholder="Enter address">
+            <input type="text" class="form-control" name="number" value="{{$result->owner['number']}}" id="number" placeholder="Enter address">
             </div>
 
         </div>

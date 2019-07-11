@@ -636,11 +636,11 @@ class AdminController extends Controller
             'password' => $request['password']
         );
    
-      Mail::send('mails.owner_activation_mail', $data, function($message) use ($data) {
-         $message->to($data['email'])->subject
-            ('Owner Profile Invitation');
-         $message->from('ovr@team.com','OVR');
-      });
+    //   Mail::send('mails.owner_activation_mail', $data, function($message) use ($data) {
+    //      $message->to($data['email'])->subject
+    //         ('Owner Profile Invitation');
+    //      $message->from('ovr@team.com','OVR');
+    //   });
 
       return redirect('/admin/owner')->with('status', 'User created, Profile request mail has been sent');
 
@@ -663,9 +663,8 @@ class AdminController extends Controller
         return redirect('/admin/owner')->with('status', 'Owner updated!');
         //$post->save();
     }
-    public function destroyOwner(Request $request)
+    public function destroyOwner($id)
     {
-        
         $cardinfo = OwnerMetadata::where('user_id',$id)->first();
         $owner = Owner::where('user_id',$id)->first();
         if(!empty($owner['driving_license'])){
@@ -699,7 +698,8 @@ class AdminController extends Controller
         
         return redirect('/admin/owner')->with('status', 'Owner Removed');
     }
-    public function editOwner($id){
+    public function editOwner($id)
+    {
         $result = User::find($id); 
         $card_info = OwnerMetadata::where('user_id', $id)->first();
         return view('admin.owner.edit')->with(compact('result', 'card_info'));
@@ -949,7 +949,8 @@ class AdminController extends Controller
             'surname' => 'required|string|max:255',
             'address' => 'required|string|',
             'number' => 'required',
-            'driving_license' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+            'driving_license' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'profile' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
 
         $image = $request['profile'];
