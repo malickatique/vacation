@@ -652,14 +652,31 @@ class AdminController extends Controller
     public function updateOwner(Request $request, $id)
     {
         $owner = owner::find($id);
-        $owner->name = $request->input('name');
-        $owner->surname = $request->input('surname');
-        $owner->city = $request->input('city');
-        $owner->state = $request->input('state');
-        $owner->zip = $request->input('zip');
-        $owner->address = $request->input('address');
-        $owner->number = $request->input('number');
-        $owner->save();
+        if($owner!=null)
+        {
+            $owner->name = $request->input('name');
+            $owner->surname = $request->input('surname');
+            $owner->city = $request->input('city');
+            $owner->state = $request->input('state');
+            $owner->zip = $request->input('zip');
+            $owner->address = $request->input('address');
+            $owner->number = $request->input('number');
+            $owner->save();
+        }
+        // else
+        // {
+        //     // here Owner now act as owner
+        //     $owner = new Owner;
+        //     $owner->user_id =  $id;
+        //     $owner->name =  $request['name'];
+        //     $owner->surname =  $request['surname'];
+        //     $owner->city =  $request['city'];
+        //     $owner->state =  $request['state'];
+        //     $owner->zip =  $request['zip'];
+        //     $owner->address =  $request['address'];
+        //     $owner->number =  $request['number'];
+        //     $owner->save();
+        // }
         return redirect('/admin/owner')->with('status', 'Owner updated!');
         //$post->save();
     }

@@ -22,7 +22,7 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" method="POST" action="{{ route('owner.update',$result->owner['id']) }}">
+        <form role="form" method="POST" action="{{ route('owner.update',$result['id']) }}">
             <div class="box-body">
             <input name="_method" type="hidden" value="PUT">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
