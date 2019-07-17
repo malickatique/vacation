@@ -12,6 +12,10 @@ window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
+//Live chat scrollbar
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
+
 //Vue Components
 Vue.component('example', require('./components/Example.vue'));
 const test = Vue.component('test', require('./components/Test.vue'));

@@ -15,6 +15,7 @@ use App\FaqQuestion;
 use App\PageContact;
 use App\PageBox;
 use App\PageBoxMetadata;
+use App\PropertyMetadata;
 use App\Setting;
 
 class pagesController extends Controller {
@@ -46,33 +47,34 @@ class pagesController extends Controller {
         // global setting end
 
         //Properties by City
-        $result = Property::where('address', 'LIKE', '%New York%')
-        ->orWhere('address', 'LIKE', '%Newyork%')
+
+        $result = PropertyMetadata::where('state', 'LIKE', '%New York%')
+        ->orWhere('city', 'LIKE', '%Newyork%')
         ->get();
         $byCity['New York'] = $result->count();
 
-        $result = Property::where('address', 'LIKE', '%Chicago%')
-        ->orWhere('address', 'LIKE', '%chicago%')
+        $result = PropertyMetadata::where('state', 'LIKE', '%Chicago%')
+        ->orWhere('city', 'LIKE', '%chicago%')
         ->get();
         $byCity['Chicago'] = $result->count();
 
-        $result = Property::where('address', 'LIKE', '%Manhatten%')
-        ->orWhere('address', 'LIKE', '%manhatten%')
+        $result = PropertyMetadata::where('state', 'LIKE', '%Manhatten%')
+        ->orWhere('city', 'LIKE', '%manhatten%')
         ->get();
         $byCity['Manhatten'] = $result->count();
 
-        $result = Property::where('address', 'LIKE', '%Los Angeles%')
-        ->orWhere('address', 'LIKE', '%Angeles%')
+        $result = PropertyMetadata::where('state', 'LIKE', '%Los Angeles%')
+        ->orWhere('city', 'LIKE', '%Angeles%')
         ->get();
         $byCity['Los Angeles'] = $result->count();
         
-        $result = Property::where('address', 'LIKE', '%San Francisco%')
-        ->orWhere('address', 'LIKE', '%San Francisco%')
+        $result = PropertyMetadata::where('state', 'LIKE', '%San Francisco%')
+        ->orWhere('city', 'LIKE', '%San Francisco%')
         ->get();
         $byCity['San Francisco'] = $result->count();
         
-        $result = Property::where('address', 'LIKE', '%Austin%')
-        ->orWhere('address', 'LIKE', '%Austin%')
+        $result = PropertyMetadata::where('state', 'LIKE', '%Austin%')
+        ->orWhere('city', 'LIKE', '%Austin%')
         ->get();
         $byCity['Austin'] = $result->count();
         

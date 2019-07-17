@@ -133,7 +133,7 @@ class PublicRequestsController extends Controller
         {
             $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
             ->orWhere('address', 'LIKE', "%{$request->location}%" )
-            ->orWhere('status', 'LIKE', "%{$request->cator}%" )
+            ->orWhere('description', 'LIKE', "%{$request->cator}%" )
             ->get();
         }
         else if($request->lookingFor!='' & $request->location!='')
@@ -145,12 +145,12 @@ class PublicRequestsController extends Controller
         else if($request->lookingFor!='' & $request->cator!='')
         {
             $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
-            ->orWhere('status', 'LIKE', "%{$request->cator}%" )
+            ->orWhere('description', 'LIKE', "%{$request->cator}%" )
             ->get();
         }
         else if($request->cator!='')
         {
-            $properties = Property::where('status', 'LIKE', "%{$request->cator}%")
+            $properties = Property::where('description', 'LIKE', "%{$request->cator}%")
             ->get();
             if($request->cator == 'all')
             {
@@ -201,10 +201,24 @@ class PublicRequestsController extends Controller
         return view('search-properties')->with($data);
 
     }
-    public function by_city($city) 
+    public function by_location($location) 
     {
-        $properties = Property::where('address', 'LIKE', "%{$city}%" )
+
+        $properties_metadata = PropertyMetadata::where('country', '=', "{$location}" )
+        ->orWhere('state', '=', "{$location}")
+        ->orWhere('city', '=', "{$location}")
         ->get();
+        $count=0;
+        $properties=[];
+        foreach($properties_metadata as $metadata)
+        {
+            $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
+        }
+        // $properties = Property::where('country', 'LIKE', "%{$location}%" )
+        // ->orWhere('state', 'LIKE', "%{$location}%")
+        // ->orWhere('city', 'LIKE', "%{$location}%")
+        // ->get();
+
         $navs = Page::where('status', 1)->get();
          // global setting start
          $logo = Setting::where('name', 'site_logo')->first();

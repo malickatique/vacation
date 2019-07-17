@@ -30,8 +30,8 @@
                 <div class="col-lg-3">
                     <select class="wide" name="cator">
                         <option value="all">All Categories</option>	
-                        <option value="rent">Rent</option>
-                        <option value="sale">Sale</option>
+                        <option value="rent">Apartment</option>
+                        <option value="sale">House</option>
                     </select>
                 </div>
                 <div class="col-lg-2">
@@ -51,7 +51,6 @@
             @foreach ($properties as $property)
             
             <div class="col-xl-4 col-lg-6 col-md-6">
-                    
                 <div class="box_grid">
                     <figure>
                         <a href="#0" class="wish_bt"></a>

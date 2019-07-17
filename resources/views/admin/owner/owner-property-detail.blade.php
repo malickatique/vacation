@@ -69,10 +69,16 @@
                <input type="text" class="form-control " value="{{$property->metadata->status}}" disabled>
             </div>
             <div class="row">
-               <div class="col-md-4">
+               <!-- <div class="col-md-4">
                   <div class="form-group">
                      <label>Property location</label>
                      <input type="text" class="form-control " value="{{$property->metadata->location}}" disabled>
+                  </div>
+               </div> -->
+               <div class="col-md-4">
+                  <div class="form-group">
+                     <label>Property address</label>
+                     <input type="text" class="form-control " value="{{$property->address}}" disabled>
                   </div>
                </div>
                <div class="col-md-4">
@@ -104,18 +110,18 @@
                <div class="col-md-4">
                   <div class="form-group">
                      <label>Area</label>
-                     <input type="text" class="form-control " value="{{$property->metadata->area}}" disabled>
+                     <input type="text" class="form-control " value="{{$property->metadata->area}} - Sq Ft." disabled>
                   </div>
                </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                <div class="col-md-4">
                   <div class="form-group">
                      <label>Size</label>
                      <input type="text" class="form-control " value="{{$property->metadata->size}}" disabled>
                   </div>
                </div>
-            </div>
+            </div> -->
          </div>
       </div>
       <div class="box">
@@ -185,7 +191,7 @@
                <div class="box-body">
                   @foreach ($gallaries as $gallary)
 
-                  <img src="{{ URL::to('/images/property/' . $gallary->media) }}" width="200px" height="200px" class="img-thumbnail" >
+                  <img src="{{ URL::to('/images/property/gallary/' . $gallary->media) }}" width="200px" height="200px" class="img-thumbnail" >
                         
                   @endforeach
                </div>

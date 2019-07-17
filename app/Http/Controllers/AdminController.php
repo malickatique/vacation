@@ -305,14 +305,11 @@ class AdminController extends Controller
 
     public function storeProperty(Request $request)
     {
-        // return $request->all();
         $this->validate($request, [
             'name' => 'required',
             'description' => 'required',
             'address' => 'required',
             'type' => 'required',
-            'location' => 'required',
-            'status' => 'required'
             // 'thumbnail' => 'image|required|max:1999'
         ]);
 
@@ -357,7 +354,7 @@ class AdminController extends Controller
         $property->address = $request['address'];
         $property->thumbnail = $imagename;
         // $property->thumbnail = $name;
-        $property->status = $request->status;
+        $property->status = '1';
         $property->save();
         
         // uploading file
@@ -375,7 +372,7 @@ class AdminController extends Controller
         $metadata->floors = $request['floors'];
         $metadata->garages = $request['garages'];
         $metadata->area = $request['area'];
-        $metadata->size = $request['size'];
+        // $metadata->size = $request['size'];
         $metadata->save();
 
         // multiple features 
@@ -418,7 +415,7 @@ class AdminController extends Controller
 
         $filename =  $request->get('filename');
         PropertyGallary::where('media',$filename)->delete();
-        $path=public_path().'/images/property/'.$filename;
+        $path=public_path().'/images/property/gallary'.$filename;
         if (file_exists($path)) {
             unlink($path);
         }
@@ -429,7 +426,7 @@ class AdminController extends Controller
     {
         $image = $request->file('file');
         $imageName = $image->getClientOriginalName();
-        $image->move(public_path('images/property/'),$imageName);
+        $image->move(public_path('images/property/gallary/'),$imageName);
         $imageUpload = new PropertyGallary;
         $imageUpload->property_id = $request['property_id'];
         $imageUpload->media = $imageName;
@@ -535,14 +532,14 @@ class AdminController extends Controller
 
         $metadata = PropertyMetadata::where('property_id', $id)->first();
         $metadata->type = $request['type'];
-        $metadata->status = $request['status'];
-        $metadata->location = $request['location'];
+        $metadata->status = '1';
+        // $metadata->location = $request['location'];
         $metadata->bedrooms = $request['bedrooms'];
         $metadata->bathrooms = $request['bathrooms'];
         $metadata->floors = $request['floors'];
         $metadata->garages = $request['garages'];
         $metadata->area = $request['area'];
-        $metadata->size = $request['size'];
+        // $metadata->size = $request['size'];
         $metadata->save();
 
         return redirect('/admin/allproperties')->with('status', "Property updated successfully ");

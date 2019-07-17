@@ -21,8 +21,8 @@
                     <div class="col-3">
                         <select v-model="form.cator" class="custom-select">
                             <option value="all"> All Categories </option>
-                            <option value="rent">Rent</option>
-                            <option value="sale">Sale</option>
+                            <option value="rent">Apartment</option>
+                            <option value="sale">House</option>
                         </select>
                     </div>
 

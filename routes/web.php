@@ -21,7 +21,9 @@ Route::get('/test', function(){
 //Blade templating
 Route::get('/viewproperties', 'pagesController@show_properties')->name('show-properties');
 Route::post('/searchProperties', 'PublicRequestsController@getSearchResults');
-Route::get('/by-city/{city}', 'PublicRequestsController@by_city');
+Route::get('/by-location/{location}', 'PublicRequestsController@by_location');
+
+
 
 //Message Controller
 Route::get('/getUsers', 'MessageController@getUsers');
@@ -167,7 +169,7 @@ Route::get('/owner/view/{id}', 'ownersController@ownerView')->name('owner.ownerv
 Route::get('/admin/allproperties', 'AdminController@listAllProperties')->name('admin.allproperties');
 Route::get('/admin/addproperty/', 'AdminController@addProperty')->name('admin.addproperty');
 Route::delete('/destroyProperty/{id}', 'AdminController@destroyProperty')->name('admin.destroyProperty');
-Route::get('/admin/editproperty/{id}', 'AdminController@editProperty')->name('admin.editproperty');
+// Route::get('/admin/editproperty/{id}', 'AdminController@editProperty')->name('admin.editproperty');
 Route::get('/admin/destroyproperty', 'AdminController@destroyProperty')->name('admin.destroyproperty');
 Route::get('/admin/list', 'AdminController@list')->name('admin.list');
 Route::get('/admin/edit/{id}', 'AdminController@edit')->name('admin.edit');
@@ -189,6 +191,7 @@ Route::delete('/admin/user/destroy/{id}', 'adminController@userDestroy')->name('
 
 
 //ajax call routes
+Route::get('/ajax/get_countries_data','AjaxCallcontroller@get_countries');
 Route::post('/ajax/get_state_data','AjaxCallcontroller@get_states');
 Route::post('/ajax/get_city_data','AjaxCallcontroller@get_cities');
 

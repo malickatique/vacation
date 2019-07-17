@@ -16,8 +16,6 @@
 		</section>
         <!--/hero_in-->
 
-        
-      
 		
 		<div class="filters_listing sticky_horizontal" style="">
 			<div class="container">
@@ -72,9 +70,6 @@
                                 <img src="{{ URL::to('/images/property/' . $property->thumbnail) }}" class="img-fluid" alt="" width="800" height="533">
                                 @endif
 
-                            
-                           
-                                
                                 
                                 <div class="read_more"><span>Read more</span></div></a>
                         <small>{{$property->name}} </small>
@@ -85,7 +80,7 @@
 							<p>
 								
 									{{str_limit($property->description, $limit = 20, $end = '...')}}</p>
-							<span class="price">For: <strong>${{$property->occasions[0]->per_night_rent}}</strong> /per night</span>
+							<span class="price">For: <strong>${{$property->per_night_rent}}</strong> /per night</span>
 								<br>
 									
 							<span class="price">Posted by: <strong class="text-capitalize"><a href="#">{{$property->user->name}}</a></strong></span>

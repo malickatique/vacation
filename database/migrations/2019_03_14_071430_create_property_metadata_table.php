@@ -18,13 +18,17 @@ class CreatePropertyMetadataTable extends Migration
             $table->integer('property_id');
             $table->string('type', 100)->nullable();
             $table->string('status', 100)->nullable();
-            $table->string('location', 100)->nullable();
+            $table->string('location')->nullable();
             $table->integer('bedrooms')->nullable();
             $table->integer('bathrooms')->nullable();
             $table->integer('floors')->nullable();
             $table->integer('garages')->nullable();
             $table->integer('area')->nullable();
-            $table->integer('size')->nullable();
+
+            // if not found in json
+            $table->string('country')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
             $table->timestamps();
         });
     }

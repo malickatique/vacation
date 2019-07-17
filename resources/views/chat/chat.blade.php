@@ -29,9 +29,9 @@
 
   <section class="content container-fluid">
 
-              <!-- {{ $data[0][0]['total_msg'] }} -->
 
     <!-- users -->
+    @if($data!="")
     <div class="col-md-6 col-md-offset-2 my-5">
         <div class="card">
                 <ul class="list-group list-group-flush">
@@ -64,7 +64,7 @@
                 </ul>
         </div>
     </div>
-
+    @endif
 
         
   </section>

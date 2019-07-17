@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `cities`
 --
 
-CREATE TABLE `cities` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `state_id` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `cities` (
+--   `id` int(10) UNSIGNED NOT NULL,
+--   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `state_id` int(11) NOT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `cities`

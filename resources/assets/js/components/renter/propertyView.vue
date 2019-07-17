@@ -137,7 +137,7 @@
                 console.log('id: '+property_id);
             },
             getPicture(index){
-                let pic = (this.property.pictures[index].media.length > 200) ? this.property.pictures[index].media : this.baseURL+"/images/property/"+ this.property.pictures[index].media ;
+                let pic = (this.property.pictures[index].media.length > 200) ? this.property.pictures[index].media : this.baseURL+"/images/property/gallary/"+ this.property.pictures[index].media ;
                 return pic;
             },
             chatWith(){

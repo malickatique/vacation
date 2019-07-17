@@ -1,8 +1,9 @@
 <nav id="menu" class="main-menu">
         <ul>
             <li><span><a href="{{ URL::to('/') }}">Home</a></span></li>
+            <li><span><a href="{{ URL::to('/select') }}"">Register</a></span></li>
             <li><span><a href="{{route('show-properties')}}">Properties</a></span></li>
-
+             
             @isset($navs)
                 @foreach ($navs as $nav)
                     <li><span><a href="{{ URL::to('/page', $nav->slug) }}">{{$nav->name}}</a></span></li>

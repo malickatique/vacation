@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('admin-content')
+
 <div class="content-wrapper">
    <section class="content-header">
       <h1>
@@ -94,7 +95,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="col-md-6">
+                  <!-- <div class="col-md-6">
                      <div class="form-group">
                         <label>Status</label>
                         <div class="custom-select-form">
@@ -105,17 +106,17 @@
                            </select>
                         </div>
                      </div>
-                  </div>
+                  </div> -->
                </div>
             </div>
             <div class="col-md-12">
                <div class="row">
-                  <div class="col-md-4">
+                  <!-- <div class="col-md-4">
                      <div class="form-group">
-                        <label>Loaction</label>
+                        <label>Location</label>
                         <input class="form-control" type="text" id="location" name="location">
                      </div>
-                  </div>
+                  </div> -->
                   <div class="col-md-4">
                      <div class="form-group">
                         <label>Bedrooms</label>
@@ -146,12 +147,12 @@
                         <input class="form-control" type="number" id="area" name="area">
                      </div>
                   </div>
-                  <div class="col-md-4">
+                  <!-- <div class="col-md-4">
                      <div class="form-group">
                         <label>Size</label>
                         <input class="form-control" type="number" id="size" placeholder="sqft" name="size">
                      </div>
-                  </div>
+                  </div> -->
                </div>
             </div>
             <hr>
@@ -180,12 +181,23 @@
                <div data-repeater-list="multipleOccasions">
                   <div data-repeater-item="">
                      <div class="row">
+
                         <div class="col-md-3">
                            <div class="form-group">
                               <label>Occasion</label>
                               <input class="form-control" placeholder="Occasion name" type="text" id="occasion_name" name="multipleOccasions[0][occasion_name]">
                            </div>
                         </div>
+
+                                                
+                        <!-- <div class="col-md-3">
+                              <label>Availability</label>
+                           <div class="form-group" id="input_date">
+                              <input class="form-control" type="text" id="daterange" name="daterange" placeholder="Date range">
+                              <i class="icon_calendar"></i>
+                           </div>
+                        </div> -->
+
                         
                         <div class="col-md-2">
                            <div class="form-group">
@@ -227,7 +239,11 @@
 @endsection
 @section('admin-js')
 <script src="{{asset('plugins/repeater/jquery.repeater.min.js')}}"></script>
+
+
 <script>
+
+
    $(document).ready(function () {
       'use strict';
    

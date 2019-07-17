@@ -21,7 +21,7 @@ class CreatePropertiesTable extends Migration
             $table->text('description');
             // $table->date('availability_from')->nullable();
             // $table->date('availability_to')->nullable();
-            // $table->integer('per_night_rent')->nullable();
+            $table->integer('per_night_rent')->nullable();
             $table->text('address');
             $table->text('thumbnail');
             $table->string('status');

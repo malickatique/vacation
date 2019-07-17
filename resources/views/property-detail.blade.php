@@ -34,7 +34,7 @@ ul.breadcrumb li a:hover {
             <span class="magnific-gallery">
 
                 @foreach ($gallaries as $gallary)
-                    <a href="{{ URL::to('/images/property/' . $gallary->media) }}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
+                    <a href="{{ URL::to('/images/property/gallary/' . $gallary->media) }}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">View photos</a>
                 @endforeach
 
                 
@@ -49,20 +49,20 @@ ul.breadcrumb li a:hover {
 
         <div class="container mt-2">
             <ul class="breadcrumb">
-                <li><a href="{{ action('PublicRequestsController@by_city', ['city' => 'United Nations']) }}" class="">United Nations</a></li>
-                <li><a href="{{ action('PublicRequestsController@by_city', ['city' => 'New York']) }}" class=""> State </a></li>
-                <li><a href="{{ action('PublicRequestsController@by_city', ['city' => $property->address ]) }}" class="active">{{$property->address}}</a></li>
+                <li><a href="{{ action('PublicRequestsController@by_location', ['country' => $property->metadata->country]) }}" class="">{{$property->metadata->country}}</a></li>
+                <li><a href="{{ action('PublicRequestsController@by_location', ['state' => $property->metadata->state]) }}" class=""> {{$property->metadata->state}} </a></li>
+                <li><a href="{{ action('PublicRequestsController@by_location', ['city' => $property->metadata->city ]) }}" class="active">{{$property->metadata->city}}</a></li>
             </ul>
         </div>
         <!-- <nav class="nav">
             <div class="container">
                 <ul class="clearfix">
                     
-                    <li><a href="{{ action('PublicRequestsController@by_city', ['city' => 'United Nations']) }}" class="">United Nations</a></li>
+                    <li><a href="{{ action('PublicRequestsController@by_location', ['city' => 'United Nations']) }}" class="">United Nations</a></li>
                     /
-                    <li><a href="{{ action('PublicRequestsController@by_city', ['city' => 'New York']) }}" class=""> State </a></li>
+                    <li><a href="{{ action('PublicRequestsController@by_location', ['city' => 'New York']) }}" class=""> State </a></li>
                     /
-                    <li><a href="{{ action('PublicRequestsController@by_city', ['city' => $property->address ]) }}" class="active">{{$property->address}}</a></li>
+                    <li><a href="{{ action('PublicRequestsController@by_location', ['city' => $property->address ]) }}" class="active">{{$property->address}}</a></li>
 
                     <li><a href="#sidebar">Booking</a></li>
                 </ul>

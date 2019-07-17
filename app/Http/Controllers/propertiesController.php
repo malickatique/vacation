@@ -6,6 +6,9 @@ use Intervention\Image\Facades\Image as Image;
 use Illuminate\Http\Request;
 use App\Feature;
 use App\Property;
+use App\State;
+use App\City;
+use App\Country;
 use App\User;
 use App\PropertyMetadata;
 use App\PropertyFeature;
@@ -107,29 +110,34 @@ class propertiesController extends Controller
         
     public function store(Request $request)
     {
-        // return $request->all();
+        
         $this->validate($request, [
             'name' => 'required',
             'description' => 'required',
             'address' => 'required',
             'type' => 'required',
-            'location' => 'required',
-            'status' => 'required',
+            // 'location' => 'required',
+            // 'status' => 'required',
             'bedrooms' => 'required',
             'bathrooms' => 'required',
             'floors' => 'required',
             'area' => 'required',
             'garages' => 'required',
-            // 'thumbnail' => 'image|required|max:1999'
-        ]);
 
+            'multipleOccasions.*.occasion_name' => 'required',
+            'multipleOccasions.*.availability' => 'required',
+            'multipleOccasions.*.per_night_rent' => 'required',
+            'thumbnail' => 'required',
+            
+            'country' => 'required',
+            'state' => 'required',
+            'city' => 'required',
+        ]);
         // image uploading
         // $image = $request->file('thumbnail');
         // $imagename = time().'.'.$image->getClientOriginalExtension();
         // $destinationPath = public_path('/images/property');
         
-        //Image Upload
-        //Request from profile Vue component
 
         // $currentPic = $property->thumbnail;
         $name = '';
@@ -152,9 +160,6 @@ class propertiesController extends Controller
             // }
         }
 
-        // $request['availability_from'] = $request->availability[0];
-        // $request['availability_to'] = $request->availability[1];
-
         $owner_id = Auth()->user()->id;
         $property = new Property;
         $property->user_id = $owner_id;
@@ -163,30 +168,32 @@ class propertiesController extends Controller
         $property->description = $request['description'];
         // $property->availability_from = $request['availability_from']; 
         // $property->availability_to = $request['availability_to'];  
-        // $property->per_night_rent = $request['per_night_rent'];
         $property->address = $request['address'];
-        // $property->thumbnail = $imagename;
         $property->thumbnail = $name;
-        // $property->thumbnail = $request['thumbnail'];
-        $property->status = $request->status;
+        $property->status = '1';
         $property->save();
-        
-        // uploading file
-        // $image->move($destinationPath, $imagename);
 
         // meta data property
         $lastInsertedPropertyId = $property->id;
         $metadata = new PropertyMetadata;
         $metadata->property_id = $lastInsertedPropertyId;
         $metadata->type = $request['type'];
-        $metadata->status = $request['status'];
-        $metadata->location = $request['location'];
+        $metadata->status = '1';
+        // $metadata->location = $request['location'];
         $metadata->bedrooms = $request['bedrooms'];
         $metadata->bathrooms = $request['bathrooms'];
         $metadata->floors = $request['floors'];
         $metadata->garages = $request['garages'];
         $metadata->area = $request['area'];
-        $metadata->size = $request['size'];
+        // $metadata->size = $request['size'];
+        
+        $country = Country::select('name')->where('id', '=', $request['country'])->first();
+        $state = State::select('name')->where('id', '=', $request['state'])->first();
+
+        $metadata->country = $country->name;
+        $metadata->state = $state->name;
+        $metadata->city = $request['city'];
+        
         $metadata->save();
 
         // multiple features 
@@ -196,8 +203,10 @@ class propertiesController extends Controller
             $feature->property_id = $lastInsertedPropertyId;
             $feature->feature_id =  $value;
             $feature->save();
-
         }
+
+
+        $min_per_night_rent = $request->multipleOccasions[0]['per_night_rent'];
         foreach ($request->multipleOccasions as $value) {
             $occasion = new PropertyOccasion;
             $occasion->property_id = $lastInsertedPropertyId;
@@ -205,8 +214,15 @@ class propertiesController extends Controller
             $occasion->availability_from =  $value['availability'][0];
             $occasion->availability_to =  $value['availability'][1];
             $occasion->per_night_rent =  $value['per_night_rent'];
+            if($occasion->per_night_rent < $min_per_night_rent)
+            {
+                $min_per_night_rent = $occasion->per_night_rent;
+            }
             $occasion->save();
         }
+        //Save property with minimum per night rent
+        $property->per_night_rent = $min_per_night_rent;
+        $property->save();
 
         // lastInsertedPropertyId
 
@@ -250,24 +266,11 @@ class propertiesController extends Controller
 
     // }
 
-    
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
@@ -275,14 +278,6 @@ class propertiesController extends Controller
         $metadata = PropertyMetadata::where('property_id', $id)->first();
         return view('properties.edit')->with(compact('property', 'metadata'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
@@ -293,15 +288,24 @@ class propertiesController extends Controller
             'description' => 'required',
             'address' => 'required',
             'type' => 'required',
-            'location' => 'required',
-            'status' => 'required',
+            // 'location' => 'required',
+            // 'status' => 'required',
             'bedrooms' => 'required',
             'bathrooms' => 'required',
             'floors' => 'required',
             'area' => 'required',
             'garages' => 'required',
-            // 'thumbnail' => 'image|required|max:1999'
+
+            'multipleOccasions.*.occasion_name' => 'required',
+            'multipleOccasions.*.availability' => 'required',
+            'multipleOccasions.*.per_night_rent' => 'required',
+            'thumbnail' => 'required',
+            
+            'country' => 'required',
+            'state' => 'required',
+            'city' => 'required',
         ]);
+
         $name = '';
         $currentPic = $property->thumbnail;
         if( $request->thumbnail != "" && $request->thumbnail != $currentPic)
@@ -334,7 +338,7 @@ class propertiesController extends Controller
         $property->description = $request['description'];
         $property->address = $request['address'];
         $property->thumbnail = $name;
-        $property->status = $request->status;
+        $property->status = '1';
         $property->save();
         
         // uploading file
@@ -344,14 +348,28 @@ class propertiesController extends Controller
         $lastInsertedPropertyId = $property->id;
         $metadata = PropertyMetadata::where('property_id',$lastInsertedPropertyId)->first();
         $metadata->type = $request['type'];
-        $metadata->status = $request['status'];
-        $metadata->location = $request['location'];
+        // $metadata->status = $request['status'];
+        // $metadata->location = $request['location'];
         $metadata->bedrooms = $request['bedrooms'];
         $metadata->bathrooms = $request['bathrooms'];
         $metadata->floors = $request['floors'];
         $metadata->garages = $request['garages'];
         $metadata->area = $request['area'];
-        $metadata->size = $request['size'];
+        // $metadata->size = $request['size'];
+
+        $country = Country::select('name')->where('id', '=', $request['country'])->first();
+        $state = State::select('name')->where('id', '=', $request['state'])->first();
+
+        if($country!=null)
+        {
+            $metadata->country = $country->name;
+        }
+        if($state!=null)
+        {
+            $metadata->state = $state->name;
+        }
+        $metadata->city = $request['city'];
+        
         $metadata->save();
 
         // multiple features 
@@ -369,6 +387,8 @@ class propertiesController extends Controller
         
         //Delete existing records
         PropertyOccasion::where('property_id', '=', $lastInsertedPropertyId)->delete();
+
+        $min_per_night_rent = $request->multipleOccasions[0]['per_night_rent'];
         foreach ($request->multipleOccasions as $value) {
             $occasion = new PropertyOccasion;
             $occasion->property_id = $lastInsertedPropertyId;
@@ -376,8 +396,15 @@ class propertiesController extends Controller
             $occasion->availability_from =  $value['availability'][0];
             $occasion->availability_to =  $value['availability'][1];
             $occasion->per_night_rent =  $value['per_night_rent'];
+            if($occasion->per_night_rent < $min_per_night_rent)
+            {
+                $min_per_night_rent = $occasion->per_night_rent;
+            }
             $occasion->save();
         }
+        //Save property with minimum per night rent
+        $property->per_night_rent = $min_per_night_rent;
+        $property->save();
 
         // lastInsertedPropertyId
 
@@ -448,6 +475,7 @@ class propertiesController extends Controller
         $data['thumbnail'] = "";
         $data['thumbnail'] = $property->thumbnail;
         $data['status'] = $property->status;
+        $data['per_night_rent'] = $property->per_night_rent;
 
         $multipleOccasions = PropertyOccasion::where('property_id', $id)->get();
         $index = 0;
@@ -475,13 +503,16 @@ class propertiesController extends Controller
         $data['meta_id'] = $metadata->id;
         $data['type'] = $metadata->type;
         $data['status'] = $metadata->status;
-        $data['location'] = $metadata->location;
+        // $data['location'] = $metadata->location;
         $data['bedrooms'] = $metadata->bedrooms;
         $data['bathrooms'] = $metadata->bathrooms;
         $data['floors'] = $metadata->floors;
         $data['garages'] = $metadata->garages;
         $data['area'] = $metadata->area;
-        $data['size'] = $metadata->size;
+        // $data['size'] = $metadata->size;
+        $data['country'] = $metadata->country;
+        $data['state'] = $metadata->state;
+        $data['city'] = $metadata->city;
     
         return $data;
     }
@@ -545,6 +576,10 @@ class propertiesController extends Controller
     }
     public function propertyPictures(Request $request)
     {
+        $this->validate($request, [
+            'pictures.*.media' => 'required',
+        ]);
+
         PropertyGallary::where('property_id',$request->property_id)->delete();
         $count = 0;
 
@@ -565,7 +600,7 @@ class propertiesController extends Controller
                 $name = $count++.time().'.' .explode('/', explode(':', substr($picture['media'], 0, strpos($picture['media'], ';')))[1])[1];
                     //Image Intervention class from a package named "ImageIntervention"
                     //We use \ with Image so that we don't have to import its package here
-                    \Image::make($picture['media'])->save(public_path('/images/property/').$name);
+                    \Image::make($picture['media'])->save(public_path('/images/property/gallary/').$name);
                 
                 $imageUpload->property_id = $request['property_id'];
                 $imageUpload->media = $name;

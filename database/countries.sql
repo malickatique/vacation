@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `countries`
 --
 
-CREATE TABLE `countries` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `sortname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phonecode` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `countries` (
+--   `id` int(10) UNSIGNED NOT NULL,
+--   `sortname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+--   `phonecode` int(11) NOT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `countries`

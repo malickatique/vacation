@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\State;
 use App\City;
+use App\Country;
 
 class AjaxCallcontroller extends Controller
 {
@@ -22,6 +23,13 @@ class AjaxCallcontroller extends Controller
         $state_id = $request['state'];
         $cities = City::where('state_id', $state_id)->get();
         return response()->json(['success'=> $cities]);
+
+    }
+
+    public function get_countries(){
+
+        $countries = Country::all();
+        return response()->json(['success'=> $countries]);
 
     }
 

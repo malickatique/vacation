@@ -24,7 +24,7 @@
                 </span>
             </li>
 
-            <ul class="list-group list-group-flush chat-body" ref='msgBody' id="chatBackground">
+            <ul class="list-group list-group-flush chat-body" v-chat-scroll="{always: false, smooth: true, scrollonremoved:true}" id="chatBackground">
 
                 <thread v-for="(msg, index) in chat.messages" v-bind:key="msg.index"
                 :color="(msg.user_id==myId)?'success':'primary'"
@@ -136,11 +136,11 @@
                 this.updateStatuses();
             },
             typingUser: function(val){
-                this.scrollToEnd();
+                
                 this.updateStatuses();
             },
             chat: function(val){
-                this.scrollToEnd();
+                
             },
             friendId: function(){
                 this.online = 'no';
@@ -203,12 +203,6 @@
                     }
                 }
             },
-            scrollToEnd(){
-                // document.getElementById('msg-box').scrollTo(0,9999);
-                var messageDisplay = this.$refs.msgBody;
-                messageDisplay.scrollTop = messageDisplay.scrollHeight;
-                console.log('Scrolling');
-            },
             send(){
                 if(this.message.length != 0){
                     console.log('sending message to: '+this.friendId+ ' msg: '+ this.message);
@@ -228,7 +222,6 @@
                         user_id: this.myId,
                         user: this.me,
                         });
-                        setTimeout(this.scrollToEnd,10);
                     }
 
                     axios.post('/messages/'+ this.friendId, {message:  this.message})
@@ -238,7 +231,6 @@
                             console.log('not empty..');
                             this.chat.messages.push(response.data);
                         }
-                        setTimeout(this.scrollToEnd,100);
                     });
                     this.message = '';
                 }
@@ -256,7 +248,6 @@
                 .then( response => {
                     this.chat.messages = response.data;
                 });
-                setTimeout(this.scrollToEnd,1000);
             },
             getTime(){
                 let time = new Date();
@@ -290,7 +281,6 @@
                         console.log(e.message.created_at);
                         this.chat.messages.push(e.message);
                         console.log('receive msg: '+ e.message.message);
-                        setTimeout(this.scrollToEnd(), 500);
                     })
 
                     //Another channel to check whather user is online or not

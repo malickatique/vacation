@@ -2,54 +2,54 @@
     <div class="container">
                 	
         <div class="card my-5">
-            
-            <form enctype="multipart/form-data">
 
+            <form enctype="multipart/form-data">
             <h5 class="card-header">Step: {{step}}</h5>
             <div class="card-body">
 
-                <div v-show="step === 1">
-                    <h5 class="card-name">Property Info</h5>
+                <div v-show="step === 1" class="row">
 
-                    <div class="form-group">
+                    <h5 class="card-name col-md-12">Property Info:</h5>
+
+                    <div class="form-group col-md-5">
+                    <label>Title:</label>
                     <input v-model="form.name" type="text" placeholder="Property name"
                         class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
                     <has-error :form="form" field="name"></has-error>
                     </div>
-                    
-                    <div class="form-group">
-                    <textarea v-model="form.description" type="text" placeholder="Property Description"
-                        class="form-control" :class="{ 'is-invalid': form.errors.has('description') }">
-                    <has-error :form="form" field="description"></has-error> </textarea>
-                    </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-md-5">
+                    <label>Address:</label>
                     <input v-model="form.address" type="text" placeholder="Property Address"
                         class="form-control" :class="{ 'is-invalid': form.errors.has('address') }">
                     <has-error :form="form" field="address"></has-error>
                     </div>
 
-                    <div class="form-group row my-4">
-                        <div class="col-4 sm10">
-                            <label for="thumbnail">Thumbnail</label>
-                            <b-form-file multiple @change="convertPic" accept=".jpg, .png, .gif"
-                                :class="{ 'is-invalid': form.errors.has('thumbnail') }"
-                            >
-                                
-                            </b-form-file>
-                                <!-- <input type="file" @change="convertPic" name="thumbnail"
-                                class="form-control" :class="{ 'is-invalid': form.errors.has('thumbnail') }">
-                            <has-error :form="form" field="thumbnail"></has-error> -->
-                        </div>
-                        <!-- Show uploaded pic -->
-                        <div class="uploaded-pic-box col-6">
-                            <img v-if="form.thumbnail!=''" :src="getUploadedPic()" class="image-thumbnail">
-                        </div>
+                    <div class="form-group col-md-12">
+                    <label>Description:</label>
+                    <textarea v-model="form.description" type="text" placeholder="Property Description"
+                        class="form-control col-md-8" :class="{ 'is-invalid': form.errors.has('description') }">
+                    <has-error :form="form" field="description"></has-error> </textarea>
                     </div>
 
-                    <hr>
 
-                    <div class="row">
+                    <div class="form-group row m-2">
+                        <div class="col-md-5">
+                            <label for="thumbnail">Thumbnail</label>
+                            <b-form-file multiple @change="convertPic"
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('thumbnail') }">
+                                <has-error :form="form" field="thumbnail"></has-error> -->
+                            </b-form-file>
+                        </div>
+                        <!-- Show uploaded pic -->
+                        <div class="col-md-5">
+                            <img v-if="form.thumbnail!=''" :src="getUploadedPic()" class="img-thumbnail">
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="col-md-12 mt-2">Property Features:</h5>
+
+                    <div class="row m-2">
                         <div v-for="feature in features" v-bind:key="feature.id" class="col-sm-3 py-2">
                             <b-form-checkbox
                             v-model="form.feature"
@@ -62,25 +62,27 @@
                             </label> -->
                         </div>
                     </div>
-
+                    
                     <hr>
-		            <button  class="btn btn-primary" @click.prevent="next()">Next</button>
+                    <div class="col-md-12">
+		                <button  class="btn btn-primary" @click.prevent="next()">Next</button>
+                    </div>
                 </div>
 
-                <div v-show="step === 2">
-                    <h5 class="card-title">Specifications</h5>
+                <div v-show="step === 2" class="row">
+                    <h5 class="card-title col-md-12">Specifications</h5>
 
-                    <div class="form-group">
+                    <div class="form-group col-md-5">
                         <label>Type:</label>
                         <select v-model="form.type" class="form-control"
                             :class="{ 'is-invalid': form.errors.has('type') }">
                                 <option value="house">House</option>
-                                <option value="apartment">Appartment</option>
+                                <option value="apartment">Apartment</option>
                         </select>
                     <has-error :form="form" field="type"></has-error>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group col-md-5">
                         <label>Status:</label>
                         <select v-model="form.status" class="form-control"
                             :class="{ 'is-invalid': form.errors.has('status') }">
@@ -88,59 +90,95 @@
                                 <option value="sale">Sale</option>
                         </select>
                     <has-error :form="form" field="status"></has-error>
-                    </div>
-
+                    </div> -->
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group col-md-5">
                     <input v-model="form.location" type="text" placeholder="Loaction"
                         class="form-control" :class="{ 'is-invalid': form.errors.has('location') }">
                     <has-error :form="form" field="location"></has-error>
-                    </div>
+                    </div> -->
 
                     
-                    <div class="form-group">
+                    <div class="form-group col-md-5">
+                        <label>Bedrooms:</label>
                     <input v-model="form.bedrooms" type="number" placeholder="Bedrooms"
                         class="form-control" :class="{ 'is-invalid': form.errors.has('bedrooms') }">
                     <has-error :form="form" field="bedrooms"></has-error>
                     </div>
 
                     
-                    <div class="form-group">
+                    <div class="form-group col-md-5">
+                        <label>Bathrooms:</label>
                     <input v-model="form.bathrooms" type="number" placeholder="Bathrooms"
                         class="form-control" :class="{ 'is-invalid': form.errors.has('bathrooms') }">
                     <has-error :form="form" field="bathrooms"></has-error>
                     </div>
 
                     
-                    <div class="form-group">
+                    <div class="form-group col-md-5">
+                        <label>Floors:</label>
                     <input v-model="form.floors" type="number" placeholder="Floors"
                         class="form-control" :class="{ 'is-invalid': form.errors.has('floors') }">
                     <has-error :form="form" field="floors"></has-error>
                     </div>
 
                     
-                    <div class="form-group">
+                    <div class="form-group col-md-5">
+                        <label>Garages:</label>
                     <input v-model="form.garages" type="number" placeholder="Garages"
                         class="form-control" :class="{ 'is-invalid': form.errors.has('garages') }">
                     <has-error :form="form" field="garages"></has-error>
                     </div>
 
                     
-                    <div class="form-group">
+                    <div class="form-group col-md-5">
+                        <label>Area:</label>
                     <input v-model="form.area" type="number" placeholder="Area"
                         class="form-control" :class="{ 'is-invalid': form.errors.has('area') }">
                     <has-error :form="form" field="area"></has-error>
                     </div>
 
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group col-md-5">
+                        <label>Size:</label>
                     <input v-model="form.size" type="number" placeholder="Size"
                         class="form-control" :class="{ 'is-invalid': form.errors.has('size') }">
                     <has-error :form="form" field="size"></has-error>
-                    </div>
+                    </div> -->
 
-                    <button  class="btn btn-primary" @click.prevent="prev()">Previous</button>
-                    <button  class="btn btn-primary" @click.prevent="next()">Next</button>
+                    <h4 class="col-md-12"> Location: </h4>
+                    <div class="form-group col-md-5">
+                        <label>Country:</label>
+                        <select v-model="form.country" class="form-control" @change="stateOf"
+                            :class="{ 'is-invalid': form.errors.has('country') }">
+                                <option value="" selected disabled>Choose Country</option>
+                                <option v-for="country in countries" v-bind:key="country.id" :value="country.id">
+                                    {{country.name}}</option>
+                        </select>
+                        <has-error :form="form" field="country"></has-error>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label>State:</label>
+                        <select v-model="form.state" class="form-control" @change="cityOf"
+                            :class="{ 'is-invalid': form.errors.has('state') }">
+                                <option value="" selected disabled>Choose State</option>
+                                <option v-for="state in states" v-bind:key="state.id" :value="state.id">{{state.name}}</option>
+                        </select>
+                        <has-error :form="form" field="state"></has-error>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label>City:</label>
+                        <select v-model="form.city" class="form-control"
+                            :class="{ 'is-invalid': form.errors.has('city') }">
+                                <option value="" selected disabled>Choose City</option>
+                                <option v-for="city in cities" v-bind:key="city.id">{{city.name}}</option>
+                        </select>
+                        <has-error :form="form" field="city"></has-error>
+                    </div>
+                    <div class="col-md-12">
+                        <button  class="btn btn-primary" @click.prevent="prev()">Previous</button>
+                        <button  class="btn btn-primary" @click.prevent="next()">Next</button>
+                    </div>
                 </div>
 
                 <div v-show="step === 3">
@@ -157,21 +195,23 @@
                         <div class="form-group col-3">
                             <label>Ocassion Name:</label>
                             <input v-model="occasion.occasion_name" type="text" placeholder="Occasion Name"
-                                class="form-control" required>
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('multipleOccasions.'+index+'.occasion_name') }">
                         </div>
 
                         <div class="form-group col-3">
                             <label>Ocassion Availability:</label>                            
-                            <date-range-picker v-model="occasion.availability" class="form-control" />
+                            <date-range-picker v-model="occasion.availability" :options="options" class="form-control"
+                                :class="{ 'is-invalid': form.errors.has('multipleOccasions.'+index+'.availability') }"
+                             />
                         </div>
                         
                         <div class="form-group col-2">
                         <label>Per night rent:</label>
                         <input v-model="occasion.per_night_rent" type="number" placeholder="Per Night Rent*"
-                            class="form-control" required>
+                            class="form-control" :class="{ 'is-invalid': form.errors.has('multipleOccasions.'+index+'.per_night_rent') }">
                         </div>
 
-                        <div class="form-group col-1">
+                        <div class="form-group col-1" v-if="index!=0">
                             <label>.</label>
                             <button class="btn btn-danger" @click.prevent="deleteRow(index)">Delete</button>
                         </div>
@@ -179,13 +219,12 @@
                     </div>
 
                     <div class="my-4">
-                        <button class="btn btn-primary" id="addNew" @click.prevent="addRow">Add New</button>
+                        <button class="btn btn-primary" id="newAdd" @click.prevent="addRow">Add New</button>
                     </div>
-
 
                     <div class="form-group my-4">
                         <button  class="btn btn-primary" @click.prevent="prev()">Previous</button>
-                    <button  class="btn btn-primary" @click.prevent="updateProperty">Update</button>
+                    <button  class="btn btn-primary" @click.prevent="updateProperty()">Create</button>
                     </div>
                 </div>
 
@@ -206,7 +245,7 @@
                                 <label for="Picture">Picture</label>
                                 <!-- @change="convertPic" -->
                                     <input type="file" @change="getPic($event ,index)" name="picture"
-                                    class="form-control" :class="{ 'is-invalid': form.errors.has('picture') }">
+                                    class="form-control" :class="{ 'is-invalid': form2.errors.has('pictures.'+index+'.media') }">
                                 <has-error :form="form" field="picture"></has-error>
                             </div>
 
@@ -236,7 +275,7 @@
 
             </form>
 
-        </div>  
+        </div> 
     </div>
 </template>
 
@@ -245,11 +284,17 @@
     export default {    
         data(){
             return{
+                countries: [],
+                states: [],
+                cities: [],
                 baseURL: Vue.prototype.$baseURL,
                 //Form features
                 property_id: '',
                 features: {},
                 step: 1,
+                options: {
+                    autoApply: true,
+                },
                 //Form features
                 features: {},
                 form: new Form({
@@ -272,6 +317,10 @@
                     feature: [],
                     //occasions
                     multipleOccasions: [],
+                    
+                    country: '',
+                    state: '',
+                    city: '',
                 }),
                 form2: new Form({
                     property_id: '',
@@ -280,8 +329,22 @@
             }
         },
         methods:{
+            stateOf(event){
+                console.log("Country: "+ event.target.value);
+                axios.post('/ajax/get_state_data', {
+                    country: event.target.value
+                })
+                .then( ({ data }) => (this.states=data['success']) );
+            },
+            cityOf(event){
+                console.log("Country: "+ event.target.value);
+                axios.post('/ajax/get_city_data', {
+                    state: event.target.value
+                })
+                .then( ({ data }) => (this.cities=data['success']) );
+            },
             getPictures(index){
-                let pic = (this.form2.pictures[index].media.length > 200) ? this.form2.pictures[index].media : this.baseURL+"/images/property/"+ this.form2.pictures[index].media ;
+                let pic = (this.form2.pictures[index].media.length > 200) ? this.form2.pictures[index].media : this.baseURL+"/images/property/gallary/"+ this.form2.pictures[index].media ;
                 return pic;
             },
             getUploadedPic(){
@@ -386,7 +449,8 @@
                     | this.form.errors.has('type') | this.form.errors.has('bedrooms')
                     | this.form.errors.has('bathrooms')| this.form.errors.has('floors') 
                     | this.form.errors.has('garages') | this.form.errors.has('area') 
-                    | this.form.errors.has('size') 
+                    | this.form.errors.has('size')  | this.form.errors.has('city')
+                    | this.form.errors.has('country') | this.form.errors.has('state')
                     )
                     {
                         this.step = 2;
@@ -427,9 +491,14 @@
                 //Get all routes data
                 ({ data }) => (this.features=data)
                );
+
+            axios.get('/ajax/get_countries_data')
+            .then( ({ data }) => (this.countries=data['success']) );
+            
+
         },
         mounted(){
-
+            this.addPic();
         }
     }
 

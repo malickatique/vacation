@@ -74,15 +74,15 @@
                     <input type="text" class="form-control" name="type" value="{{$metadata->type}}"  id="name">
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="status">Property status</label>
                     <input type="text" class="form-control" name="status" value="{{$metadata->status}}"  id="status">
-                </div>
+                </div> -->
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="location">Property location</label>
                     <input type="text" class="form-control" name="location" value="{{$metadata->location}}"  id="location">
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label for="bedrooms">Property bedrooms</label>
@@ -109,10 +109,10 @@
                     <input type="number" class="form-control" name="area" value="{{$metadata->area}}"  id="area">
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="size">Property size</label>
                     <input type="number" class="form-control" name="size" value="{{$metadata->size}}"  id="size">
-                </div>
+                </div> -->
                     
                     
                 </div>

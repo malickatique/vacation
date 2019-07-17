@@ -75,7 +75,7 @@
 
     
 
-      {{-- <script src="{{ asset('admin/bower_components/jquery/dist/jquery.min.js') }}"></script> --}}
+      <script src="{{ asset('admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
       <script src="{{asset('plugins/repeater/jquery-1.11.1.js')}}"></script>
       <script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
       <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
