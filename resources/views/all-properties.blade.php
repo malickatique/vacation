@@ -85,7 +85,7 @@
 							<p>
 								
 									{{str_limit($property->description, $limit = 20, $end = '...')}}</p>
-							<span class="price">From <strong>${{$property->occasions[0]->per_night_rent}}</strong> /per night</span>
+							<span class="price">For: <strong>${{$property->occasions[0]->per_night_rent}}</strong> /per night</span>
 								<br>
 									
 							<span class="price">Posted by: <strong class="text-capitalize"><a href="#">{{$property->user->name}}</a></strong></span>

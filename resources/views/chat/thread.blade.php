@@ -173,8 +173,8 @@ img{ max-width:100%;}
 
         @foreach ($messages as $msg)
             @if ($msg['user_id'] === $data['user1_id'])
-            <div class="incoming_msg">
-                <div class="incoming_msg_img"> <img src="{{asset('/images/user/owner/'.$data['user1_image'])}}" alt="sunil"> 
+            <div class="incoming_msg" style="padding: 15px 0px;">
+                <div class="incoming_msg_img"> <img src="{{asset('/images/user/owner/'.$data['user1_image'])}}" alt="Avatar"> 
                     <span></span>
                 </div>
 
@@ -190,10 +190,10 @@ img{ max-width:100%;}
             <div class="outgoing_msg">
                 <div class="sent_msg">
                     <p> {{ $msg['message'] }} </p>
-                    <!-- <img src="/images/user/renter/{{$data['user2_image']}}" alt="sunil" class="outgoing_msg_img"> -->
+                    <!-- <img src="/images/user/renter/{{$data['user2_image']}}" alt="Avatar" class="outgoing_msg_img"> -->
                     <span class="time_date"> {{ $msg['created_at'] }} </span> 
                 </div>
-                <!-- <div class="outgoing_msg_img"> <img src="/images/user/renter/{{$data['user2_image']}}" alt="sunil"> 
+                <!-- <div class="outgoing_msg_img"> <img src="/images/user/renter/{{$data['user2_image']}}" alt="Avatar"> 
                     <span></span>
                 </div> -->
             </div>

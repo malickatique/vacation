@@ -49394,6 +49394,10 @@ try {
   __webpack_require__(385);
   __webpack_require__(386);
 } catch (e) {}
+/**
+ * Compiled done 4.07 MB // 584 KB size of data'
+ */
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

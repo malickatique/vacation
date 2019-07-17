@@ -32,7 +32,7 @@
               <!-- {{ $data[0][0]['total_msg'] }} -->
 
     <!-- users -->
-    <div class="col-md-4 col-md-offset-2 my-5">
+    <div class="col-md-6 col-md-offset-2 my-5">
         <div class="card">
                 <ul class="list-group list-group-flush">
                 @foreach ($data as $thread)
@@ -59,7 +59,7 @@
                         </div>
 
                     </li>
-
+                    <br>
                 @endforeach
                 </ul>
         </div>

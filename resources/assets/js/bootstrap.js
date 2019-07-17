@@ -13,7 +13,11 @@ try {
     window.$ = window.jQuery = require('jquery');
     require('bootstrap');
     require('admin-lte');
-} catch (e) {}
+} catch (e) {
+    /**
+     * Compiled done 4.07 MB // 584 KB size of data'
+     */
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
