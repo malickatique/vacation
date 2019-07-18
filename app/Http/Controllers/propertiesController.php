@@ -170,7 +170,7 @@ class propertiesController extends Controller
         // $property->availability_to = $request['availability_to'];  
         $property->address = $request['address'];
         $property->thumbnail = $name;
-        $property->status = '1';
+        $property->status = '0';
         $property->save();
 
         // meta data property
@@ -178,7 +178,7 @@ class propertiesController extends Controller
         $metadata = new PropertyMetadata;
         $metadata->property_id = $lastInsertedPropertyId;
         $metadata->type = $request['type'];
-        $metadata->status = '1';
+        $metadata->status = '0';
         // $metadata->location = $request['location'];
         $metadata->bedrooms = $request['bedrooms'];
         $metadata->bathrooms = $request['bathrooms'];
@@ -338,7 +338,7 @@ class propertiesController extends Controller
         $property->description = $request['description'];
         $property->address = $request['address'];
         $property->thumbnail = $name;
-        $property->status = '1';
+        $property->status = '0';
         $property->save();
         
         // uploading file

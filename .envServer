@@ -3,12 +3,12 @@ APP_ENV=local
 APP_KEY=base64:Kna5Cbl17w8qnyBY7gFj84vmepmHI2BLTQyLy3hRh0A=
 APP_DEBUG=true
 APP_LOG_LEVEL=info
-APP_URL=http://www.demoaspire.com/2019/ovrvue/
+APP_URL=http://www.demoaspire.com/2019/ovr/
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=demoaspi_ovrvue_db
+DB_DATABASE=demoaspi_ovr
 DB_USERNAME=demoaspi_defuser
 DB_PASSWORD=~CUkh$0Y9QLK
 

@@ -49312,9 +49312,8 @@ Vue.prototype.$myId = 'null';
 Vue.prototype.$friendId = 'null';
 
 //Uncomment it for live server
-Vue.prototype.$baseURL = '';
-// Vue.prototype.$baseURL = '/2019/ovrvue';
-
+// Vue.prototype.$baseURL = '';
+Vue.prototype.$baseURL = '/2019/ovr';
 
 // Vue.prototype.$getCountries = {
 //     'AF': 'Afghanistan',
@@ -49413,7 +49412,7 @@ try {
 
 window.axios = __webpack_require__(74);
 // Uncomment it for live server
-// window.axios.defaults.baseURL = '/2019/ovrvue';
+// window.axios.defaults.baseURL = '/2019/ovr';
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
@@ -49442,7 +49441,7 @@ window.Pusher = __webpack_require__(406);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
   //Uncomment it for live server
-  // authEndpoint: 'http://www.demoaspire.com/2019/ovrvue/broadcasting/auth',
+  // authEndpoint: 'http://www.demoaspire.com/2019/ovr/broadcasting/auth',
 
 
   // //Uncomment it for live server
@@ -99191,6 +99190,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -99364,7 +99364,25 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(property.name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(property.status))]),
+                      property.status == "1"
+                        ? _c("td", [
+                            _c(
+                              "span",
+                              { staticClass: "badge badge-success p-2" },
+                              [_vm._v("Active")]
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      property.status == "0"
+                        ? _c("td", [
+                            _c(
+                              "span",
+                              { staticClass: "badge badge-danger p-2" },
+                              [_vm._v("Not Active")]
+                            )
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(property.address))]),
                       _vm._v(" "),
@@ -99882,7 +99900,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             });
         },
         getPictures: function getPictures(index) {
-            var pic = this.form2.pictures[index].name.length > 200 ? this.form2.pictures[index].name : this.baseURL + "/images/property/" + this.form2.pictures[index].name;
+            var pic = this.form2.pictures[index].media.length > 200 ? this.form2.pictures[index].media : this.baseURL + "/images/property/" + this.form2.pictures[index].media;
             return pic;
         },
         getUploadedPic: function getUploadedPic() {
@@ -99897,7 +99915,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         },
         addPic: function addPic() {
             this.form2.pictures.push({
-                name: '',
+                media: '',
                 type: ''
             });
         },
@@ -99969,7 +99987,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             if (file['size'] < 2097152) {
                 //Change file to base65
                 reader.onloadend = function (file) {
-                    _this5.form2.pictures[index].name = reader.result;
+                    _this5.form2.pictures[index].media = reader.result;
                 };
                 reader.readAsDataURL(file);
             } else {}
@@ -101005,7 +101023,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "uploaded-pic-box col-6 ml-3" }, [
-                    _vm.form2.pictures[index].name != ""
+                    _vm.form2.pictures[index].media != ""
                       ? _c("img", {
                           staticClass: "image-thumbnail",
                           attrs: { src: _vm.getPictures(index) }

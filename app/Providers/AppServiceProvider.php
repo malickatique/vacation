@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //Uncomment it for Live server
         // $this->app->bind('path.public', function() {
-        // 	return '/home4/demoaspi/public_html/2019/ovrvue/';});
+        // 	return '/home4/demoaspi/public_html/2019/ovr/';});
         //
         Schema::defaultStringLength(191);
     }

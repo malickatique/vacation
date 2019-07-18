@@ -36,7 +36,8 @@
                 </td>
                 
                 <td>{{property.name}}</td>
-                <td>{{property.status}}</td>
+                <td v-if="property.status=='1'"><span class="badge badge-success p-2">Active</span></td>
+                <td v-if="property.status=='0'"><span class="badge badge-danger p-2">Not Active</span></td>
                 <td>{{property.address}}</td>  
                 <td>
                     <a href="#" @click="previewProperty(property.id)">

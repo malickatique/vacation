@@ -258,7 +258,7 @@
                 
                             <!-- Show uploaded pic -->
                         <div class="uploaded-pic-box col-6 ml-3">
-                            <img v-if="form2.pictures[index].name!=''" :src="getPictures(index)" class="image-thumbnail">
+                            <img v-if="form2.pictures[index].media!=''" :src="getPictures(index)" class="image-thumbnail">
                         </div>
 
                         <hr>
@@ -344,7 +344,7 @@
                 .then( ({ data }) => (this.cities=data['success']) );
             },
             getPictures(index){
-                let pic = (this.form2.pictures[index].name.length > 200) ? this.form2.pictures[index].name : this.baseURL+"/images/property/"+ this.form2.pictures[index].name ;
+                let pic = (this.form2.pictures[index].media.length > 200) ? this.form2.pictures[index].media : this.baseURL+"/images/property/"+ this.form2.pictures[index].media ;
                 return pic;
             },
             getUploadedPic(){
@@ -359,7 +359,7 @@
             },
             addPic(){
                 this.form2.pictures.push({
-                    name: '',
+                    media: '',
                     type: '',
                 }); 
             },
@@ -440,7 +440,7 @@
                 if( file['size'] < 2097152  ){
                     //Change file to base65
                     reader.onloadend = (file) => {
-                        this.form2.pictures[index].name = reader.result;
+                        this.form2.pictures[index].media = reader.result;
                     }
                     reader.readAsDataURL(file);
                 }

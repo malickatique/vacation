@@ -2,8 +2,8 @@
 
 /*
 
-require __DIR__.'/../../../vacationvue/bootstrap/autoload.php';
-$app = require_once __DIR__.'/../../../vacationvue/bootstrap/app.php';
+require __DIR__.'/../../../vacation/bootstrap/autoload.php';
+$app = require_once __DIR__.'/../../../vacation/bootstrap/app.php';
 
  */
 

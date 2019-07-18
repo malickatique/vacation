@@ -27,7 +27,7 @@ try {
 
 window.axios = require('axios');
 // Uncomment it for live server
-// window.axios.defaults.baseURL = '/2019/ovrvue';
+// window.axios.defaults.baseURL = '/2019/ovr';
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
@@ -56,7 +56,7 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     //Uncomment it for live server
-    // authEndpoint: 'http://www.demoaspire.com/2019/ovrvue/broadcasting/auth',
+    // authEndpoint: 'http://www.demoaspire.com/2019/ovr/broadcasting/auth',
 
 
     // //Uncomment it for live server
