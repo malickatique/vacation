@@ -15,6 +15,9 @@ use App\Mail\OwnerActivationMail;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Stripe\Error\Card;
 use File;
+use App\State;
+use App\City;
+use App\Country;
 use App\Message;
 use Hash;
 use Session;
@@ -365,14 +368,22 @@ class AdminController extends Controller
         $metadata = new PropertyMetadata;
         $metadata->property_id = $lastInsertedPropertyId;
         $metadata->type = $request['type'];
-        $metadata->status = $request['status'];
-        $metadata->location = $request['location'];
+        $metadata->status = '1';
+        // $metadata->location = $request['location'];
         $metadata->bedrooms = $request['bedrooms'];
         $metadata->bathrooms = $request['bathrooms'];
         $metadata->floors = $request['floors'];
         $metadata->garages = $request['garages'];
         $metadata->area = $request['area'];
         // $metadata->size = $request['size'];
+
+        $country = Country::select('name')->where('id', '=', $request['country'])->first();
+        $state = State::select('name')->where('id', '=', $request['state'])->first();
+
+        $metadata->country = $request['country'];
+        $metadata->state = $request['state'];
+        $metadata->city = $request['city'];
+        
         $metadata->save();
 
         // multiple features 
@@ -384,6 +395,8 @@ class AdminController extends Controller
             $feature->save();
 
         }
+
+        $min_per_night_rent = $request->multipleOccasions[0]['occasion_per_night_rent'];
         foreach ($request->multipleOccasions as $value) {
             $occasion = new PropertyOccasion;
             $occasion->property_id = $lastInsertedPropertyId;
@@ -391,9 +404,15 @@ class AdminController extends Controller
             $occasion->availability_from =  $value['occasion_availability_from'];
             $occasion->availability_to =  $value['occasion_availability_to'];
             $occasion->per_night_rent =  $value['occasion_per_night_rent'];
+            if($value['occasion_per_night_rent'] < $min_per_night_rent)
+            {
+                $min_per_night_rent = $value['occasion_per_night_rent'];
+            }
             $occasion->save();
         }
-
+        //Save property with minimum per night rent
+        $property->per_night_rent = $min_per_night_rent;
+        $property->save();
         // return redirect()->route('home')->with('status', 'Property Created successfully');
         
         return view('properties.create-two')->with('property_id', $lastInsertedPropertyId);
@@ -623,7 +642,7 @@ class AdminController extends Controller
         $user->email = $request['email'];
         $user->user_type = 'owner';
         $user->password = Hash::make($request['password']);
-        $user->status = 2;
+        $user->status = 0;
         $user->save();
 
         $data = array(
@@ -750,7 +769,7 @@ class AdminController extends Controller
         if($status == 1){
 
             $user = User::find($user_id);
-            $user->status = 2;
+            $user->status = 0;
             $user->save();
 
             $data = array(
@@ -764,7 +783,7 @@ class AdminController extends Controller
         //      $message->from('ovrteam@admin.com','OVR');
         //   });
 
-        }elseif($status == 2){
+        }elseif($status == 0){
             
             $user = User::find($user_id);
             $user->status = 1;
@@ -851,7 +870,7 @@ class AdminController extends Controller
         if($status == 1){
 
             $user = User::find($user_id);
-            $user->status = 2;
+            $user->status = 0;
             $user->save();
 
             $data = array(
@@ -865,7 +884,7 @@ class AdminController extends Controller
         //      $message->from('ovrteam@admin.com','OVR');
         //   });
 
-        }elseif($status == 2){
+        }elseif($status == 0){
             
             $user = User::find($user_id);
             $user->status = 1;
@@ -1002,5 +1021,43 @@ class AdminController extends Controller
         $renter->save();
 
         return redirect('/admin/renter')->with('status', 'Renter Created');
+    }
+    public function property_status(Request $request)
+    {
+        $property_id = $request['property_id'];
+        $status = $request['status'];
+        
+
+        if($status == 1){
+
+            // disable code
+            $property = Property::find($property_id);
+            $property->status = 0;
+            $property->save();
+            $property_metadata = PropertyMetadata::where('property_id', '=', $property_id)->first();
+            $property_metadata->status = 0;
+            $property_metadata->save();
+
+        }elseif($status == 0){
+            
+            //enable code
+            $property = Property::find($property_id);
+            $property->status = 1;
+            $property->save();
+            $property_metadata = PropertyMetadata::where('property_id', '=', $property_id)->first();
+            $property_metadata->status = 1;
+            $property_metadata->save();
+
+        }
+
+        if(isset($request['redirect'])){
+            // redirect to main properties here
+            return redirect()->route('admin.allproperties')->with('status', 'Property modified');
+
+        }else{
+
+            return redirect()->route('owner.ownerproperties', $property['user_id'])->with('status', 'Property modified');
+
+        }
     }
 }

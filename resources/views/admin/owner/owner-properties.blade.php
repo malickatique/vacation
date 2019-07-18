@@ -61,7 +61,7 @@
                         <td class="text-center" >
                             @if ($owner_property->status == 1)
                                 <span class="badge badge-success">Published</span>
-                            @elseif($owner_property->status == 2)
+                            @elseif($owner_property->status == 0)
                                 <span class="badge badge-primary">Not Published</span>
                             @endif
                         </td>
@@ -75,7 +75,7 @@
                            <input type="hidden" name="status" value="{{$owner_property->status}}">
                            <button type="submit" data-toggle="tooltip" title="Unpublished this Post" class="btn btn-danger btn-xs">X</button>
                         </form>
-                        @elseif($owner_property->status == 2)
+                        @elseif($owner_property->status == 0)
                         <form method="POST" action="{{ route('property.propertystatus') }}">
                            {{ csrf_field() }}
                            <input type="hidden" name="property_id" value="{{$owner_property->id}}">

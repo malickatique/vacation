@@ -44,9 +44,9 @@
 						</div>
 						<div class="col-lg-3">
 							<select class="wide" name="cator">
-								<option value="all">All Categories</option>	
-								<option value="rent">Apartment</option>
-								<option value="sale">House</option>
+							<option value="all">All Categories</option>	
+							<option value="apartment">Apartment</option>
+							<option value="house">House</option>
 							</select>
 						</div>
 						<div class="col-lg-2">

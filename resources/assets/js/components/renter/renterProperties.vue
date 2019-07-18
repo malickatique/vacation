@@ -20,9 +20,9 @@
 
                     <div class="col-3">
                         <select v-model="form.cator" class="custom-select">
-                            <option value="all"> All Categories </option>
-                            <option value="rent">Apartment</option>
-                            <option value="sale">House</option>
+                            <option value="all">All Categories</option>	
+                            <option value="apartment">Apartment</option>
+                            <option value="house">House</option>
                         </select>
                     </div>
 
@@ -51,7 +51,7 @@
                     <div class="col-8 card-body">
                         <b> <h3> {{property.name }} </h3> </b> <br>
                         <b>Location:  {{property.address }} </b> <br>
-                        <b>Type: {{property.status }} </b> <br>
+                        <b>Per night rent: {{property.per_night_rent }} </b> <br>
                         <b> Description: </b>  {{property.description }} <br><br>
 
                         <!-- <router-link :to="{ path: '/propertyView/'+property.id }"> -->

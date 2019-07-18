@@ -75,7 +75,7 @@
                            <input type="hidden" name="status" value="{{$owner->status}}">
                            <button type="submit" data-toggle="tooltip" title="Deactivate user" class="btn btn-danger btn-xs">X</button>
                         </form>
-                        @elseif($owner->status == 2)
+                        @elseif($owner->status == 0)
                         <form method="POST" action="{{ route('owner.ownerstatus') }}">
                            {{ csrf_field() }}
                            <input type="hidden" name="user_id" value="{{$owner->id}}">

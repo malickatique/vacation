@@ -264,40 +264,39 @@ class ownersController extends Controller
     // }
 
     // owner property status updates here
-    public function property_status(Request $request){
-
-        $property_id = $request['property_id'];
-        $status = $request['status'];
+    // public function property_status(Request $request){
+    //     $property_id = $request['property_id'];
+    //     $status = $request['status'];
         
 
-        if($status == 1){
+    //     if($status == 1){
 
-            // disable code
-            $property = Property::find($property_id);
-            $property->status = 2;
-            $property->save();
+    //         // disable code
+    //         $property = Property::find($property_id);
+    //         $property->status = 2;
+    //         $property->save();
 
-        }elseif($status == 2){
+    //     }elseif($status == 2){
             
-            //enable code
-            $property = Property::find($property_id);
-            $property->status = 1;
-            $property->save();
+    //         //enable code
+    //         $property = Property::find($property_id);
+    //         $property->status = 1;
+    //         $property->save();
 
-        }
+    //     }
 
-        if(isset($request['redirect'])){
-            // redirect to main properties here
-            return redirect()->route('admin.allproperties')->with('status', 'Property modified');
+    //     if(isset($request['redirect'])){
+    //         // redirect to main properties here
+    //         return redirect()->route('admin.allproperties')->with('status', 'Property modified');
 
-        }else{
+    //     }else{
 
-            return redirect()->route('owner.ownerproperties', $property['user_id'])->with('status', 'Property modified');
+    //         return redirect()->route('owner.ownerproperties', $property['user_id'])->with('status', 'Property modified');
 
-        }
+    //     }
 
 
-    }
+    // }
 
     // public function owner_property_detail($id){
 

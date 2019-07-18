@@ -89,8 +89,8 @@
                         <div class="custom-select-form">
                            <select class="form-control" name="type" id="type">
                               <option value="" selected="">Select your type</option>
-                              <option value="House">House</option>
-                              <option value="Apartment">Apartment</option>
+                              <option value="house">House</option>
+                              <option value="apartment">Apartment</option>
                            </select>
                         </div>
                      </div>
@@ -145,6 +145,26 @@
                      <div class="form-group">
                         <label>Area</label>
                         <input class="form-control" type="number" id="area" name="area">
+                     </div>
+                  </div>
+
+                  
+                  <div class="col-md-4">
+                     <div class="form-group">
+                        <label>Country</label>
+                        <input class="form-control" type="text" id="country" name="country">
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="form-group">
+                        <label>State</label>
+                        <input class="form-control" type="text" id="state" name="state">
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="form-group">
+                        <label>City</label>
+                        <input class="form-control" type="text" id="city" name="city">
                      </div>
                   </div>
                   <!-- <div class="col-md-4">

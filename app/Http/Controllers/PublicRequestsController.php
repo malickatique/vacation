@@ -131,38 +131,83 @@ class PublicRequestsController extends Controller
         
         if($request->lookingFor!='' & $request->location!='' & $request->cator!='')
         {
-            $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
-            ->orWhere('address', 'LIKE', "%{$request->location}%" )
-            ->orWhere('description', 'LIKE', "%{$request->cator}%" )
+            $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+            ->orWhere('country', 'LIKE', "%{$request->location}%" )
+            ->orWhere('state', 'LIKE', "%{$request->location}%" )
+            ->orWhere('city', 'LIKE', "%{$request->location}%" )
             ->get();
+            $count=0;
+            $properties=[];
+            foreach($properties_metadata as $metadata)
+            {
+                $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
+            }
+            // $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
+            // ->orWhere('address', 'LIKE', "%{$request->location}%" )
+            // ->orWhere('description', 'LIKE', "%{$request->cator}%" )
+            // ->get();
         }
         else if($request->lookingFor!='' & $request->location!='')
         {
+            // $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+            // ->orWhere('country', 'LIKE', "%{$request->location}%" )
+            // ->orWhere('state', 'LIKE', "%{$request->location}%" )
+            // ->orWhere('city', 'LIKE', "%{$request->location}%" )
+            // ->get();
+            // $count=0;
+            // $properties=[];
+            // foreach($properties_metadata as $metadata)
+            // {
+            //     $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
+            // }
             $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
             ->orWhere('address', 'LIKE', "%{$request->location}%" )
             ->get();
         }
         else if($request->lookingFor!='' & $request->cator!='')
         {
-            $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
-            ->orWhere('description', 'LIKE', "%{$request->cator}%" )
+            
+            $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+            ->orWhere('country', 'LIKE', "%{$request->location}%" )
+            ->orWhere('state', 'LIKE', "%{$request->location}%" )
+            ->orWhere('city', 'LIKE', "%{$request->location}%" )
             ->get();
+            $count=0;
+            $properties=[];
+            foreach($properties_metadata as $metadata)
+            {
+                $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
+            }
+            // $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
+            // ->orWhere('description', 'LIKE', "%{$request->cator}%" )
+            // ->get();
         }
         else if($request->cator!='')
         {
-            $properties = Property::where('description', 'LIKE', "%{$request->cator}%")
-            ->get();
+            // $properties = Property::where('description', 'LIKE', "%{$request->cator}%")
+            // ->get();
             if($request->cator == 'all')
             {
                 //all cator
                 $properties = Property::
                 get();
             }
+            else
+            {
+                $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+                ->get();
+                $count=0;
+                $properties=[];
+                foreach($properties_metadata as $metadata)
+                {
+                    $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
+                }
+            }
         }
         else if($request->lookingFor!='' )
         {
             $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
-            ->orWhere('description', 'LIKE', "%{$request->lookingFor}%")
+            // ->orWhere('description', 'LIKE', "%{$request->lookingFor}%")
             ->get();
         }
         else if($request->location!='' )

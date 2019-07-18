@@ -44,6 +44,8 @@ Route::post('/owner/register','registerUsersController@register_owner_by_site')-
 //Properties Controller
 Route::get('/deleteProperty/{id}', 'propertiesController@deleteProperty');
 Route::resource('/property', 'propertiesController');
+
+
 //Property requests from Owner
 Route::get('/getProperty/{id}', 'propertiesController@getProperty');
 //Property requests from Renter
@@ -103,6 +105,7 @@ Route::post('/admin/renter/addbyadmin','AdminController@add_by_admin')->name('re
 Route::resource('/admin/page', 'pagesController');
 Route::resource('/admin/usertype', 'userTypeController');
 Route::resource('/property', 'propertiesController');
+// Route::post('/admin/propertystatus', 'ownersController@property_status')->name('property.propertystatus');
 Route::resource('/admin/emailtemplate', 'EmailTemplateController');
 Route::resource('/admin/subscription', 'subscriptionController');
 
@@ -123,6 +126,9 @@ Route::put('/admin/question/{id}','pagesController@update_question')->name('page
 Route::get('/admin/page/pagegallary/{id}','pagesController@edit_pagegallary')->name('page.edit.pagegallary');
 Route::put('/admin/pagegallary/{id}','pagesController@update_pagegallary')->name('page.update.pagegallary');
 
+
+//Admin properties control
+Route::post('/admin/propertystatus', 'AdminController@property_status')->name('property.propertystatus');
 
 // setting controllers
 Route::get('/setting','settingController@view_setting')->name('setting.view');
@@ -146,7 +152,6 @@ Route::get('/admin/ownerproperties/{id}', 'AdminController@owner_properties')->n
 Route::get('/admin/ownerpropertydetail/{id}', 'AdminController@owner_property_detail')->name('owner.owner-property-detail');
 
 Route::post('/admin/ownerstatus', 'AdminController@owner_status')->name('owner.ownerstatus');
-Route::post('/admin/propertystatus', 'ownersController@property_status')->name('property.propertystatus');
 Route::get('/page/{slug}', 'pagesController@dynamic_pages')->name('page.site.dynamic');
 
 Route::get('/view/{title}/{id}', 'pagesController@show_property_detail')->name('single-property');
