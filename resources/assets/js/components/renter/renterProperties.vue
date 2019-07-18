@@ -96,7 +96,12 @@
                 this.$router.push({ path: '/propertyView/'+id});
             },
             showRelevantProperties(){
-                this.form.post("/getRelevantProperties").then(({ data }) => (this.properties = data));
+                this.$Progress.start();
+                this.form.post("/getRelevantProperties").then(({ data }) => (this.properties = data))
+                .catch( ()=>{
+                    this.$Progress.fail();
+                });
+                this.$Progress.finish();
             },
             getThumb(index){
                 let pic = (this.properties[index].thumbnail.length > 200) ? this.properties[index].thumbnail : this.baseURL+"/images/property/"+ this.properties[index].thumbnail ;
@@ -105,7 +110,12 @@
         },
         mounted() {
             console.log('Test Component mounted.')
-            axios.get("/getPropertiesView").then(({ data }) => (this.properties = data.data));
+            this.$Progress.start();
+            axios.get("/getPropertiesView").then(({ data }) => (this.properties = data.data))
+            .catch( ()=>{
+                this.$Progress.fail();
+            });
+            this.$Progress.finish();
         }
     }
 </script>

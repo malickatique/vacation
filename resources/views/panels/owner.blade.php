@@ -101,7 +101,7 @@
           </li>
           
           <li class="nav-item">
-            <router-link to="/messaging" class="nav-link">
+            <router-link to="#" class="nav-link">
                 <i class="nav-icon fa fa-external-link"></i>
               <p>Others</p>
             </router-link>
@@ -131,6 +131,8 @@
       <div class="container-fluid">
           {{-- <keep-alive> --}}
               <router-view> </router-view>
+              <!-- set progressbar -->
+              <vue-progress-bar></vue-progress-bar>
           {{-- </keep-alive> --}}
       </div>
     </div>

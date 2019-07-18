@@ -236,13 +236,12 @@
             getProfilePic(){
                 let pic = (this.form.user_image.length > 200) ? this.form.user_image : this.baseURL+"/images/user/owner/"+ this.form.user_image ;
                 return pic;
-            },lePic(){
-                let pic = (this.form.user_image.length > 200) ? this.form.user_image : this.baseURL+"/images/user/renter/"+ this.form.user_image ;
-                return pic;
             },
             updateInfo(){
+                this.$Progress.start();
                 this.form.post('/update_owner')
                 .then( ()=> {
+                    this.$Progress.finish();
                     //Show success modal
                     Swal.fire(
                     'Updated!',
@@ -251,13 +250,19 @@
                     )
                 })
                 .catch( ()=>{
+                    this.$Progress.fail();
                 });
             },
         },
         created(){
             //Get current logged in profile data
+            this.$Progress.start();
             axios.get("/owner_profile")
-            .then( ({ data }) => (this.form.fill(data)) );
+            .then( ({ data }) => (this.form.fill(data)) )
+            .catch( ()=>{
+                this.$Progress.fail();
+            });
+            this.$Progress.finish();
         },
         mounted() {
             

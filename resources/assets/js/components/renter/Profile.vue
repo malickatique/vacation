@@ -238,8 +238,10 @@
                 return pic;
             },
             updateInfo(){
+                this.$Progress.start();
                 this.form.post('/update_renter')
                 .then( ()=> {
+                    this.$Progress.finish();
                     //Show success modal
                     Swal.fire(
                     'Updated!',
@@ -248,13 +250,19 @@
                     )
                 })
                 .catch( ()=>{
+                    this.$Progress.fail();
                 });
             },
         },
         created(){
             //Get current logged in profile data
+            this.$Progress.start();
             axios.get("/renter_profile")
-            .then( ({ data }) => (this.form.fill(data)) );
+            .then( ({ data }) => (this.form.fill(data)) )
+            .catch( ()=>{
+                this.$Progress.fail();
+            });
+            this.$Progress.finish();
         },
         mounted() {
             

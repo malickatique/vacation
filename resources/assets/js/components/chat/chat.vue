@@ -149,10 +149,14 @@
         },
         methods:{
             getAllMessages(){
-                console.log('getting all chats.');
+                this.$Progress.start();
                 axios.get('/getAllMessages')
                 .then( response => {
                     this.myAllMessages = response.data;
+                    this.$Progress.finish();
+                })
+                .catch( ()=>{
+                    this.$Progress.fail();
                 });
             },
             chatWith(index){
@@ -205,8 +209,8 @@
             },
             send(){
                 if(this.message.length != 0){
+                    this.$Progress.start();
                     console.log('sending message to: '+this.friendId+ ' msg: '+ this.message);
-
                     if(this.chat.messages.length!=0)
                     {
                         console.log('empty..');
@@ -223,30 +227,42 @@
                         user: this.me,
                         });
                     }
-
                     axios.post('/messages/'+ this.friendId, {message:  this.message})
                     .then( response => {
                         if(this.chat.messages.length==0)
                         {
                             console.log('not empty..');
                             this.chat.messages.push(response.data);
+                            this.$Progress.finish();
                         }
+                    })
+                    .catch( ()=>{
+                        this.$Progress.fail();
                     });
                     this.message = '';
                 }
             },
-            fetchMe()
-            {
+            fetchMe(){
+                this.$Progress.start();
                 axios.get('/fetchMe')
                 .then( response => {
                     this.me = response.data;
+                    this.$Progress.finish();
+                })
+                .catch( ()=>{
+                    this.$Progress.fail();
                 });
             },
             fetchMessages(){
                 console.log('getting '+this.friendId);
+                this.$Progress.start();
                 axios.get('/messages/'+this.friendId)
                 .then( response => {
                     this.chat.messages = response.data;
+                    this.$Progress.finish();
+                })
+                .catch( ()=>{
+                    this.$Progress.fail();
                 });
             },
             getTime(){
@@ -264,7 +280,7 @@
             },
             initListeners(){
                 if(this.lock == '0')
-                {
+                {this.$Progress.start();
                     console.log('Initializing..');
                     Echo.private('chat.'+this.myId )
                     .listenForWhisper('typing', (e)=>{
@@ -302,14 +318,20 @@
                     });
 
                     this.lock = '1';
+                    this.$Progress.finish();
                 }
             },
             getFriend(){
                 // console.log('friend me: '+this.friendId);
+                this.$Progress.start();
                 axios.get('/getFriend/'+this.friendId)
                 .then( response => {
                     this.currentUser = response.data.name;
+                    this.$Progress.finish();
                     // this.myAllMessages.push();
+                })
+                .catch( ()=>{
+                    this.$Progress.fail();
                 });
             },
             loadFirst(){
@@ -343,14 +365,6 @@
             this.updateStatuses();
         },
         created(){
-
-            //Will fetch matches after every x000 (x seconds)
-            // setInterval(() => {
-            //     this.getAllMessages();
-            // }, 3000);
-            //Fetching end
-            
-
             console.log('created');
             this.fetchMe();
             this.getAllMessages();

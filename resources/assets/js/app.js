@@ -16,6 +16,14 @@ Vue.component(AlertError.name, AlertError)
 import VueChatScroll from 'vue-chat-scroll'
 Vue.use(VueChatScroll)
 
+//Vue progress bar
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '30px'
+});
+
 //Vue Components
 Vue.component('example', require('./components/Example.vue'));
 const test = Vue.component('test', require('./components/Test.vue'));
@@ -25,8 +33,6 @@ const chat = Vue.component('chat', require('./components/chat/chat.vue'));
 const properties = Vue.component('properties', require('./components/owner/Properties.vue'));
 const addProperty = Vue.component('addProperty', require('./components/owner/addProperty.vue'));
 
-//temp
-const messaging = Vue.component('messaging', require('./components/general_chat/Messaging.vue'));
 
 //Properties components
 const updateProperty = Vue.component('updateProperty', require('./components/owner/updateProperty.vue'));
@@ -90,7 +96,6 @@ const routes = [
     //Other routes
     { path: '/', component: pagination, name: 'pagination' },
     { path: '/', component: BootstrapVue, name: 'BootstrapVue' },
-    { path: '/messaging', component: messaging, name: 'messaging' },
 ]
 
 // Sharing data across all components
@@ -100,7 +105,7 @@ Vue.prototype.$friendId = 'null';
 
 //Uncomment it for live server
 // Vue.prototype.$baseURL = '';
-Vue.prototype.$baseURL = '/2019/ovr';
+// Vue.prototype.$baseURL = '/2019/ovr';
 
 
 // Vue.prototype.$getCountries = {

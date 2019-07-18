@@ -157,9 +157,14 @@
             },
             fetchMe()
             {
+                this.$Progress.start();
                 axios.get('/fetchMe')
                 .then( response => {
                     this.me = response.data;
+                    this.$Progress.finish();
+                })
+                .catch( ()=>{
+                    this.$Progress.fail();
                 });
             },
         },
@@ -169,7 +174,12 @@
             // console.log(m);
             //Load data
             let id = this.$route.params.id;
-            axios.get('/propertyDetailView/'+id).then(({ data }) => (this.property = data));
+            this.$Progress.start();
+            axios.get('/propertyDetailView/'+id).then(({ data }) => (this.property = data))
+            .catch( ()=>{
+                this.$Progress.fail();
+            });
+            this.$Progress.finish();
             this.friendId = this.property.user_id;
         }
     }

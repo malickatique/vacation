@@ -49207,19 +49207,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vform___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vform__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_chat_scroll__ = __webpack_require__(412);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_chat_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_chat_scroll__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_bootstrap_vue__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_bootstrap_vue_dist_bootstrap_vue_css__ = __webpack_require__(569);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_bootstrap_vue_dist_bootstrap_vue_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_bootstrap_vue_dist_bootstrap_vue_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sweetalert2__ = __webpack_require__(572);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_sweetalert2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gravitano_vue_date_range_picker__ = __webpack_require__(574);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gravitano_vue_date_range_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__gravitano_vue_date_range_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_axios__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_babel_types__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_babel_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_babel_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_progressbar__ = __webpack_require__(726);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_progressbar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_bootstrap_vue__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_bootstrap_vue_dist_bootstrap_vue_css__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_bootstrap_vue_dist_bootstrap_vue_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_bootstrap_vue_dist_bootstrap_vue_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_sweetalert2__ = __webpack_require__(572);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gravitano_vue_date_range_picker__ = __webpack_require__(574);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gravitano_vue_date_range_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__gravitano_vue_date_range_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_axios__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_babel_types__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_babel_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_babel_types__);
 __webpack_require__(383);
 
 //Vue Js
@@ -49238,6 +49240,14 @@ Vue.component(__WEBPACK_IMPORTED_MODULE_1_vform__["AlertError"].name, __WEBPACK_
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_chat_scroll___default.a);
 
+//Vue progress bar
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_progressbar___default.a, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '30px'
+});
+
 //Vue Components
 Vue.component('example', __webpack_require__(413));
 var test = Vue.component('test', __webpack_require__(416));
@@ -49246,9 +49256,6 @@ var thread = Vue.component('thread', __webpack_require__(419));
 var chat = Vue.component('chat', __webpack_require__(422));
 var properties = Vue.component('properties', __webpack_require__(425));
 var addProperty = Vue.component('addProperty', __webpack_require__(428));
-
-//temp
-var messaging = Vue.component('messaging', __webpack_require__(431));
 
 //Properties components
 var updateProperty = Vue.component('updateProperty', __webpack_require__(432));
@@ -49278,7 +49285,7 @@ var pagination = Vue.component('pagination', __webpack_require__(459));
 
 // import 'bootstrap/dist/css/bootstrap.css'
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_3_bootstrap_vue__["a" /* default */]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_bootstrap_vue__["a" /* default */]);
 
 var routes = [
 //Admin paths
@@ -49304,7 +49311,7 @@ var routes = [
 { path: '/renter_profile', component: renterprofile, name: 'renterprofile' },
 
 //Other routes
-{ path: '/', component: pagination, name: 'pagination' }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_3_bootstrap_vue__["a" /* default */], name: 'BootstrapVue' }, { path: '/messaging', component: messaging, name: 'messaging' }];
+{ path: '/', component: pagination, name: 'pagination' }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_4_bootstrap_vue__["a" /* default */], name: 'BootstrapVue' }];
 
 // Sharing data across all components
 Vue.prototype.$appName = 'My App';
@@ -49313,7 +49320,8 @@ Vue.prototype.$friendId = 'null';
 
 //Uncomment it for live server
 // Vue.prototype.$baseURL = '';
-Vue.prototype.$baseURL = '/2019/ovr';
+// Vue.prototype.$baseURL = '/2019/ovr';
+
 
 // Vue.prototype.$getCountries = {
 //     'AF': 'Afghanistan',
@@ -49350,11 +49358,11 @@ Vue.use(shared);
 //Sweet Alert
 // ES6 Modules or TypeScript
 
-window.Swal = __WEBPACK_IMPORTED_MODULE_5_sweetalert2___default.a; //Globally available
+window.Swal = __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default.a; //Globally available
 //Event handling
 window.Fire = new Vue(); //window.var make var globally available.
 //Toast
-var toast = __WEBPACK_IMPORTED_MODULE_5_sweetalert2___default.a.mixin({
+var toast = __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default.a.mixin({
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
@@ -49365,7 +49373,7 @@ window.toast = toast;
 //Moment js integeration
 
 Vue.filter('timeAgo', function (date) {
-    return __WEBPACK_IMPORTED_MODULE_6_moment___default()(date).fromNow();
+    return __WEBPACK_IMPORTED_MODULE_7_moment___default()(date).fromNow();
 });
 
 //Date range picker
@@ -49374,7 +49382,7 @@ Vue.filter('timeAgo', function (date) {
 
 Vue.config.productionTip = false;
 // use the plugin
-Vue.use(__WEBPACK_IMPORTED_MODULE_7__gravitano_vue_date_range_picker___default.a);
+Vue.use(__WEBPACK_IMPORTED_MODULE_8__gravitano_vue_date_range_picker___default.a);
 
 /***/ }),
 /* 383 */
@@ -98585,9 +98593,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getAllMessages: function getAllMessages() {
             var _this = this;
 
-            console.log('getting all chats.');
+            this.$Progress.start();
             axios.get('/getAllMessages').then(function (response) {
                 _this.myAllMessages = response.data;
+                _this.$Progress.finish();
+            }).catch(function () {
+                _this.$Progress.fail();
             });
         },
         chatWith: function chatWith(index) {
@@ -98635,8 +98646,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             if (this.message.length != 0) {
+                this.$Progress.start();
                 console.log('sending message to: ' + this.friendId + ' msg: ' + this.message);
-
                 if (this.chat.messages.length != 0) {
                     console.log('empty..');
                     //Get instant current message
@@ -98652,12 +98663,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         user: this.me
                     });
                 }
-
                 axios.post('/messages/' + this.friendId, { message: this.message }).then(function (response) {
                     if (_this2.chat.messages.length == 0) {
                         console.log('not empty..');
                         _this2.chat.messages.push(response.data);
+                        _this2.$Progress.finish();
                     }
+                }).catch(function () {
+                    _this2.$Progress.fail();
                 });
                 this.message = '';
             }
@@ -98665,16 +98678,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchMe: function fetchMe() {
             var _this3 = this;
 
+            this.$Progress.start();
             axios.get('/fetchMe').then(function (response) {
                 _this3.me = response.data;
+                _this3.$Progress.finish();
+            }).catch(function () {
+                _this3.$Progress.fail();
             });
         },
         fetchMessages: function fetchMessages() {
             var _this4 = this;
 
             console.log('getting ' + this.friendId);
+            this.$Progress.start();
             axios.get('/messages/' + this.friendId).then(function (response) {
                 _this4.chat.messages = response.data;
+                _this4.$Progress.finish();
+            }).catch(function () {
+                _this4.$Progress.fail();
             });
         },
         getTime: function getTime() {
@@ -98693,6 +98714,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this5 = this;
 
             if (this.lock == '0') {
+                this.$Progress.start();
                 console.log('Initializing..');
                 Echo.private('chat.' + this.myId).listenForWhisper('typing', function (e) {
                     _this5.test = e.user;
@@ -98725,15 +98747,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
 
                 this.lock = '1';
+                this.$Progress.finish();
             }
         },
         getFriend: function getFriend() {
             var _this6 = this;
 
             // console.log('friend me: '+this.friendId);
+            this.$Progress.start();
             axios.get('/getFriend/' + this.friendId).then(function (response) {
                 _this6.currentUser = response.data.name;
+                _this6.$Progress.finish();
                 // this.myAllMessages.push();
+            }).catch(function () {
+                _this6.$Progress.fail();
             });
         },
         loadFirst: function loadFirst() {
@@ -98764,14 +98791,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.updateStatuses();
     },
     created: function created() {
-
-        //Will fetch matches after every x000 (x seconds)
-        // setInterval(() => {
-        //     this.getAllMessages();
-        // }, 3000);
-        //Fetching end
-
-
         console.log('created');
         this.fetchMe();
         this.getAllMessages();
@@ -99227,23 +99246,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
+            this.$Progress.start();
             axios.get('/getUsers?page=' + page).then(function (response) {
+                _this.$Progress.finish();
                 _this.users = response.data;
+            }).catch(function () {
+                _this.$Progress.fail();
             });
         },
         updateProperty: function updateProperty() {
+            var _this2 = this;
+
+            this.$Progress.start();
             this.form.post('/updateProperty').then(function () {
                 //Close form
+                _this2.$Progress.finish();
                 $('#addModal').modal('hide');
                 //Show success modal
                 Swal.fire('Updated!', 'User data has been updated.', 'success');
                 Fire.$emit('reloadUsers');
             }).catch(function () {
                 //fail
+                _this2.$Progress.fail();
             });
         },
         deleteProperty: function deleteProperty(id) {
-            var _this2 = this;
+            var _this3 = this;
 
             Swal.fire({
                 title: 'Are you sure?',
@@ -99256,13 +99284,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (result) {
                 if (result.value) {
                     //Sent request to the server
+                    _this3.$Progress.start();
                     axios.get('/deleteProperty/' + id).then(function (response) {
-                        _this2.users = response.data;
-                        _this2.loadProperties();
+                        _this3.users = response.data;
+                        _this3.loadProperties();
+                        _this3.$Progress.finish();
                     });
                 }
             }).catch(function () {
-                console.log("4");
+                _this3.$Progress.fail();
                 //Swal ("Failed", "There was something wrong!", "Warning");
                 alert("There was something wrong!");
             });
@@ -99272,29 +99302,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return pic;
         },
         loadProperties: function loadProperties() {
-            var _this3 = this;
+            var _this4 = this;
 
             var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
+            this.$Progress.start();
             axios.get('/property?page=' + page).then(
             //Get all routes data
             function (_ref) {
                 var data = _ref.data;
-                return _this3.properties = data;
+                return _this4.properties = data;
+            }).catch(function () {
+                _this4.$Progress.fail();
             });
         }
     },
     mounted: function mounted() {
-        var _this4 = this;
+        var _this5 = this;
 
         console.log('addProperty Component mounted.');
 
         console.log('Base URL:' + Vue.prototype.$baseURL);
+        this.$Progress.start();
         axios.get('/property').then(
         //Get all routes data
         function (_ref2) {
             var data = _ref2.data;
-            return _this4.properties = data;
+            return _this5.properties = data;
+        }).catch(function () {
+            _this5.$Progress.fail();
         });
     },
     created: function created() {
@@ -99881,23 +99917,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             var _this = this;
 
             console.log("Country: " + event.target.value);
+            this.$Progress.start();
             axios.post('/ajax/get_state_data', {
                 country: event.target.value
             }).then(function (_ref2) {
                 var data = _ref2.data;
                 return _this.states = data['success'];
+            }).catch(function () {
+                _this.$Progress.fail();
             });
+            this.$Progress.finish();
         },
         cityOf: function cityOf(event) {
             var _this2 = this;
 
             console.log("Country: " + event.target.value);
+            this.$Progress.start();
             axios.post('/ajax/get_city_data', {
                 state: event.target.value
             }).then(function (_ref3) {
                 var data = _ref3.data;
                 return _this2.cities = data['success'];
+            }).catch(function () {
+                _this2.$Progress.fail();
             });
+            this.$Progress.finish();
         },
         getPictures: function getPictures(index) {
             var pic = this.form2.pictures[index].media.length > 200 ? this.form2.pictures[index].media : this.baseURL + "/images/property/" + this.form2.pictures[index].media;
@@ -99935,12 +99979,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         createProperty: function createProperty() {
             var _this3 = this;
 
+            this.$Progress.start();
             this.form.post('/property').then(function (_ref4) {
                 var data = _ref4.data;
 
                 console.log(data);
                 _this3.property_id = data;
-
+                _this3.$Progress.finish();
                 toast.fire({
                     type: 'success',
                     title: 'Property created successfully'
@@ -99948,6 +99993,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 _this3.step = 4;
                 // this.$router.push('/properties');
             }).catch(function () {
+                _this3.$Progress.fail();
                 if (_this3.form.errors.has('description') | _this3.form.errors.has('per_night_rent') | _this3.form.errors.has('availibility') | _this3.form.errors.has('thumbnail') | _this3.form.errors.has('address')) {
                     _this3.step = 1;
                 } else if (_this3.form.errors.has('status') | _this3.form.errors.has('location') | _this3.form.errors.has('type') | _this3.form.errors.has('bedrooms') | _this3.form.errors.has('bathrooms') | _this3.form.errors.has('floors') | _this3.form.errors.has('garages') | _this3.form.errors.has('area') | _this3.form.errors.has('size') | _this3.form.errors.has('city') | _this3.form.errors.has('country') | _this3.form.errors.has('state')) {
@@ -100003,28 +100049,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             var _this6 = this;
 
             this.form2.property_id = this.property_id;
+            this.$Progress.start();
             this.form2.post('/propertyPictures').then(function () {
+                _this6.$Progress.finish();
                 toast.fire({
                     type: 'success',
                     title: 'Property created successfully'
                 });
                 _this6.$router.push('/properties');
-            }).catch(function () {});
+            }).catch(function () {
+                _this6.$Progress.fail();
+            });
         }
     },
     mounted: function mounted() {
         var _this7 = this;
 
         //Getting property features
+        this.$Progress.start();
         axios.get('/property/create').then(function (_ref5) {
             var data = _ref5.data;
             return _this7.features = data;
+        }).catch(function () {
+            _this7.$Progress.fail();
         });
 
         axios.get('/ajax/get_countries_data').then(function (_ref6) {
             var data = _ref6.data;
             return _this7.countries = data['success'];
+        }).catch(function () {
+            _this7.$Progress.fail();
         });
+        this.$Progress.finish();
 
         this.addRow();
         this.addPic();
@@ -101084,36 +101140,7 @@ if (false) {
 }
 
 /***/ }),
-/* 431 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var normalizeComponent = __webpack_require__(12)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/general_chat/Messaging.vue"
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 431 */,
 /* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -101502,23 +101529,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             var _this = this;
 
             console.log("Country: " + event.target.value);
+            this.$Progress.start();
             axios.post('/ajax/get_state_data', {
                 country: event.target.value
             }).then(function (_ref2) {
                 var data = _ref2.data;
                 return _this.states = data['success'];
+            }).catch(function () {
+                _this.$Progress.fail();
             });
+            this.$Progress.finish();
         },
         cityOf: function cityOf(event) {
             var _this2 = this;
 
             console.log("Country: " + event.target.value);
+            this.$Progress.start();
             axios.post('/ajax/get_city_data', {
                 state: event.target.value
             }).then(function (_ref3) {
                 var data = _ref3.data;
                 return _this2.cities = data['success'];
+            }).catch(function () {
+                _this2.$Progress.fail();
             });
+            this.$Progress.finish();
         },
         getPictures: function getPictures(index) {
             var pic = this.form2.pictures[index].media.length > 200 ? this.form2.pictures[index].media : this.baseURL + "/images/property/gallary/" + this.form2.pictures[index].media;
@@ -101606,8 +101641,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
             var id = this.$route.params.id;
             console.log(id);
-
+            this.$Progress.start();
             this.form.put('/property/' + id).then(function () {
+                _this5.$Progress.finish();
                 toast.fire({
                     type: 'success',
                     title: 'Property updated successfully'
@@ -101615,6 +101651,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 _this5.step = 4;
                 // this.$router.push('/properties');
             }).catch(function () {
+                _this5.$Progress.fail();
                 if (_this5.form.errors.has('description') | _this5.form.errors.has('per_night_rent') | _this5.form.errors.has('availibility') | _this5.form.errors.has('thumbnail') | _this5.form.errors.has('address')) {
                     _this5.step = 1;
                 } else if (_this5.form.errors.has('status') | _this5.form.errors.has('location') | _this5.form.errors.has('type') | _this5.form.errors.has('bedrooms') | _this5.form.errors.has('bathrooms') | _this5.form.errors.has('floors') | _this5.form.errors.has('garages') | _this5.form.errors.has('area') | _this5.form.errors.has('size') | _this5.form.errors.has('city') | _this5.form.errors.has('country') | _this5.form.errors.has('state')) {
@@ -101629,13 +101666,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             var _this6 = this;
 
             this.form2.property_id = this.$route.params.id;
+            this.$Progress.start();
             this.form2.post('/propertyPictures').then(function () {
                 toast.fire({
                     type: 'success',
                     title: 'Property created successfully'
                 });
                 _this6.$router.push('/properties');
-            }).catch(function () {});
+                _this6.$Progress.finish();
+            }).catch(function () {
+                _this6.$Progress.fail();
+            });
         }
     },
     created: function created() {
@@ -101643,22 +101684,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         //Load data
         var id = this.$route.params.id;
+        this.$Progress.start();
         axios.get('/getProperty/' + id).then(function (data) {
             _this7.form.fill(data.data);
             _this7.form2.pictures = data.data["pictures"];
+            _this7.$Progress.finish();
+        }).catch(function () {
+            _this7.$Progress.fail();
         });
         //Get current property details
+        this.$Progress.start();
         axios.get('/property/create').then(
         //Get all routes data
         function (_ref4) {
             var data = _ref4.data;
             return _this7.features = data;
+        }).catch(function () {
+            _this7.$Progress.fail();
         });
-
+        this.$Progress.start();
         axios.get('/ajax/get_countries_data').then(function (_ref5) {
             var data = _ref5.data;
             return _this7.countries = data['success'];
+        }).catch(function () {
+            _this7.$Progress.fail();
         });
+        this.$Progress.finish();
     },
     mounted: function mounted() {
         this.addPic();
@@ -102868,10 +102919,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         showRelevantProperties: function showRelevantProperties() {
             var _this = this;
 
+            this.$Progress.start();
             this.form.post("/getRelevantProperties").then(function (_ref) {
                 var data = _ref.data;
                 return _this.properties = data;
+            }).catch(function () {
+                _this.$Progress.fail();
             });
+            this.$Progress.finish();
         },
         getThumb: function getThumb(index) {
             var pic = this.properties[index].thumbnail.length > 200 ? this.properties[index].thumbnail : this.baseURL + "/images/property/" + this.properties[index].thumbnail;
@@ -102882,10 +102937,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this2 = this;
 
         console.log('Test Component mounted.');
+        this.$Progress.start();
         axios.get("/getPropertiesView").then(function (_ref2) {
             var data = _ref2.data;
             return _this2.properties = data.data;
+        }).catch(function () {
+            _this2.$Progress.fail();
         });
+        this.$Progress.finish();
     }
 });
 
@@ -103335,8 +103394,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchMe: function fetchMe() {
             var _this = this;
 
+            this.$Progress.start();
             axios.get('/fetchMe').then(function (response) {
                 _this.me = response.data;
+                _this.$Progress.finish();
+            }).catch(function () {
+                _this.$Progress.fail();
             });
         }
     },
@@ -103348,10 +103411,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // console.log(m);
         //Load data
         var id = this.$route.params.id;
+        this.$Progress.start();
         axios.get('/propertyDetailView/' + id).then(function (_ref) {
             var data = _ref.data;
             return _this2.property = data;
+        }).catch(function () {
+            _this2.$Progress.fail();
         });
+        this.$Progress.finish();
         this.friendId = this.property.user_id;
     }
 });
@@ -103892,10 +103959,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         showRelevantProperties: function showRelevantProperties() {
             var _this = this;
 
+            this.$Progress.start();
             this.form.post("/getRelevantProperties").then(function (_ref) {
                 var data = _ref.data;
                 return _this.properties = data.data;
+            }).catch(function () {
+                _this.$Progress.fail();
             });
+            this.$Progress.finish();
         },
         getThumb: function getThumb(index) {
             var pic = this.properties[index].thumbnail.length > 200 ? this.properties[index].thumbnail : this.baseURL + "/images/property/" + this.properties[index].thumbnail;
@@ -103912,10 +103983,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this2 = this;
 
         console.log('Test Component mounted.');
+        this.$Progress.start();
         axios.get("/getAllProperties").then(function (_ref2) {
             var data = _ref2.data;
             return _this2.properties = data.data;
+        }).catch(function () {
+            _this2.$Progress.fail();
         });
+        this.$Progress.finish();
     }
 });
 
@@ -104333,10 +104408,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // console.log(m);
         //Load data
         var id = this.$route.params.id;
+        this.$Progress.start();
         axios.get('/propertyView/' + id).then(function (_ref) {
             var data = _ref.data;
             return _this.property = data;
+        }).catch(function () {
+            _this.$Progress.fail();
         });
+        this.$Progress.finish();
         this.friendId = this.property.user_id;
     }
 });
@@ -104867,20 +104946,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return pic;
         },
         updateInfo: function updateInfo() {
+            var _this2 = this;
+
+            this.$Progress.start();
             this.form.post('/update_renter').then(function () {
+                _this2.$Progress.finish();
                 //Show success modal
                 Swal.fire('Updated!', 'Your profile has been updated.', 'success');
-            }).catch(function () {});
+            }).catch(function () {
+                _this2.$Progress.fail();
+            });
         }
     },
     created: function created() {
-        var _this2 = this;
+        var _this3 = this;
 
         //Get current logged in profile data
+        this.$Progress.start();
         axios.get("/renter_profile").then(function (_ref) {
             var data = _ref.data;
-            return _this2.form.fill(data);
+            return _this3.form.fill(data);
+        }).catch(function () {
+            _this3.$Progress.fail();
         });
+        this.$Progress.finish();
     },
     mounted: function mounted() {}
 });
@@ -105728,25 +105817,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var pic = this.form.user_image.length > 200 ? this.form.user_image : this.baseURL + "/images/user/owner/" + this.form.user_image;
             return pic;
         },
-        lePic: function lePic() {
-            var pic = this.form.user_image.length > 200 ? this.form.user_image : this.baseURL + "/images/user/renter/" + this.form.user_image;
-            return pic;
-        },
         updateInfo: function updateInfo() {
+            var _this2 = this;
+
+            this.$Progress.start();
             this.form.post('/update_owner').then(function () {
+                _this2.$Progress.finish();
                 //Show success modal
                 Swal.fire('Updated!', 'Your profile has been updated.', 'success');
-            }).catch(function () {});
+            }).catch(function () {
+                _this2.$Progress.fail();
+            });
         }
     },
     created: function created() {
-        var _this2 = this;
+        var _this3 = this;
 
         //Get current logged in profile data
+        this.$Progress.start();
         axios.get("/owner_profile").then(function (_ref) {
             var data = _ref.data;
-            return _this2.form.fill(data);
+            return _this3.form.fill(data);
+        }).catch(function () {
+            _this3.$Progress.fail();
         });
+        this.$Progress.finish();
     },
     mounted: function mounted() {}
 });
@@ -106508,10 +106603,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // console.log(m);
         //Load data
         var id = this.$route.params.id;
+        this.$Progress.start();
         axios.get('/propertyView/' + id).then(function (_ref) {
             var data = _ref.data;
             return _this.property = data;
+        }).catch(function () {
+            _this.$Progress.fail();
         });
+        this.$Progress.finish();
         this.friendId = this.property.user_id;
     }
 });
@@ -130053,6 +130152,26 @@ function buildChildren(node) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 713 */,
+/* 714 */,
+/* 715 */,
+/* 716 */,
+/* 717 */,
+/* 718 */,
+/* 719 */,
+/* 720 */,
+/* 721 */,
+/* 722 */,
+/* 723 */,
+/* 724 */,
+/* 725 */,
+/* 726 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,o){ true?module.exports=o():"function"==typeof define&&define.amd?define(o):t.VueProgressBar=o()}(this,function(){"use strict";!function(){if("undefined"!=typeof document){var t=document.head||document.getElementsByTagName("head")[0],o=document.createElement("style"),i=" .__cov-progress { opacity: 1; z-index: 999999; } ";o.type="text/css",o.styleSheet?o.styleSheet.cssText=i:o.appendChild(document.createTextNode(i)),t.appendChild(o)}}();var t="undefined"!=typeof window,r={render:function(){var t=this,o=t.$createElement;return(t._self._c||o)("div",{staticClass:"__cov-progress",style:t.style})},staticRenderFns:[],name:"VueProgress",serverCacheKey:function(){return"Progress"},computed:{style:function(){var t=this.progress,o=t.options,i=!!o.show,e=o.location,s={"background-color":o.canSuccess?o.color:o.failedColor,opacity:o.show?1:0,position:o.position};return"top"===e||"bottom"===e?("top"===e?s.top="0px":s.bottom="0px",o.inverse?s.right="0px":s.left="0px",s.width=t.percent+"%",s.height=o.thickness,s.transition=(i?"width "+o.transition.speed+", ":"")+"opacity "+o.transition.opacity):"left"!==e&&"right"!==e||("left"===e?s.left="0px":s.right="0px",o.inverse?s.top="0px":s.bottom="0px",s.height=t.percent+"%",s.width=o.thickness,s.transition=(i?"height "+o.transition.speed+", ":"")+"opacity "+o.transition.opacity),s},progress:function(){return t?window.VueProgressBarEventBus.RADON_LOADING_BAR:{percent:0,options:{canSuccess:!0,show:!1,color:"rgb(19, 91, 55)",failedColor:"red",thickness:"2px",transition:{speed:"0.2s",opacity:"0.6s",termination:300},location:"top",autoRevert:!0,inverse:!1}}}}};return{install:function(o){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{},i=(o.version.split(".")[0],"undefined"!=typeof window),e={$vm:null,state:{tFailColor:"",tColor:"",timer:null,cut:0},init:function(t){this.$vm=t},start:function(t){var o=this;this.$vm&&(t||(t=3e3),this.$vm.RADON_LOADING_BAR.percent=0,this.$vm.RADON_LOADING_BAR.options.show=!0,this.$vm.RADON_LOADING_BAR.options.canSuccess=!0,this.state.cut=1e4/Math.floor(t),clearInterval(this.state.timer),this.state.timer=setInterval(function(){o.increase(o.state.cut*Math.random()),95<o.$vm.RADON_LOADING_BAR.percent&&o.$vm.RADON_LOADING_BAR.options.autoFinish&&o.finish()},100))},set:function(t){this.$vm.RADON_LOADING_BAR.options.show=!0,this.$vm.RADON_LOADING_BAR.options.canSuccess=!0,this.$vm.RADON_LOADING_BAR.percent=Math.floor(t)},get:function(){return Math.floor(this.$vm.RADON_LOADING_BAR.percent)},increase:function(t){this.$vm.RADON_LOADING_BAR.percent=Math.min(99,this.$vm.RADON_LOADING_BAR.percent+Math.floor(t))},decrease:function(t){this.$vm.RADON_LOADING_BAR.percent=this.$vm.RADON_LOADING_BAR.percent-Math.floor(t)},hide:function(){var t=this;clearInterval(this.state.timer),this.state.timer=null,setTimeout(function(){t.$vm.RADON_LOADING_BAR.options.show=!1,o.nextTick(function(){setTimeout(function(){t.$vm.RADON_LOADING_BAR.percent=0},100),t.$vm.RADON_LOADING_BAR.options.autoRevert&&setTimeout(function(){t.revert()},300)})},this.$vm.RADON_LOADING_BAR.options.transition.termination)},pause:function(){clearInterval(this.state.timer)},finish:function(){this.$vm&&(this.$vm.RADON_LOADING_BAR.percent=100,this.hide())},fail:function(){this.$vm.RADON_LOADING_BAR.options.canSuccess=!1,this.$vm.RADON_LOADING_BAR.percent=100,this.hide()},setFailColor:function(t){this.$vm.RADON_LOADING_BAR.options.failedColor=t},setColor:function(t){this.$vm.RADON_LOADING_BAR.options.color=t},setLocation:function(t){this.$vm.RADON_LOADING_BAR.options.location=t},setTransition:function(t){this.$vm.RADON_LOADING_BAR.options.transition=t},tempFailColor:function(t){this.state.tFailColor=this.$vm.RADON_LOADING_BAR.options.failedColor,this.$vm.RADON_LOADING_BAR.options.failedColor=t},tempColor:function(t){this.state.tColor=this.$vm.RADON_LOADING_BAR.options.color,this.$vm.RADON_LOADING_BAR.options.color=t},tempLocation:function(t){this.state.tLocation=this.$vm.RADON_LOADING_BAR.options.location,this.$vm.RADON_LOADING_BAR.options.location=t},tempTransition:function(t){this.state.tTransition=this.$vm.RADON_LOADING_BAR.options.transition,this.$vm.RADON_LOADING_BAR.options.transition=t},revertColor:function(){this.$vm.RADON_LOADING_BAR.options.color=this.state.tColor,this.state.tColor=""},revertFailColor:function(){this.$vm.RADON_LOADING_BAR.options.failedColor=this.state.tFailColor,this.state.tFailColor=""},revertLocation:function(){this.$vm.RADON_LOADING_BAR.options.location=this.state.tLocation,this.state.tLocation=""},revertTransition:function(){this.$vm.RADON_LOADING_BAR.options.transition=this.state.tTransition,this.state.tTransition={}},revert:function(){this.$vm.RADON_LOADING_BAR.options.autoRevert&&(this.state.tColor&&this.revertColor(),this.state.tFailColor&&this.revertFailColor(),this.state.tLocation&&this.revertLocation(),!this.state.tTransition||void 0===this.state.tTransition.speed&&void 0===this.state.tTransition.opacity||this.revertTransition())},parseMeta:function(t){for(var o in t.func){var i=t.func[o];switch(i.call){case"color":switch(i.modifier){case"set":this.setColor(i.argument);break;case"temp":this.tempColor(i.argument)}break;case"fail":switch(i.modifier){case"set":this.setFailColor(i.argument);break;case"temp":this.tempFailColor(i.argument)}break;case"location":switch(i.modifier){case"set":this.setLocation(i.argument);break;case"temp":this.tempLocation(i.argument)}break;case"transition":switch(i.modifier){case"set":this.setTransition(i.argument);break;case"temp":this.tempTransition(i.argument)}}}}},s=function(t,o){for(var i,e,s=1;s<arguments.length;++s)for(i in e=arguments[s])Object.prototype.hasOwnProperty.call(e,i)&&(t[i]=e[i]);return t}({canSuccess:!0,show:!1,color:"#73ccec",position:"fixed",failedColor:"red",thickness:"2px",transition:{speed:"0.2s",opacity:"0.6s",termination:300},autoRevert:!0,location:"top",inverse:!1,autoFinish:!0},t),n=new o({data:{RADON_LOADING_BAR:{percent:0,options:s}}});i&&(window.VueProgressBarEventBus=n,e.init(n)),o.component("vue-progress-bar",r),o.prototype.$Progress=e}}});
+
 
 /***/ })
 /******/ ]);

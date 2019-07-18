@@ -331,17 +331,27 @@
         methods:{
             stateOf(event){
                 console.log("Country: "+ event.target.value);
+                this.$Progress.start();
                 axios.post('/ajax/get_state_data', {
                     country: event.target.value
                 })
-                .then( ({ data }) => (this.states=data['success']) );
+                .then( ({ data }) => (this.states=data['success']) )
+                .catch( ()=>{
+                    this.$Progress.fail();
+                });
+                this.$Progress.finish();
             },
             cityOf(event){
                 console.log("Country: "+ event.target.value);
+                this.$Progress.start();
                 axios.post('/ajax/get_city_data', {
                     state: event.target.value
                 })
-                .then( ({ data }) => (this.cities=data['success']) );
+                .then( ({ data }) => (this.cities=data['success']) )
+                .catch( ()=>{
+                    this.$Progress.fail();
+                });
+                this.$Progress.finish();
             },
             getPictures(index){
                 let pic = (this.form2.pictures[index].media.length > 200) ? this.form2.pictures[index].media : this.baseURL+"/images/property/gallary/"+ this.form2.pictures[index].media ;
@@ -429,8 +439,9 @@
             updateProperty(){
                 let id = this.$route.params.id;
                 console.log(id);
-
+                this.$Progress.start();
                 this.form.put('/property/'+id).then( ()=>{
+                    this.$Progress.finish();
                     toast.fire({
                     type: 'success',
                     title: 'Property updated successfully'
@@ -439,6 +450,7 @@
                     // this.$router.push('/properties');
                 })
                 .catch( ()=>{
+                    this.$Progress.fail();
                     if(this.form.errors.has('description') | this.form.errors.has('per_night_rent')
                     | this.form.errors.has('availibility') | this.form.errors.has('thumbnail')
                     | this.form.errors.has('address'))
@@ -464,6 +476,7 @@
             },
             savePictures(){
                 this.form2.property_id = this.$route.params.id;
+                this.$Progress.start();
                 this.form2.post('/propertyPictures')
                 .then( ()=>{
                     toast.fire({
@@ -471,8 +484,10 @@
                     title: 'Property created successfully'
                     });        
                     this.$router.push('/properties');
+                    this.$Progress.finish();
                 })
                 .catch( ()=>{
+                    this.$Progress.fail();
                 })    
             }
 
@@ -480,21 +495,33 @@
         created() {
             //Load data
             let id = this.$route.params.id;
+            this.$Progress.start();
             axios.get('/getProperty/'+id)
                 .then( (data) =>{
                     this.form.fill(data.data);
                     this.form2.pictures = data.data["pictures"];
+                    this.$Progress.finish();
+                })
+                .catch( ()=>{
+                    this.$Progress.fail();
                 });
             //Get current property details
+            this.$Progress.start();
            axios.get('/property/create')
             .then(
                 //Get all routes data
                 ({ data }) => (this.features=data)
-               );
-
+            )
+            .catch( ()=>{
+                this.$Progress.fail();
+            });
+            this.$Progress.start();
             axios.get('/ajax/get_countries_data')
-            .then( ({ data }) => (this.countries=data['success']) );
-            
+            .then( ({ data }) => (this.countries=data['success']) )
+            .catch( ()=>{
+                this.$Progress.fail();
+            });
+            this.$Progress.finish();
 
         },
         mounted(){

@@ -102,14 +102,21 @@
                 this.form.fill(property);
             },
             getResults(page = 1) {
+                this.$Progress.start();
                axios.get('/getUsers?page=' + page)
                .then(response => {
+                   this.$Progress.finish();
                   this.users = response.data;
-               });
+               })
+                .catch( ()=>{
+                    this.$Progress.fail();
+                });
 		      },
             updateProperty(){
+                this.$Progress.start();
                 this.form.post('/updateProperty').then( ()=>{
                     //Close form
+                    this.$Progress.finish();
                     $('#addModal').modal('hide');
                     //Show success modal
                             Swal.fire(
@@ -121,6 +128,7 @@
                 })
                 .catch( ()=>{
                     //fail
+                    this.$Progress.fail();
                 } )
             },
             deleteProperty(id){
@@ -136,14 +144,16 @@
                     if(result.value)
                     {
                         //Sent request to the server
+                        this.$Progress.start();
                         axios.get('/deleteProperty/'+ id)
                         .then(response => {
                             this.users = response.data;
                             this.loadProperties();
+                            this.$Progress.finish();
                         });
                     }
                 }).catch( ()=>{
-                        console.log("4");
+                        this.$Progress.fail();
                     //Swal ("Failed", "There was something wrong!", "Warning");
                     alert ("There was something wrong!"); 
                 } );
@@ -153,22 +163,30 @@
                 return pic;
             },
             loadProperties(page=1){
+                this.$Progress.start();
                 axios.get('/property?page='+page)
                 .then(
                     //Get all routes data
                     ({ data }) => (this.properties=data)
-                );
+                )
+                .catch( ()=>{
+                    this.$Progress.fail();
+                });
             },
             },
             mounted() {
                 console.log('addProperty Component mounted.')
 
-            console.log('Base URL:'+ Vue.prototype.$baseURL);
+                console.log('Base URL:'+ Vue.prototype.$baseURL);
+                this.$Progress.start();
                 axios.get('/property')
                 .then(
                     //Get all routes data
                     ({ data }) => (this.properties=data)
-                );
+                )
+                .catch( ()=>{
+                    this.$Progress.fail();
+                });
             },
             created(){
                 // Fire.$on('reloadProperties', ()=>{

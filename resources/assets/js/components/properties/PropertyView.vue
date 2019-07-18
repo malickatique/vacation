@@ -146,7 +146,12 @@
             // console.log(m);
             //Load data
             let id = this.$route.params.id;
-            axios.get('/propertyView/'+id).then(({ data }) => (this.property = data));
+            this.$Progress.start();
+            axios.get('/propertyView/'+id).then(({ data }) => (this.property = data))
+            .catch( ()=>{
+                this.$Progress.fail();
+            });
+            this.$Progress.finish();
             this.friendId = this.property.user_id;
         }
     }

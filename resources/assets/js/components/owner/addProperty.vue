@@ -331,17 +331,27 @@
         methods:{
             stateOf(event){
                 console.log("Country: "+ event.target.value);
+                this.$Progress.start();
                 axios.post('/ajax/get_state_data', {
                     country: event.target.value
                 })
-                .then( ({ data }) => (this.states=data['success']) );
+                .then( ({ data }) => (this.states=data['success']) )
+                .catch( ()=>{
+                    this.$Progress.fail();
+                });
+                this.$Progress.finish();
             },
             cityOf(event){
                 console.log("Country: "+ event.target.value);
+                this.$Progress.start();
                 axios.post('/ajax/get_city_data', {
                     state: event.target.value
                 })
-                .then( ({ data }) => (this.cities=data['success']) );
+                .then( ({ data }) => (this.cities=data['success']) )
+                .catch( ()=>{
+                    this.$Progress.fail();
+                });
+                this.$Progress.finish();
             },
             getPictures(index){
                 let pic = (this.form2.pictures[index].media.length > 200) ? this.form2.pictures[index].media : this.baseURL+"/images/property/"+ this.form2.pictures[index].media ;
@@ -377,11 +387,12 @@
                 this.form.multipleOccasions.splice(index,1);
             },
             createProperty(){
+                this.$Progress.start();
                 this.form.post('/property')
                 .then( ({data})=>{
                     console.log(data);
                     this.property_id= data;
-
+                    this.$Progress.finish();
                     toast.fire({
                     type: 'success',
                     title: 'Property created successfully'
@@ -390,6 +401,7 @@
                     // this.$router.push('/properties');
                 })
                 .catch( ()=>{
+                    this.$Progress.fail();
                     if(this.form.errors.has('description') | this.form.errors.has('per_night_rent')
                     | this.form.errors.has('availibility') | this.form.errors.has('thumbnail')
                     | this.form.errors.has('address'))
@@ -457,8 +469,10 @@
             },
             savePictures(){
                 this.form2.property_id = this.property_id;
+                this.$Progress.start();
                 this.form2.post('/propertyPictures')
                 .then( ()=>{
+                    this.$Progress.finish();
                     toast.fire({
                     type: 'success',
                     title: 'Property created successfully'
@@ -466,17 +480,26 @@
                     this.$router.push('/properties');
                 })
                 .catch( ()=>{
+                    this.$Progress.fail();
                 })    
             }
 
         },
         mounted() {
             //Getting property features
+            this.$Progress.start();
             axios.get('/property/create')
-            .then( ({ data }) => (this.features=data) );
+            .then( ({ data }) => (this.features=data) )
+            .catch( ()=>{
+                this.$Progress.fail();
+            });
             
             axios.get('/ajax/get_countries_data')
-            .then( ({ data }) => (this.countries=data['success']) );
+            .then( ({ data }) => (this.countries=data['success']) )
+            .catch( ()=>{
+                this.$Progress.fail();
+            });
+            this.$Progress.finish();
 
             this.addRow();
             this.addPic();
