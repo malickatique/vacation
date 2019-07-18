@@ -49245,7 +49245,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_chat_scroll___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_progressbar___default.a, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
-    height: '30px'
+    height: '4px'
 });
 
 //Vue Components
@@ -49319,7 +49319,7 @@ Vue.prototype.$myId = 'null';
 Vue.prototype.$friendId = 'null';
 
 //Uncomment it for live server
-// Vue.prototype.$baseURL = '';
+Vue.prototype.$baseURL = '';
 // Vue.prototype.$baseURL = '/2019/ovr';
 
 

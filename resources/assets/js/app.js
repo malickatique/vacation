@@ -21,7 +21,7 @@ import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
-    height: '30px'
+    height: '4px'
 });
 
 //Vue Components
@@ -104,7 +104,7 @@ Vue.prototype.$myId = 'null';
 Vue.prototype.$friendId = 'null';
 
 //Uncomment it for live server
-// Vue.prototype.$baseURL = '';
+Vue.prototype.$baseURL = '';
 // Vue.prototype.$baseURL = '/2019/ovr';
 
 
