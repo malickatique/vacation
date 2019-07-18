@@ -348,7 +348,7 @@ class propertiesController extends Controller
         $lastInsertedPropertyId = $property->id;
         $metadata = PropertyMetadata::where('property_id',$lastInsertedPropertyId)->first();
         $metadata->type = $request['type'];
-        // $metadata->status = $request['status'];
+        $metadata->status = '0';
         // $metadata->location = $request['location'];
         $metadata->bedrooms = $request['bedrooms'];
         $metadata->bathrooms = $request['bathrooms'];
