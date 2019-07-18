@@ -32,8 +32,9 @@ class pagesController extends Controller {
     //site main page 
     public function main_page() {
         //
-        $properties = Property::where('id', '>', '0')->take(4)
-            ->get();
+        $properties = Property::where('status', '=', '1')
+        ->take(4)
+        ->get();
         $navs = Page::where('status', 1)->get();
 
         // global setting start
@@ -184,7 +185,7 @@ class pagesController extends Controller {
     // site all properties pages
     public function show_properties() {
 
-        $properties = Property::where('id', '>', '0')->get();
+        $properties = Property::where('status', '=', '1')->get();
         $navs = Page::where('status', 1)->get();
 
          // global setting start

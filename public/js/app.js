@@ -102852,7 +102852,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.form.post("/getRelevantProperties").then(function (_ref) {
                 var data = _ref.data;
-                return _this.properties = data.data;
+                return _this.properties = data;
             });
         },
         getThumb: function getThumb(index) {

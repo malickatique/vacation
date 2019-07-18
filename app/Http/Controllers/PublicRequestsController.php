@@ -84,46 +84,105 @@ class PublicRequestsController extends Controller
         return $data;
     }
     public function getRelevantProperties(Request $request)
-    {
+    {   
+        $properties=[];
         if($request->lookingFor!='' & $request->location!='' & $request->cator!='')
         {
-            return Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
-            ->orWhere('address', 'LIKE', "%{$request->location}%" )
-            ->where('status', 'LIKE', "%{$request->cator}%" )
-            ->paginate(5);
+            $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+            ->where('status', '=', '1')
+            ->orWhere('country', 'LIKE', "%{$request->location}%" )
+            ->orWhere('state', 'LIKE', "%{$request->location}%" )
+            ->orWhere('city', 'LIKE', "%{$request->location}%" )
+            ->get();
+            $count=0;
+            foreach($properties_metadata as $metadata)
+            {
+                $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
+            }
+            // $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
+            // ->orWhere('address', 'LIKE', "%{$request->location}%" )
+            // ->orWhere('description', 'LIKE', "%{$request->cator}%" )
+            // ->get();
         }
         else if($request->lookingFor!='' & $request->location!='')
         {
-            return Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
+            // $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+            // ->orWhere('country', 'LIKE', "%{$request->location}%" )
+            // ->orWhere('state', 'LIKE', "%{$request->location}%" )
+            // ->orWhere('city', 'LIKE', "%{$request->location}%" )
+            // ->get();
+            // $count=0;
+            // $properties=[];
+            // foreach($properties_metadata as $metadata)
+            // {
+            //     $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
+            // }
+            $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
+            ->where('status', '=', '1')
             ->orWhere('address', 'LIKE', "%{$request->location}%" )
-            ->paginate(5);
+            ->get();
         }
         else if($request->lookingFor!='' & $request->cator!='')
         {
-            return Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
-            ->where('status', 'LIKE', "%{$request->cator}%" )
-            ->paginate(5);
+            
+            $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+            ->where('status', '=', '1')
+            ->orWhere('country', 'LIKE', "%{$request->location}%" )
+            ->orWhere('state', 'LIKE', "%{$request->location}%" )
+            ->orWhere('city', 'LIKE', "%{$request->location}%" )
+            ->get();
+            $count=0;
+            $properties=[];
+            foreach($properties_metadata as $metadata)
+            {
+                $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
+            }
+            // $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
+            // ->orWhere('description', 'LIKE', "%{$request->cator}%" )
+            // ->get();
         }
         else if($request->cator!='')
         {
-            return Property::where('status', 'LIKE', "%{$request->cator}%")
-            ->paginate(5);
+            // $properties = Property::where('description', 'LIKE', "%{$request->cator}%")
+            // ->get();
+            if($request->cator == 'all')
+            {
+                //all cator
+                $properties = Property::where('status', '=', '1')
+                ->get();
+            }
+            else
+            {
+                $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+                ->where('status', '=', '1')
+                ->get();
+                $count=0;
+                $properties=[];
+                foreach($properties_metadata as $metadata)
+                {
+                    $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
+                }
+            }
         }
         else if($request->lookingFor!='' )
         {
-            return Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
-            ->orWhere('description', 'LIKE', "%{$request->lookingFor}%")
-            ->paginate(5);
+            $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
+            ->where('status', '=', '1')
+            ->get();
         }
         else if($request->location!='' )
         {
-            return Property::where('name', 'LIKE', "%{$request->location}%" )
+            $properties = Property::where('name', 'LIKE', "%{$request->location}%" )
+            ->where('status', '=', '1')
             ->orWhere('description', 'LIKE', "%{$request->description}%")
-            ->paginate(5);
+            ->get();
         }
         else{
-            return Property::latest()->paginate(5);
+            $properties = Property::latest()
+            ->where('status', '=', '1')
+            ->get();
         }
+        return $properties;
 
     }
     public function getSearchResults(Request $request)
@@ -132,6 +191,7 @@ class PublicRequestsController extends Controller
         if($request->lookingFor!='' & $request->location!='' & $request->cator!='')
         {
             $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+            ->where('status', '=', '1')
             ->orWhere('country', 'LIKE', "%{$request->location}%" )
             ->orWhere('state', 'LIKE', "%{$request->location}%" )
             ->orWhere('city', 'LIKE', "%{$request->location}%" )
@@ -161,6 +221,7 @@ class PublicRequestsController extends Controller
             //     $properties[$count++] = Property::where('id', '=', "{$metadata->property_id}" )->first();
             // }
             $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
+            ->where('status', '=', '1')
             ->orWhere('address', 'LIKE', "%{$request->location}%" )
             ->get();
         }
@@ -168,6 +229,7 @@ class PublicRequestsController extends Controller
         {
             
             $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+            ->where('status', '=', '1')
             ->orWhere('country', 'LIKE', "%{$request->location}%" )
             ->orWhere('state', 'LIKE', "%{$request->location}%" )
             ->orWhere('city', 'LIKE', "%{$request->location}%" )
@@ -189,12 +251,13 @@ class PublicRequestsController extends Controller
             if($request->cator == 'all')
             {
                 //all cator
-                $properties = Property::
-                get();
+                $properties = Property::where('status', '=', '1')
+                ->get();
             }
             else
             {
                 $properties_metadata = PropertyMetadata::where('type', '=', $request->cator )
+                ->where('status', '=', '1')
                 ->get();
                 $count=0;
                 $properties=[];
@@ -207,17 +270,20 @@ class PublicRequestsController extends Controller
         else if($request->lookingFor!='' )
         {
             $properties = Property::where('name', 'LIKE', "%{$request->lookingFor}%" )
-            // ->orWhere('description', 'LIKE', "%{$request->lookingFor}%")
+            ->where('status', '=', '1')
             ->get();
         }
         else if($request->location!='' )
         {
             $properties = Property::where('name', 'LIKE', "%{$request->location}%" )
+            ->where('status', '=', '1')
             ->orWhere('description', 'LIKE', "%{$request->description}%")
             ->get();
         }
         else{
-            $properties = Property::latest()->get();
+            $properties = Property::latest()
+            ->where('status', '=', '1')
+            ->get();
         }
         
         $navs = Page::where('status', 1)->get();
@@ -250,6 +316,7 @@ class PublicRequestsController extends Controller
     {
 
         $properties_metadata = PropertyMetadata::where('country', '=', "{$location}" )
+        ->where('status', '=', '1')
         ->orWhere('state', '=', "{$location}")
         ->orWhere('city', '=', "{$location}")
         ->get();

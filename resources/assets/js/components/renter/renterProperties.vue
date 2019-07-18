@@ -96,7 +96,7 @@
                 this.$router.push({ path: '/propertyView/'+id});
             },
             showRelevantProperties(){
-                this.form.post("/getRelevantProperties").then(({ data }) => (this.properties = data.data));
+                this.form.post("/getRelevantProperties").then(({ data }) => (this.properties = data));
             },
             getThumb(index){
                 let pic = (this.properties[index].thumbnail.length > 200) ? this.properties[index].thumbnail : this.baseURL+"/images/property/"+ this.properties[index].thumbnail ;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2019 at 07:39 AM
+-- Generation Time: Jul 18, 2019 at 10:04 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -46,7 +46,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `job_title`, `status`, `imageurl`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@test.com', '$2y$10$.QNmjTb/pp0Uow/Jl.stg.FUvxqzXy0yzs90mOIBvtRD7j9f/AFrS', 'super-admin', 1, NULL, NULL, NULL, NULL);
+(1, 'admin', 'admin@test.com', '$2y$10$.QNmjTb/pp0Uow/Jl.stg.FUvxqzXy0yzs90mOIBvtRD7j9f/AFrS', 'super-admin', 1, NULL, 'fXk1RPG5UZy9Kj0c4NaqB4ZVSRPdzkaVXIQnzUwMDWZa7hDUB3fXm6aZwcKF', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -48062,13 +48062,13 @@ CREATE TABLE `configurations` (
 --
 
 INSERT INTO `configurations` (`id`, `name`, `value`, `created_at`, `updated_at`) VALUES
-(1, 'name', 'OVR', '2019-06-27 23:51:17', NULL),
-(2, 'description', 'Propert Rental', '2019-06-27 23:51:17', NULL),
-(3, 'logo', '', '2019-06-27 23:51:17', NULL),
-(4, 'favicon', '', '2019-06-27 23:51:17', NULL),
-(5, 'contact_us_email', 'info@ovr.com', '2019-06-27 23:51:17', NULL),
-(6, 'phone', '111128128', '2019-06-27 23:51:17', NULL),
-(7, 'currency', 'Dollar', '2019-06-27 23:51:17', NULL);
+(1, 'name', 'OVR', '2019-07-17 04:39:05', NULL),
+(2, 'description', 'Propert Rental', '2019-07-17 04:39:05', NULL),
+(3, 'logo', '', '2019-07-17 04:39:05', NULL),
+(4, 'favicon', '', '2019-07-17 04:39:05', NULL),
+(5, 'contact_us_email', 'info@ovr.com', '2019-07-17 04:39:05', NULL),
+(6, 'phone', '111128128', '2019-07-17 04:39:05', NULL),
+(7, 'currency', 'Dollar', '2019-07-17 04:39:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -48467,15 +48467,22 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `user_id`, `conversation_id`, `image`, `receiver_id`, `message`, `created_at`, `updated_at`) VALUES
-(1, 4, '3_4', NULL, 3, 'hello', '2019-06-28 00:10:24', '2019-06-28 00:10:24'),
-(2, 3, '3_4', NULL, 4, 'test response', '2019-06-28 00:11:17', '2019-06-28 00:11:17'),
-(3, 4, '3_4', NULL, 3, 'is typing...', '2019-06-28 00:11:25', '2019-06-28 00:11:25'),
-(4, 3, '3_4', NULL, 4, 'get date', '2019-06-28 00:11:31', '2019-06-28 00:11:31'),
-(5, 3, '3_4', NULL, 4, 'push again', '2019-06-28 00:11:37', '2019-06-28 00:11:37'),
-(6, 4, '3_4', NULL, 3, 'reverse', '2019-06-28 00:11:40', '2019-06-28 00:11:40'),
-(7, 3, '3_4', NULL, 4, 'online', '2019-06-28 00:11:44', '2019-06-28 00:11:44'),
-(8, 3, '3_4', NULL, 4, 'offline', '2019-06-28 00:11:46', '2019-06-28 00:11:46'),
-(9, 4, '3_4', NULL, 3, 'scroll', '2019-06-28 00:11:51', '2019-06-28 00:11:51');
+(4, 2, '1_2', NULL, 1, 'hi', '2019-07-17 07:24:15', '2019-07-17 07:24:15'),
+(5, 1, '1_2', NULL, 2, 'test', '2019-07-17 07:25:13', '2019-07-17 07:25:13'),
+(6, 2, '1_2', NULL, 1, 'online send', '2019-07-17 07:25:35', '2019-07-17 07:25:35'),
+(7, 2, '1_2', NULL, 1, 'scroll', '2019-07-17 07:27:19', '2019-07-17 07:27:19'),
+(8, 1, '1_2', NULL, 2, 'up', '2019-07-17 07:27:35', '2019-07-17 07:27:35'),
+(9, 2, '1_2', NULL, 1, 'online send test', '2019-07-17 07:35:01', '2019-07-17 07:35:01'),
+(10, 1, '1_2', NULL, 2, 'received', '2019-07-17 07:35:14', '2019-07-17 07:35:14'),
+(11, 4, '1_4', NULL, 1, 'Nine o five hotel..', '2019-07-18 00:58:38', '2019-07-18 00:58:38'),
+(12, 4, '1_4', NULL, 1, 'event emit', '2019-07-18 00:59:54', '2019-07-18 00:59:54'),
+(13, 4, '1_4', NULL, 1, 'pusher live', '2019-07-18 01:00:04', '2019-07-18 01:00:04'),
+(14, 4, '1_4', NULL, 1, 'empty....', '2019-07-18 01:00:11', '2019-07-18 01:00:11'),
+(15, 1, '1_4', NULL, 4, 'live test', '2019-07-18 01:00:53', '2019-07-18 01:00:53'),
+(16, 4, '1_4', NULL, 1, 'received', '2019-07-18 01:01:01', '2019-07-18 01:01:01'),
+(17, 4, '1_4', NULL, 1, '(y\n)', '2019-07-18 01:01:05', '2019-07-18 01:01:05'),
+(18, 1, '1_4', NULL, 4, 'repush', '2019-07-18 01:01:17', '2019-07-18 01:01:17'),
+(19, 1, '1_4', NULL, 4, 'time', '2019-07-18 01:01:19', '2019-07-18 01:01:19');
 
 -- --------------------------------------------------------
 
@@ -48616,6 +48623,7 @@ CREATE TABLE `properties` (
   `template_id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `per_night_rent` int(11) DEFAULT NULL,
   `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `thumbnail` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -48627,14 +48635,10 @@ CREATE TABLE `properties` (
 -- Dumping data for table `properties`
 --
 
-INSERT INTO `properties` (`id`, `user_id`, `template_id`, `name`, `description`, `address`, `thumbnail`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'House for rent', 'Property description here. Property description here. Property description here.', 'Los Angeles, US', '1561697952.png', 'rent', '2019-06-27 23:59:13', '2019-06-27 23:59:13'),
-(2, 1, 1, 'House for sale', 'Property description here. Property description here. Property description here.', 'Manhatten', '1561698105.jpeg', 'sale', '2019-06-28 00:01:45', '2019-06-28 00:01:45'),
-(3, 3, 1, 'Apartment for rent', 'Property description here. Property description here. Property description here.', 'Los Angeles', '1561698339.png', 'rent', '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(4, 3, 1, 'Apartment for sale', 'Property description here. Property description here. Property description here.', 'New York', '1561698412.png', 'sale', '2019-06-28 00:06:53', '2019-06-28 00:06:53'),
-(5, 3, 1, 'Apartment for rent in Chicago', 'Property description here. Property description here. Property description here.', 'chicago', '1561698485.jpeg', 'rent', '2019-06-28 00:08:05', '2019-06-28 00:08:05'),
-(6, 5, 1, '5955 Troost Avenue', '5955 Troost Avenue5955 Troost Avenue', 'Chicago, US', '1561698948.jpeg', 'rent', '2019-06-28 00:15:48', '2019-06-28 00:15:48'),
-(7, 5, 1, '309 Hamel Road #2', '309 Hamel Road #2309 Hamel Road #2309 Hamel Road #2', 'New York', '1561699012.jpeg', 'rent', '2019-06-28 00:16:52', '2019-06-28 00:16:52');
+INSERT INTO `properties` (`id`, `user_id`, `template_id`, `name`, `description`, `per_night_rent`, `address`, `thumbnail`, `status`, `created_at`, `updated_at`) VALUES
+(2, 1, 1, 'Big Island Bed & Breakfast', 'Real Hawaii, near the Volcano, Green Sand Beach & Black Sand Beach. Pick-Your-Own Macadamia Nut Orchard (in season) from almost 8 acres of trees! May be the southernmost B&B in the USA.', 200, '94-6263 Kamaoa Rd - 756 Naalehu (Hawaii County) UNITED STATES', '1563357589.jpeg', '0', '2019-07-17 04:59:49', '2019-07-18 01:28:32'),
+(3, 1, 1, 'Second Wind Country Inn', 'Over the years we have done boatloads of bartering. It makes us think how our ancestors settled America. They help build each others barns and bring in the crops together. We have expanded and beautified our property by bartering.', 100, '30475 Carlson Road - Ashland (Ashland County) UNITED STATES', '1563358017.jpeg', '1', '2019-07-17 05:06:58', '2019-07-18 01:33:46'),
+(8, 1, 1, 'Nine O Five Royal Hotel', 'Quaint European style small hotel. 7 rooms and 3 suites, 2 Bedroom Balcony Suites Royal St. View. Also smaller rooms. Daily maid service. Small kitchenette in each room and suites.', 295, '905 Royal St. - New Orleans (Orleans Parish) UNITED STATES', '1563429204.jpg', '0', '2019-07-18 00:53:24', '2019-07-18 01:28:37');
 
 -- --------------------------------------------------------
 
@@ -48655,41 +48659,18 @@ CREATE TABLE `property_features` (
 --
 
 INSERT INTO `property_features` (`id`, `property_id`, `feature_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(2, 1, 10, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(3, 1, 6, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(4, 1, 11, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(5, 1, 7, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(6, 1, 8, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(7, 1, 16, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(8, 2, 5, '2019-06-28 00:01:45', '2019-06-28 00:01:45'),
-(9, 2, 6, '2019-06-28 00:01:45', '2019-06-28 00:01:45'),
-(10, 2, 3, '2019-06-28 00:01:45', '2019-06-28 00:01:45'),
-(11, 2, 14, '2019-06-28 00:01:45', '2019-06-28 00:01:45'),
-(12, 2, 11, '2019-06-28 00:01:46', '2019-06-28 00:01:46'),
-(13, 2, 4, '2019-06-28 00:01:46', '2019-06-28 00:01:46'),
-(14, 2, 16, '2019-06-28 00:01:46', '2019-06-28 00:01:46'),
-(15, 3, 5, '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(16, 3, 14, '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(17, 3, 3, '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(18, 3, 7, '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(19, 3, 12, '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(20, 3, 4, '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(21, 3, 15, '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(22, 4, 2, '2019-06-28 00:06:53', '2019-06-28 00:06:53'),
-(23, 4, 6, '2019-06-28 00:06:53', '2019-06-28 00:06:53'),
-(24, 5, 10, '2019-06-28 00:08:05', '2019-06-28 00:08:05'),
-(25, 5, 6, '2019-06-28 00:08:05', '2019-06-28 00:08:05'),
-(26, 5, 11, '2019-06-28 00:08:05', '2019-06-28 00:08:05'),
-(27, 5, 15, '2019-06-28 00:08:05', '2019-06-28 00:08:05'),
-(28, 6, 14, '2019-06-28 00:15:48', '2019-06-28 00:15:48'),
-(29, 6, 11, '2019-06-28 00:15:48', '2019-06-28 00:15:48'),
-(30, 7, 6, '2019-06-28 00:16:52', '2019-06-28 00:16:52'),
-(31, 7, 11, '2019-06-28 00:16:52', '2019-06-28 00:16:52'),
-(32, 7, 4, '2019-06-28 00:16:52', '2019-06-28 00:16:52'),
-(33, 7, 16, '2019-06-28 00:16:52', '2019-06-28 00:16:52'),
-(34, 7, 1, '2019-06-28 00:16:52', '2019-06-28 00:16:52'),
-(35, 7, 13, '2019-06-28 00:16:52', '2019-06-28 00:16:52');
+(18, 3, 2, '2019-07-17 05:37:19', '2019-07-17 05:37:19'),
+(19, 3, 10, '2019-07-17 05:37:20', '2019-07-17 05:37:20'),
+(20, 3, 6, '2019-07-17 05:37:20', '2019-07-17 05:37:20'),
+(21, 3, 14, '2019-07-17 05:37:20', '2019-07-17 05:37:20'),
+(25, 2, 1, '2019-07-17 06:24:42', '2019-07-17 06:24:42'),
+(28, 8, 2, '2019-07-18 00:53:24', '2019-07-18 00:53:24'),
+(29, 8, 5, '2019-07-18 00:53:24', '2019-07-18 00:53:24'),
+(30, 8, 6, '2019-07-18 00:53:24', '2019-07-18 00:53:24'),
+(31, 8, 7, '2019-07-18 00:53:24', '2019-07-18 00:53:24'),
+(32, 8, 10, '2019-07-18 00:53:24', '2019-07-18 00:53:24'),
+(33, 8, 11, '2019-07-18 00:53:24', '2019-07-18 00:53:24'),
+(34, 8, 14, '2019-07-18 00:53:24', '2019-07-18 00:53:24');
 
 -- --------------------------------------------------------
 
@@ -48711,18 +48692,11 @@ CREATE TABLE `property_gallary` (
 --
 
 INSERT INTO `property_gallary` (`id`, `property_id`, `media`, `type`, `created_at`, `updated_at`) VALUES
-(1, 1, '1561697963.png', 1, '2019-06-27 23:59:24', '2019-06-27 23:59:24'),
-(2, 1, '1561697964.jpeg', 1, '2019-06-27 23:59:24', '2019-06-27 23:59:24'),
-(3, 2, '1561698117.png', 1, '2019-06-28 00:01:58', '2019-06-28 00:01:58'),
-(4, 2, '1561698118.jpeg', 1, '2019-06-28 00:01:58', '2019-06-28 00:01:58'),
-(5, 3, '1561698350.png', 1, '2019-06-28 00:05:51', '2019-06-28 00:05:51'),
-(6, 3, '1561698351.jpeg', 1, '2019-06-28 00:05:51', '2019-06-28 00:05:51'),
-(7, 4, '1561698422.jpeg', 1, '2019-06-28 00:07:02', '2019-06-28 00:07:02'),
-(8, 4, '1561698422.png', 1, '2019-06-28 00:07:03', '2019-06-28 00:07:03'),
-(9, 5, '1561698492.png', 1, '2019-06-28 00:08:12', '2019-06-28 00:08:12'),
-(10, 6, '1561698958.png', 1, '2019-06-28 00:15:58', '2019-06-28 00:15:58'),
-(11, 6, '1561698958.jpeg', 1, '2019-06-28 00:15:58', '2019-06-28 00:15:58'),
-(12, 7, '1561699018.png', 1, '2019-06-28 00:16:58', '2019-06-28 00:16:58');
+(3, 3, '01563359848.jpeg', 1, '2019-07-17 05:37:28', '2019-07-17 05:37:28'),
+(4, 2, '01563359606.jpeg', 1, '2019-07-17 06:24:45', '2019-07-17 06:24:45'),
+(5, 2, '11563359607.jpeg', 1, '2019-07-17 06:24:45', '2019-07-17 06:24:45'),
+(9, 8, '1563429210478a.jpeg', 7, '2019-07-18 00:53:30', '2019-07-18 00:53:30'),
+(10, 8, '1563429214427c.jpg', 7, '2019-07-18 00:53:34', '2019-07-18 00:53:34');
 
 -- --------------------------------------------------------
 
@@ -48735,13 +48709,15 @@ CREATE TABLE `property_metadata` (
   `property_id` int(11) NOT NULL,
   `type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `location` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bedrooms` int(11) DEFAULT NULL,
   `bathrooms` int(11) DEFAULT NULL,
   `floors` int(11) DEFAULT NULL,
   `garages` int(11) DEFAULT NULL,
   `area` int(11) DEFAULT NULL,
-  `size` int(11) DEFAULT NULL,
+  `country` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -48750,14 +48726,10 @@ CREATE TABLE `property_metadata` (
 -- Dumping data for table `property_metadata`
 --
 
-INSERT INTO `property_metadata` (`id`, `property_id`, `type`, `status`, `location`, `bedrooms`, `bathrooms`, `floors`, `garages`, `area`, `size`, `created_at`, `updated_at`) VALUES
-(1, 1, 'house', 'rent', 'Los Angeles', 4, 2, 1, 1, 123, 123, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(2, 2, 'house', 'sale', 'Manhatten', 4, 2, 1, 1, 124, 311, '2019-06-28 00:01:45', '2019-06-28 00:01:45'),
-(3, 3, 'apartment', 'rent', 'Los Angeles', 4, 1, 1, 1, 231, 213, '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(4, 4, 'apartment', 'sale', 'New York', 4, 2, 1, 1, 1234, 231, '2019-06-28 00:06:53', '2019-06-28 00:06:53'),
-(5, 5, 'apartment', 'rent', 'Chicago', 5, 2, 2, 1, 2314, 2123, '2019-06-28 00:08:05', '2019-06-28 00:08:05'),
-(6, 6, 'house', 'rent', 'Chicago', 5, 2, 1, 1, 213, 123, '2019-06-28 00:15:48', '2019-06-28 00:15:48'),
-(7, 7, 'apartment', 'rent', 'New York', 5, 2, 1, 2, 1123, 312, '2019-06-28 00:16:52', '2019-06-28 00:16:52');
+INSERT INTO `property_metadata` (`id`, `property_id`, `type`, `status`, `location`, `bedrooms`, `bathrooms`, `floors`, `garages`, `area`, `country`, `state`, `city`, `created_at`, `updated_at`) VALUES
+(2, 2, 'house', '0', NULL, 4, 2, 2, 1, 426, 'United States', 'New York', 'Amsterdam', '2019-07-17 04:59:49', '2019-07-18 01:28:32'),
+(3, 3, 'apartment', '1', NULL, 3, 6, 2, 1, 542, 'United States', 'Hawaii', 'Kaneohe', '2019-07-17 05:06:58', '2019-07-18 01:33:46'),
+(5, 8, 'house', '0', NULL, 4, 2, 1, 1, 521, 'United States', 'Alaska', 'V.t', '2019-07-18 00:53:24', '2019-07-18 01:28:37');
 
 -- --------------------------------------------------------
 
@@ -48781,15 +48753,9 @@ CREATE TABLE `property_occasion` (
 --
 
 INSERT INTO `property_occasion` (`id`, `property_id`, `occasion_name`, `availability_from`, `availability_to`, `per_night_rent`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Easter', '04/06/2019', '26/07/2019', 342, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(2, 1, 'Eid', '11/06/2019', '28/06/2019', 532, '2019-06-27 23:59:14', '2019-06-27 23:59:14'),
-(3, 2, 'Weekends', '01/06/2019', '02/06/2019', 120, '2019-06-28 00:01:46', '2019-06-28 00:01:46'),
-(4, 2, 'Occ2', '12/06/2019', '22/06/2019', 546, '2019-06-28 00:01:46', '2019-06-28 00:01:46'),
-(5, 3, 'Occ2', '15/05/2019', '23/05/2019', 432, '2019-06-28 00:05:40', '2019-06-28 00:05:40'),
-(6, 4, '1', '11/06/2019', '14/07/2019', 324, '2019-06-28 00:06:53', '2019-06-28 00:06:53'),
-(7, 5, '1', '20/06/2019', '27/06/2019', 3123, '2019-06-28 00:08:05', '2019-06-28 00:08:05'),
-(8, 6, 'a', '15/05/2019', '31/05/2019', 32, '2019-06-28 00:15:48', '2019-06-28 00:15:48'),
-(9, 7, 'd', '14/05/2019', '23/05/2019', 213, '2019-06-28 00:16:52', '2019-06-28 00:16:52');
+(9, 3, 'Sundays', '07/07/2019', '14/07/2019', 100, '2019-07-17 05:37:20', '2019-07-17 05:37:20'),
+(13, 2, 'Easter', '03/07/2019', '10/07/2019', 200, '2019-07-17 06:24:42', '2019-07-17 06:24:42'),
+(15, 8, 'Occasion', '2019-07-01', '2019-07-10', 295, '2019-07-18 00:53:24', '2019-07-18 00:53:24');
 
 -- --------------------------------------------------------
 
@@ -53032,11 +52998,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `user_type`, `password`, `status`, `user_image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Property Owner Pr.', 'owner@test.com', 'owner', '$2y$10$5QszZQnMCowkeQEVnoIPu.583cMfUh2GmStFxZlOjQwkE3YSkAlBi', 2, '1561697743.png', 'REXgRzBT3TeeBWhHoBgRyTPzKjdDN1h4rrKuCr1o6vcpE3sK3IVPP54NtrdD', '2019-06-27 23:55:43', '2019-06-27 23:55:43'),
-(2, 'Property Renter Ren.', 'renter@test.com', 'renter', '$2y$10$Ao/0SNRhCKkbe/2QZJtzoukWRGxXq6Gf0TYckBStHp1dl8Wod21j6', 2, '1561697835.png', '44eYLcF757VCPPkon8TvSlFa4Z3UmSdtpEV0d2Wl6iskXZOHmQRT74Bj4TCE', '2019-06-27 23:57:16', '2019-06-27 23:57:16'),
-(3, 'John Doe Jr.', 'owner2@test.com', 'owner', '$2y$10$kEEdBanQTHowAUI/3DfvFeVEtJuhmZdZijI5Aipn2Z551y47/13Y2', 2, '1561698241.png', 'RFGzkjwISIpd0n1hFxjgpm1W7GYT2hLUJc4ckKGSEPtmknFfzKO9K8ylw2NH', '2019-06-28 00:04:01', '2019-06-28 00:04:01'),
-(4, 'Peter Mckinnon', 'renter2@test.com', 'renter', '$2y$10$NWZ6Ca.hUqctOlGMT84Kwumo5mcg9UQ.wOZlb//tVAZVZudyt4enO', 2, '1561698588.png', NULL, '2019-06-28 00:09:49', '2019-06-28 00:09:49'),
-(5, 'Tom Hanks', 'owner3@test.com', 'owner', '$2y$10$5X.in9iP3utmEUlAuQiYOubvxIQYmM/JOn3TZxe0oJqdEVuK/QHZW', 2, '1561698836.png', 'y2mDHvNoMWsUXONlhyg36oP8g9oLfiYurndTvOKvnKQFiHYS9oWYpNxOmull', '2019-06-28 00:13:56', '2019-06-28 00:13:56');
+(1, 'John Doe', 'john@test.com', 'owner', '$2y$10$fZdyn61tvkdcQolwELSuW.UM.uddoFtzCE0YGIrogIQ7LzbMVVc0m', 1, '1563357024.png', 'aebO95bEiggDYebAB2u66gAShskuT8IdZZZch4CGjRNLSIorLwQgGGYrU1Fi', '2019-07-17 04:50:24', '2019-07-18 02:48:50'),
+(2, 'Peter Mckinnon', 'peter@test.com', 'renter', '$2y$10$n.22S6pekrW28vO5788D3eP1.G8dewmVMXEiMLjqvoKYk3ViYIKyK', 1, '1563365744.png', 'vM2M5NgJYPzmEBVTcos0ngaEHUGVmiuoKeRFvvzv45cd6rFNiM9RjoheoTtn', '2019-07-17 07:15:44', '2019-07-18 02:48:56'),
+(3, 'Tom Bilyeu', 'owner@test.com', 'owner', '$2y$10$w1b3sBDGsHGu9kHfyg1xFO2KUKJqE4XZHakNK2Cx4J1QQmhtXBSka', 1, '1563429481.png', 'I88ZCPERLXrdFCwhfHLNYwMXjaIMaCu4AKzN3xPI7RIgVvbe6yOCGn7zDGxm', '2019-07-18 00:55:47', '2019-07-18 02:48:52'),
+(4, 'Simon Sinek', 'renter@test.com', 'renter', '$2y$10$BnlnE5EAxjke4YvH8PXYN.KVeL7yi6OpDxU8iwsDs4ipSLI8Rp63W', 1, '1563429431.png', 'vLIkF67L0ScWC3iwik2yqeg6w2iy7BWsnKVRsmJ7O8rEhRdlXc67LnJ2NcoJ', '2019-07-18 00:57:11', '2019-07-18 02:48:57'),
+(5, 'Jordan Petersan', 'jordan@test.com', 'owner', '$2y$10$yHWYFRl25m2nmHX9m7QqvuDhfOs3WRTL5egndzpJNPQbsOn6fqubG', 0, '1563436825.png', 'o79tjxJxxdedT0kaM0ZYTgxAabzaoE5NylVLpf1ufM1JPNLVl2ZSkFT5jihA', '2019-07-18 03:00:25', '2019-07-18 03:01:03'),
+(6, 'Will Smith', 'smith@test.com', 'renter', '$2y$10$e83jphawlcQ23Puhu1qZ9u1GZASXqN6aM.DHcrWgxJvMLqYnGfIqe', 0, '1563436898.png', '6BGERFApnTNOAEnKGK9SMAh6Cu6inBFnTGC9s1Li0uhqJ4MBeliuc8fsHcF5', '2019-07-18 03:01:38', '2019-07-18 03:01:38'),
+(7, 'Jr Ali', 'ali@test.com', 'renter', '$2y$10$293x9CAV94zHR7EN1fv5ou4EL.Gr.JTXmCZbeRc0NsN99bPIr7dPC', 1, '1563436997.png', 'vI6dtE6uEwyftVCWNwtPTxEUFzXtamgtEs8QWZnRuau6IP2TkpcDISoWeeDx', '2019-07-18 03:03:17', '2019-07-18 03:03:17'),
+(8, 'owner', 'test@test.com', 'owner', '$2y$10$ql/kbjR5KBLVVZwjoLi9l.MzcMI.FFRvuciSc8PyMVBqyTp60q3Yy', 1, NULL, 'R8cwiBlUEBlOCCFiDuE1wyeQte2ugjeFAdXJk5KfRwuaaTx4gQvVC8z3ps37', '2019-07-18 03:03:42', '2019-07-18 03:03:56');
 
 -- --------------------------------------------------------
 
@@ -53061,9 +53030,8 @@ CREATE TABLE `user_billing_info` (
 --
 
 INSERT INTO `user_billing_info` (`id`, `user_id`, `card_number`, `exp_month`, `exp_year`, `sec_code`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '1', '4111111111111111', 12, 2019, 111, NULL, '2019-06-27 23:55:44', '2019-06-27 23:55:44'),
-(2, '3', '4111111111111111', 12, 2019, 111, NULL, '2019-06-28 00:04:01', '2019-06-28 00:04:01'),
-(3, '5', '4111111111111111', 12, 2019, 111, NULL, '2019-06-28 00:13:56', '2019-06-28 00:13:56');
+(1, '1', '4111111111111111', 12, 2019, 111, NULL, '2019-07-17 04:50:24', '2019-07-17 04:50:24'),
+(2, '5', '4111111111111111', 12, 2019, 111, NULL, '2019-07-18 03:00:25', '2019-07-18 03:00:25');
 
 -- --------------------------------------------------------
 
@@ -53091,11 +53059,12 @@ CREATE TABLE `user_metadata` (
 --
 
 INSERT INTO `user_metadata` (`id`, `user_id`, `name`, `surname`, `city`, `state`, `zip`, `address`, `number`, `driving_license`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Property Owner', 'Pr.', '5985', '61', '43000', 'Address', '03112345678', '1561697744.jpg', '2019-06-27 23:55:44', '2019-06-27 23:55:44'),
-(2, 2, 'Property Renter', 'Ren.', '5917', '44', '43000', 'Address s', '03112345678', '1561697836.PNG', '2019-06-27 23:57:16', '2019-06-27 23:57:16'),
-(3, 3, 'John Doe', 'Jr.', '15902', '1107', '43000', 'address', '03112345678', '1561698241.jpg', '2019-06-28 00:04:01', '2019-06-28 00:04:01'),
-(4, 4, 'Peter', 'Mckinnon', '47856', '3956', '43000', 'San', '03112345678', '1561698589.jpg', '2019-06-28 00:09:49', '2019-06-28 00:09:49'),
-(5, 5, 'Tom', 'Hanks', '5919', '44', '43000', 'add', '03221234567', '1561698836.PNG', '2019-06-28 00:13:56', '2019-06-28 00:13:56');
+(1, 1, 'John', 'Doe', '31496', '2728', '46000', 'St#11 Main Road Ghaziabad Kamalabad, Rawalpindi', '1234567', '1563357024.PNG', '2019-07-17 04:50:24', '2019-07-17 04:50:24'),
+(2, 2, 'Peter', 'Mckinnon', '5742', '2728', '46000', 'St#111 Main Road Ghaziabad Kamalabad, Rawalpindi', '1234567', '1563365744.jpg', '2019-07-17 07:15:44', '2019-07-17 07:15:44'),
+(3, 4, 'Simon', 'Sinek', 'Islamabad', 'Punjab', '46000', 'Islamabad, Paksitan', '03221111111', '1563429431.jpg', '2019-07-18 00:57:11', '2019-07-18 00:57:11'),
+(4, 5, 'Jordan', 'Petersan', '5742', '2728', '46000', 'some address', '1234567', '1563436825.PNG', '2019-07-18 03:00:25', '2019-07-18 03:00:25'),
+(5, 6, 'Will', 'Smith', '5742', '2728', '46000', 'Islamabad, Paksitan', '1234567', '1563436898.png', '2019-07-18 03:01:38', '2019-07-18 03:01:38'),
+(6, 7, 'Jr', 'Ali', 'Vt', 'Alaska', '43000', 'asdasd', '03221111111', '1563436997.jpg', '2019-07-18 03:03:17', '2019-07-18 03:03:17');
 
 -- --------------------------------------------------------
 
@@ -53387,7 +53356,7 @@ ALTER TABLE `grid_boxes_metadata`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -53423,31 +53392,31 @@ ALTER TABLE `pages_gallary`
 -- AUTO_INCREMENT for table `properties`
 --
 ALTER TABLE `properties`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `property_features`
 --
 ALTER TABLE `property_features`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `property_gallary`
 --
 ALTER TABLE `property_gallary`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `property_metadata`
 --
 ALTER TABLE `property_metadata`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `property_occasion`
 --
 ALTER TABLE `property_occasion`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `property_sites`
@@ -53489,19 +53458,19 @@ ALTER TABLE `subscription_feature`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_billing_info`
 --
 ALTER TABLE `user_billing_info`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_metadata`
 --
 ALTER TABLE `user_metadata`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_types`

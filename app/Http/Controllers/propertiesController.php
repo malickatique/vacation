@@ -517,7 +517,8 @@ class propertiesController extends Controller
         return $data;
     }
     public function getPropertiesView(){
-        return Property::latest()->paginate(5);
+        return Property::latest()
+        ->where('status', '=', '1')->paginate(5);
     }
     public function propertyDetailView($id)
     {

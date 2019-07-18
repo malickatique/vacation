@@ -29,13 +29,20 @@ class RedirectIfAuthenticated
             default:
               if (Auth::guard($guard)->check()) 
               {
-                if(Auth::user()->user_type == 'owner')
+                if(Auth::user()->status == '0')
                 {
-                  return redirect(route('owner'));
+                  return redirect(route('user.logout'));
                 }
-                else if(Auth::user()->user_type == 'renter')
+                else
                 {
-                  return redirect(route('renter'));
+                  if(Auth::user()->user_type == 'owner')
+                  {
+                    return redirect(route('owner'));
+                  }
+                  else if(Auth::user()->user_type == 'renter')
+                  {
+                    return redirect(route('renter'));
+                  }
                 }
               }
               break;

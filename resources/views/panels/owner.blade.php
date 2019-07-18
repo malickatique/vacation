@@ -32,65 +32,6 @@
       </div>
     </form>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-comments fa-2x"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="images/user.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fa fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fas fa-bell fa-2x"></i>
-          <span class="badge badge-warning navbar-badge">5</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      
-    </ul>
   </nav>
   <!-- /.navbar -->
 
@@ -98,7 +39,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
     <!-- Brand Logo -->
-    <a href="/2019/ovrvue/ownerDash" class="brand-link">
+    <a href="{{route('owner')}}" class="brand-link">
       <img src="images/logo-pic.png" alt="Logo" class="panel-logo"
            style="">
       <span class="brand-text font-weight-light panel-text-logo"> Owner Vacation Rentals </span>
@@ -167,7 +108,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="/2019/ovrvue//users/logout" class="nav-link">
+            <a href="{{route('user.logout')}}" class="nav-link">
               <i class="nav-icon fa fa-power-off"></i>
               <p>Log Out</p>
             </a>

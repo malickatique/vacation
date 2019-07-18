@@ -106,7 +106,7 @@ class registerUsersController extends Controller
         $user->email = $request['email'];
         $user->user_type = 'renter';
         $user->password = bcrypt($request['password']);
-        $user->status = 2;
+        $user->status = 0;
         $user->user_image = $imagename;
         $user->save();
 
@@ -247,7 +247,7 @@ class registerUsersController extends Controller
         $user->email = $request['email'];
         $user->user_type = 'owner';
         $user->password = bcrypt($request['password']);
-        $user->status = 2;
+        $user->status = 0;
         $user->user_image = $imagename;
         $user->save();
 
